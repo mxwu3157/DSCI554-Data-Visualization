@@ -1,0 +1,8 @@
+const data = [
+  { date: format('2019-01-01'), close: 4079 },
+  { date: format('2018-01-01'), close: 3796 },
+  { date: format('2017-01-01'), close: 3573 },
+  { date: format('2016-01-01'), close: 4030 },
+  { date: format('2015-01-01'), close: 2895 },
+];
+scrip src="./lab/node_modules/d3/dist/d3.min.js">/script
