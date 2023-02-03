@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab 1 Getting started</title>
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+</head>
+
+<body>
+  <h1>🚀 Getting started</h1>
+
+  <h2>🧰 Required software tools</h2>
+
+  We will use following software tools for the assignments:
+  <ul>
+    <li><em>Google Chrome</em> to run notebooks and display interactive visualizations</li>
+    <li><em>Git</em> with GitHub Classroom for assignments and labs</li>
+    <li><em>Node</em> for data wrangling and to develop visualizations for the browser</li>
+    <li><em>Visual Studio Code</em> to develop visualizations</li>
+    <li><em>Python</em> for data wrangling, analysis and modeling</li>
+  </ul>
+
+  <h3>Installation instructions</h3>
+
+  <ul>
+    <li>
+      <b>Google Chrome</b>:
+      <ul>
+        <li>Download and install from <a target="_blank"
+            href="https://www.google.com/chrome/">https://www.google.com/chrome</a></li>
+        <li>Make chrome the default browser when working on the assignments</li>
+      </ul>
+    </li>
+
+    <li>
+      <b>Git</b>:
+      <ul>
+        <li>
+          macOS: execute <kbd>xcode-select --install</kbd> or download and install from <a target="_blank"
+            href="https://git-scm.com">https://git-scm.com</a>
+        </li>
+        <li>
+          Windows: download and install from <a target="_blank" href="https://git-scm.com">https://git-scm.com</a>
+        </li>
+        <li>Install GitHub Desktop from <a target="_blank"
+            href="https://desktop.github.com">https://desktop.github.com</a>
+          (optional)</li>
+        <li>For assignments we prefer you create a GitHub account with your USC username. <b>Assignments that cannot be
+            identified will not be graded and will be subject to a penalty!</b></li>
+        <li>You will need to <a
+            href="https://docs.github.com/en/github/authenticating-to-github/keeping-your-account-and-data-secure/creating-a-personal-access-token">create
+            a personal access token</a> to clone the assignments.</li>
+      </ul>
+    </li>
+
+    <li>
+      <b>Node</b>:
+      <div>Download and install <b>node LTS</b> from <a target="_blank" href="https://nodejs.org">https://nodejs.org</a>
+      </div>
+    </li>
+
+    <li>
+      <b>Visual Studio Code</b>:
+      <ul>
+        <li>Download and install from <a target="_blank"
+            href="https://code.visualstudio.com">https://code.visualstudio.com</a></li>
+        <li>Add <code>code</code> command to the PATH variable to run VS code from the command line:
+          <div><kbd>View > Command Palette... > Shell command: Install 'code'
+              command in PATH</kbd></div>
+        </li>
+        <li>Install the <a href="https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer">live
+            Server</a>
+          extension: <kbd>View &gt; Extensions &gt; type "live server" in the "Search Extensions in Marketplace"
+            input</kbd></li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="alert alert-info">
+    <div class="mb-2">💡 <b>Working with Visual Studio Code</b></div>
+    Get familiar with <a href="https://code.visualstudio.com/docs/editor/codebasics">basic editing</a> and keyboard
+    shortcuts in <a target="_blank" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf"
+      class="external-link" target="_blank">Windows</a>,
+    <a target="_blank" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-macos.pdf" class="external-link"
+      target="_blank">macOS</a>,
+    <a target="_blank" href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-linux.pdf" class="external-link"
+      target="_blank">Linux</a>.<br>
+    For fast simultaneous edits learn to use <a target="_blank"
+      href="https://code.visualstudio.com/docs/editor/codebasics#_multiple-selections-multicursor">multiple
+      cursors</a>.
+  </div>
+
+  <div class="alert alert-info">
+    <div class="mb-2">💡 <b>Things to know about git repositories</b></div>
+    <ul>
+      <li>Git snapshots are tracked using a SHA-1 hash, e.g., </kbd>
+        <code><mark>ca412e3a</mark>7968b81b247fa7ae40c2fd5bf7fb3308</code>
+      </li>
+      <li>The cloned git <em>repository</em> is found in the
+        <code>.git/</code> directory. All the files you see are are checked-out files.
+      </li>
+      <li>When working in a team it's best to work with user branches and Pull Requests (PR)</li>
+      <li>Git commands you should know:
+        <ul>
+          <li><b>clone:</b> fetch copy of remote</li>
+          <li><b>checkout:</b> create working copy</li>
+          <li><b>add/rm:</b> mark files to add</li>
+          <li><b>commit:</b> save changes</li>
+          <li><b>pull:</b> fetch changes from remote</li>
+          <li><b>push:</b> upload changes to remote</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <h2>Web basics</h2>
+
+  <h3>Node</h3>
+
+  <code>Node</code> is a JavaScript runtime environment. You can run <code>node</code> in the terminal:
+
+  <pre><code class="sh" data-trim data-noescape>$ node              
+Welcome to Node.js v16.15.0.
+Type ".help" for more information.
+> console.log('hello JavaScript')
+hello JavaScript
+undefined
+> a = [1, 'b', {label: 'c', value: 3}, 2]
+[ 1, 'b', { label: 'c', value: 3 }, 2 ]
+> JSON.stringify(a)
+'[1,"b",{"label":"c","value":3},2]'
+> </code></pre>
+
+  When using node for data wrangling it is best to look for node packages (libraries). You can install node packages
+  using <code>npm -i &lt;package-name&gt;</code>. The following demonstrates how to initialize a node repository using
+  <code>npm</code>:
+
+  <pre><code class="bash" data-trim data-noescape># 🚨 do not copy-paste the prompt ($) and the comments #
+
+$ npm init  #create package.json
+$ npm install commander csv-parse  #fetches libs in node_modules and adds references in package.json
+$ cat > myscript  #create myscript
+#!/usr/bin/env node
+console.log('hello myscript');
+$ chmod +x myscript  #make executable
+$ ./myscript  #run, create a bin and add to the PATH not to have to type ./
+$ code -n .  #open current folder in VS Code to debug run</code></pre>
+
+  <div class="alert alert-info">
+    <div>💡 Debug <code>node</code> scripts with <code>console.log()</code> statements and/or VS Code debugger (see
+      launch.json)</div>
+  </div>
+
+  <h3>HTML</h3>
+
+  HTML is stored in <code>.html</code> files. The <code>index.html</code> is the default file Web servers serve when the
+  html file is not specified in the URL: if <code>index.html</code> is present it is returned and displayed in the
+  browser, otherwise
+  depending on how the server is configured a listing of the files and directories, or a 404 error page is displayed in
+  the browser.
+
+  <div>The following is an example of a minimal html file:</div>
+  <pre><code class="html">&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Header&lt;/h1&gt;
+    &lt;h2&gt;Sub-header&lt;/h2&gt;
+
+    &lt;p&gt;paragraph with text&lt;/p&gt; 
+
+    some bare text
+
+    &lt;p&gt;
+      Some text with a &lt;a href="some_url"&gt;hyperlink&lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+  </div>
+  </div>
+
+  <div class="alert alert-info">
+    <div class="mb-2">💡 <b>Things to know about HTML</b></div>
+    <ul>
+      <li>HTML is about the content, cascading style sheets (CSS) is used to control how things look.</li>
+      <li>Only the contents of the <code>body</code> tag are visible!</li>
+      <li>Spaces, tabs and newlines outside of html elements are not rendered!</li>
+      <li>Browsers will not render malformed HTML: for most users no information it is better to show nothing than bogus
+        information!</li>
+    </ul>
+  </div>
+
+  <div>To debug HTML and javascript in Web pages use <a href="https://developer.chrome.com/docs/devtools/"
+      target="_blank">Chrome DevTools</a>:</div>
+
+  <ol>
+    <li>Open index.html in Chrome</li>
+    <li>Open DevTools: <kbd>View → Developer → Javascript Console</kbd></li>
+    <li>
+      It is convenient to use a shortcut to open DevTools:
+      <table class="table">
+        <thead>
+          <tr>
+            <th>DevTools shortcuts</th>
+            <th>Mac</th>
+            <th>Windows / Linux</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Open whatever panel you used last</td>
+            <td><kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>I</kbd></td>
+            <td><kbd>F12</kbd> or <kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd></td>
+          </tr>
+          <tr>
+            <td>Open the <b>Console</b> panel</td>
+            <td><kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>J</kbd></td>
+            <td><kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>J</kbd></td>
+          </tr>
+          <tr>
+            <td>Open the <b>Elements</b> panel</td>
+            <td>
+              <kbd>Command</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd> or
+              <kbd>Command</kbd>+<kbd>Option</kbd>+<kbd>C</kbd>
+            </td>
+            <td><kbd>Control</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd></td>
+          </tr>
+        </tbody>
+      </table>
+    </li>
+  </ol>
+
+  <h3>CSS</h3>
+
+  CSS stands for cascading style sheet. CSS is used to style HTML, e.g., using the <code>style</code>
+  <em>attribute</em>:
+
+  <pre><code class="html">&lt;div style="background-color: red;""&gt;Hello&lt;div&gt;</code></pre>
+
+  Alternatively, one can store CSS in <code>.css</code> files that are then loaded in HTML with the <code>link</code>
+  tag:
+
+  <pre><code class="js">&lt;link rel="stylesheet" href="d3_line_chart.css"&gt;</code></pre>
+
+  <h2>Javascript basics</h2>
+
+  You can execute Javascript in Web pages using the <code>script</code> tag:
+
+  <pre><code class="js">&lt;script type="text/javascript"&gt;
+  console.log('hello Javascript')
+&lt;/script&gt;</code></pre>
+
+  Visualization libraries such as <code>d3</code> are loaded from content delivery network (CDN) or installed with
+  <code>npm</code> and included in the page using the <code>script</code> tag:
+
+  <pre><code class="js">&lt;script src="../node_modules/d3/dist/d3.min.js"&gt;&lt;/script&gt;</code></pre>
+
+  To use Javascript visualization libraries proceed as follows:
+  <ol>
+    <li>Read the docs to understand what and where to include in the page (e.g., .css, js libs, and js code)</li>
+    <li>Find an example with the same type of chart and implement it in the page</li>
+    <li>Understand how the data is formatted in the example you implemented</li>
+    <li>Format your data accordingly and replace the data in the example. <b>Best is to load/hard code the data already
+        formatted, i.e., do all needed data wrangling outside of the page!</b></li>
+    <li>Customize labels, legends...</li>
+  </ol>
+
+  <div class="alert alert-info">
+    <div>💡 Debug with <code>console.log()</code> and Chrome Console or VS Code debugger (see launch.json)</div>
+  </div>
+
+  <h2>Markdown basics</h2>
+
+  Markdown is a markup language that is used in git repositories, notebooks, etc. for documenting.
+
+  <div class="alert alert-info">
+    <div class="mb-2">💡 <b>Facts about Markdown</b></div>
+    <ul>
+      <li>Markdown is rendered to HTML: README.md in GitHub, Python and R notebooks.</li>
+      <li>Markdown files have <code>.md</code> extension</li>
+      <li>Visual Studio Code let's you preview the Markdown</li>
+    </ul>
+  </div>
+
+  Markdown content:
+
+  <pre><code class="markdown"># Title
+## Subtitle
+
+__bold__ _italic_ 
+
+`inline code` 
+
+code block:
+```html
+&lt;h1 style="color: red"&gt;Header 1&lt;/h1&gt;
+&lt;h2&gt;Header 2&lt;/h2&gt;
+&lt;h3&gt;Header 3&lt;/h3&gt;
+```
+
+A list:
+
+- [hyperlink text](https://guides.github.com/)
+- list item
+- list item</code></pre>
+
+  <h2>🚀 Getting started with the assignments</h2>
+
+  <ol>
+    <li>In <a href="https://blackboard.usc.edu/">Blackboard</a> under <kbd>Content &gt; Week [1-12] &gt; A[1-12]</kbd>
+      click the classroom.github.com link to accept the assignment, copy the URL to clone the repository.</li>
+    <li>Clone the assignment repository with one of these commands:
+      <ul>
+        <li>VS Code (preferred): <kbd>Command Palette... > Git Clone</kbd></li>
+        <li>Command line:
+          <pre class="inline"><code class="sh">$ mkdir dsci-554-hw
+$ cd dsci-554-hw
+$ git clone https://github.com/DSCI554/a1-&lt;username&gt;.git
+$ cd a1-&lt;username&gt;
+$ code -n .  #open assignment in VS code
+</code></pre>
+        </li>
+        <li>GitHub Desktop: <kbd>File &rarr; Clone Repository</kbd></li>
+      </ul>
+    </li>
+  </ol>
+
+  <div class="alert alert-info">💡 In Windows you can use GitBash to run git commands and shell scripts</div>
+
+
+  <h3>🎢 Starter code</h3>
+
+  The following is the starter code for a1. Other Javascript assignments are structured in the same way.
+  <pre><code class="sh" style="max-height: unset" data-trim data-noescape>ASSIGNMENT.md  #assignment rubric in markdown
+QUIZ_QUESTIONS.md  #markdown to submit quiz questions
+README.md  #repository README in markdown
+index.html  #index.html for howmework
+lab/  #lab files
+  ex0.html   #lab exercise file
+  ex1.html   #lab exercise file
+  ex2.html   #lab exercise file
+  node_script/  #sample code
+    faithful.csv  #data file
+    node_cli  #example code
+    node_modules  #node modules created when running npm install (ignore)
+    node_script  #example code
+    package-lock.json  #npm file commit if changed
+    package.json  #npm package.json file
+    style.css #style file for lab
+  html-page/  #sample code
+    index.html
+    node_modules  #node modules created when running npm install (ignore)
+    package-lock.json
+    package.json  #npm package.json file
+github-dark-dimmed.min.css  #highlight.js file (ignore)
+highlight.min.js  #highlight.js file (ignore)
+node_modules  #node modules created when running npm install
+package-lock.json  #npm file commit if changed
+package.json  #npm package.json file
+    </code></pre>
+
+  <h2>🚪 How to open lab files in the Browser</h2>
+
+  Whenever you see a node project (i.e., there is a <code>project.json</code> file in the folder, start by running
+  <code>npm install</code>.
+
+  To open the exercises (e.g., <code>ex#.html</code> and <code>index.html</code> file for the assignment) either:
+  <ul>
+    <li>Open the <code>html</code> file in VS code, then start <code>Live Server</code> from the status bar clicking
+      <kbd>Go Live</kbd></li>
+    <li>If the <code>package.json</code> contains a <code>scripts</code> section that includes a <code>serve</code> key
+      with a <code>browser-sync start...</code>
+      command, open the terminal in VS Code with <kbd>View &gt; Terminal</kbd> and start a <code>browser-sync</code>
+      server by executing <code>npm run serve</code></li>
+  </ul>
+
+  <h2>References</h2>
+  <ul>
+    <li><a target="_blank" href="https://docs.github.com/en/get-started/getting-started-with-git">Getting started with
+        Git</a></li>
+    <li><a target="_blank"
+        href="https://support.google.com/docs/answer/1272900?co=GENIE.Platform%3DDesktop&hl=en">Google Sheets: Create &
+        use pivot tables</a></li>
+    <li><a target="_blank" href="https://support.google.com/docs/answer/63824">Google Sheets: Add & edit a chart or
+        graph</a></li>
+    <li><a target="_blank" href="https://support.google.com/docs/answer/9142593">Google Sheets: Line charts</a></li>
+    <li><a target="_blank" href="https://support.google.com/docs/answer/9143036">Google Sheets: Pie charts</a></li>
+
+    <li><a target="_blank" href="https://www.markdownguide.org/cheat-sheet/">Markdown cheat sheet</a></li>
+
+    <li><a target="_blank" href="https://support.google.com/docs/answer/190718?hl=en">Types of charts & graphs in Google
+        Sheets</a></li>
+    <li><a target="_blank" href="http://data.un.org/Explorer.aspx">UNData Datamarts page</a></li>
+  </ul>
+
+  <a target="_blank" href="./index.html">⬅️ Back</a>
+</body>
+
+</html>
