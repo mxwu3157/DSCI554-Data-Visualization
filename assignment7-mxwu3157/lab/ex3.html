@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex3</title>
+
+  <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex3: SVG selections on groups</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex3: SVG selections on groups</li>
+    </ol>
+  </nav>
+
+  <h2>Demo: D3 selection with SVG groups</h2>
+
+  <pre><code class="HTML">&lt;svg width="410" height="90" style="background-color: gainsboro" id="svg"&gt;
+  &lt;g&gt;
+    &lt;circle id="00" cx="10" cy="10" r="6" fill="#1b9e77"&gt;&lt;/circle&gt;
+    &lt;circle id="10" cx="10" cy="35" r="6" fill="#1b9e77"&gt;&lt;/circle&gt;
+    &lt;circle id="20" cx="10" cy="60" r="6" fill="#1b9e77"&gt;&lt;/circle&gt;
+  &lt;/g&gt;
+  &lt;g&gt;
+    &lt;circle id="01" cx="150" cy="10" r="6" fill="#d95f02"&gt;&lt;/circle&gt;
+    &lt;circle id="11" cx="150" cy="35" r="6" fill="#d95f02"&gt;&lt;/circle&gt;
+    &lt;circle id="21" cx="150" cy="60" r="6" fill="#d95f02"&gt;&lt;/circle&gt;
+  &lt;/g&gt;
+  &lt;g&gt;
+    &lt;circle id="02" cx="300" cy="10" r="6" fill="#7570b3"&gt;&lt;/circle&gt;
+    &lt;circle id="22" cx="300" cy="35" r="6" fill="#7570b3"&gt;&lt;/circle&gt;
+    &lt;circle id="32" cx="300" cy="60" r="6" fill="#7570b3"&gt;&lt;/circle&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;
+
+&lt;script&gt;
+  // var selection = d3.selectAll('circle').attr('fill', 'steelblue');
+
+  //Using selection.each()
+  //see https://github.com/d3/d3-selection#selection_each
+  // d3.selectAll('circle').each(function(p, j) {
+  //   console.log(p, j);  //prints parent and index of current child
+  //   d3.select(this).attr('fill', 'steelblue');  //this is the current node
+  // });
+
+  //Using selection.call()
+  //see https://github.com/d3/d3-selection#selection_call
+  //d3.selectAll('circle').call(d =&gt; d.attr('fill', 'steelblue'));
+
+  //Filtering the selection with selection.filter()
+  //see https://github.com/d3/d3-selection#selection_filter
+  // var selection = d3.selectAll('circle')
+  //   .filter((d, i) =&gt; i & 1);
+  // selection
+  //   .call(d =&gt; d.attr('fill', 'orange'));
+&lt;/script&gt;</code></pre>
+
+  <h2 class="mt-3">1. Practice with D3 selection on svg elements</h2>
+
+  <div>Implement the following code in the page in the answer below. Then answer the questions implementing and
+    transcribing the code and its output in the code blocks</div>
+
+  <pre><code class="html">&lt;svg width="410" height="90" style="background-color: gainsboro" id="svg"&gt;
+  &lt;g&gt;
+    &lt;rect id="00" x="10" y="10" rx="3" ry="3" width="100" height="20" fill="#1b9e77"&gt;&lt;/rect&gt;
+    &lt;rect id="10" x="10" y="35" rx="3" ry="3" width="100" height="20" fill="#1b9e77"&gt;&lt;/rect&gt;
+    &lt;rect id="20" x="10" y="60" rx="3" ry="3" width="100" height="20" fill="#1b9e77"&gt;&lt;/rect&gt;
+  &lt;/g&gt;
+  &lt;g&gt;
+    &lt;rect id="01" x="150" y="10" rx="3" ry="3" width="100" height="20" fill="#d95f02"&gt;&lt;/rect&gt;
+    &lt;rect id="11" x="150" y="35" rx="3" ry="3" width="100" height="20" fill="#d95f02"&gt;&lt;/rect&gt;
+    &lt;rect id="21" x="150" y="60" rx="3" ry="3" width="100" height="20" fill="#d95f02"&gt;&lt;/rect&gt;
+  &lt;/g&gt;
+  &lt;g&gt;
+    &lt;rect id="02" x="300" y="10" rx="3" ry="3" width="100" height="20" fill="#7570b3"&gt;&lt;/rect&gt;
+    &lt;rect id="22" x="300" y="35" rx="3" ry="3" width="100" height="20" fill="#7570b3"&gt;&lt;/rect&gt;
+    &lt;rect id="32" x="300" y="60" rx="3" ry="3" width="100" height="20" fill="#7570b3"&gt;&lt;/rect&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</code></pre>
+
+
+
+
+
+<svg width="410" height="90" style="background-color: gainsboro" id="svg">
+  <g>
+    <circle id="00" cx="10" cy="10" r="6" fill="#1b9e77"></circle>
+    <circle id="10" cx="10" cy="35" r="6" fill="#1b9e77"></circle>
+    <circle id="20" cx="10" cy="60" r="6" fill="#1b9e77"></circle>
+  </g>
+  <g>
+    <circle id="01" cx="150" cy="10" r="6" fill="#d95f02"></circle>
+    <circle id="11" cx="150" cy="35" r="6" fill="#d95f02"></circle>
+    <circle id="21" cx="150" cy="60" r="6" fill="#d95f02"></circle>
+  </g>
+  <g>
+    <circle id="02" cx="300" cy="10" r="6" fill="#7570b3"></circle>
+    <circle id="22" cx="300" cy="35" r="6" fill="#7570b3"></circle>
+    <circle id="32" cx="300" cy="60" r="6" fill="#7570b3"></circle>
+  </g>
+</svg>
+
+<script>
+  var selection = d3.selectAll('circle').attr('fill', 'steelblue');
+
+  // Using selection.each()
+  // see https://github.com/d3/d3-selection#selection_each
+  d3.selectAll('circle').each(function(p, j) {
+    console.log(p, j);  //prints parent and index of current child
+    d3.select(this).attr('fill', 'steelblue');  //this is the current node
+  });
+
+  // Using selection.call()
+  // see https://github.com/d3/d3-selection#selection_call
+  d3.selectAll('circle').call(d => d.attr('fill', 'steelblue'));
+
+  // Filtering the selection with selection.filter()
+  // see https://github.com/d3/d3-selection#selection_filter
+  var selection = d3.selectAll('circle')
+    .filter((d, i) => i & 1);
+  selection
+    .call(d => d.attr('fill', 'orange'));
+</script>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code below! -->
+    <svg width="410" height="90" style="background-color: gainsboro" id="svg">
+  <g>
+    <rect id="00" x="10" y="10" rx="3" ry="3" width="100" height="20" fill="#1b9e77"></rect>
+    <rect id="10" x="10" y="35" rx="3" ry="3" width="100" height="20" fill="#1b9e77"></rect>
+    <rect id="20" x="10" y="60" rx="3" ry="3" width="100" height="20" fill="#1b9e77"></rect>
+  </g>
+  <g>
+    <rect id="01" x="150" y="10" rx="3" ry="3" width="100" height="20" fill="#d95f02"></rect>
+    <rect id="11" x="150" y="35" rx="3" ry="3" width="100" height="20" fill="#d95f02"></rect>
+    <rect id="21" x="150" y="60" rx="3" ry="3" width="100" height="20" fill="#d95f02"></rect>
+  </g>
+  <g>
+    <rect id="02" x="300" y="10" rx="3" ry="3" width="100" height="20" fill="#7570b3"></rect>
+    <rect id="22" x="300" y="35" rx="3" ry="3" width="100" height="20" fill="#7570b3"></rect>
+    <rect id="32" x="300" y="60" rx="3" ry="3" width="100" height="20" fill="#7570b3"></rect>
+  </g>
+</svg>
+
+  </div>
+
+  <h3>Question 1: Select all SVG groups</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code below! -->
+    <!-- Transcribe your code and output below! -->
+    <script>
+console.log('Question 1');
+console.log(d3.selectAll('g'));
+ 
+
+</script>
+    <pre><code class="js">console.log('Question 1');
+console.log(d3.selectAll('g'));
+//first three 'g' from demo code, the later three are the 'g' that contains 'rect'
+    </code></pre>
+      <image src="./img/ex3_1.jpg"></image>
+  </div>
+
+  <h3>Question 2: Select all rect</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code below! -->
+
+    <!-- Transcribe your code and output below! -->
+     <script>
+console.log('Question 2');
+
+  console.log(d3.selectAll('rect'));
+ 
+
+</script>
+    <pre><code class="js"> console.log('Question 1');
+console.log(d3.selectAll('rect'));</code></pre>
+  <image src="./img/ex3_2.jpg"></image>
+  </div>
+
+  <h3>Question 3: Select all groups, then on the returned selection select all rects</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code below! -->
+
+    <!-- Transcribe your code and output below! -->
+    <script>
+  // var selection = d3.selectAll('g').attr('fill', 'steelblue');
+
+  // Using selection.each()
+  // see https://github.com/d3/d3-selection#selection_each
+  console.log('Question 3');
+  var selection = d3.selectAll('g').each(function(p, j) {
+    console.log(d3.select(this).selectAll('rect'))
+  });
+
+  //  d3.selectAll('g').each(function(p, j) {
+  //   console.log( 'g ', 'parent:', p, 'index:', j);  //prints parent and index of current child
+  //   console.log(d3.select(this).selectAll("rect"));
+  //   // d3.select(this).selectAll("rect").each(function(j,b){console.log( 'rect', 'parent:', j, 'index:', b)})
+  //     // .each(function(j,j1) {
+  //     //   console.log('aaa')
+  //     //   console.log( 'rect ', 'parent:', j, 'index:', j1)});  //this is the current node
+
+  // });
+// d3.selectAll('g').each(function(p, j) {
+
+//   d3.select(this)
+//     .selectAll(".child")
+//       .text(d => `child ${d.name} of ${p.name}`);
+
+// });
+
+  // // Using selection.call()
+  // // see https://github.com/d3/d3-selection#selection_call
+  // d3.selectAll('circle').call(d => d.attr('fill', 'steelblue'));
+
+  // // Filtering the selection with selection.filter()
+  // // see https://github.com/d3/d3-selection#selection_filter
+  // var selection = d3.selectAll('circle')
+  //   .filter((d, i) => i & 1);
+  // selection
+  //   .call(d => d.attr('fill', 'orange'));
+</script>
+    <pre><code class="js">console.log('Question 3');
+  var selection = d3.selectAll('g').each(function(p, j) {
+    console.log(d3.select(this).selectAll('rect'))
+  });
+//first three are from the demo script, therefore no 'rect' elements are selected
+//the later three each contains three rect element
+</code></pre>
+  <image src="./img/ex3_3.jpg"></image>
+  </div>
+
+  <h3>Question 4: Select all <code>rect</code> and set the <code>fill</code> attribute to <code>steelblue</code> using
+    <code>selection.attr()</code>, <code>selection.call()</code> and <code>selection.each()</code>
+  </h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code below! -->
+
+    <!-- Transcribe your code and output below! -->
+    <script>
+d3.selectAll('rect').attr('fill','steelblue');
+d3.selectAll('rect').call(d => d.attr('fill', 'steelblue'));
+d3.selectAll('rect').each(function(p, j) {
+d3.select(this).attr('fill', 'steelblue');  //this is the current node
+  });
+    </script>
+    <pre><code class="js">d3.selectAll('rect').attr('fill','steelblue');
+d3.selectAll('rect').call(d => d.attr('fill', 'steelblue'));
+d3.selectAll('rect').each(function(p, j) {
+  d3.select(this).attr('fill', 'steelblue');  //this is the current node
+  });</code></pre>
+  </div>
+
+  <h3>Question 5: Select all <code>rect</code> and set the <code>fill</code> attribute to <code>orange</code> for
+    every other <code>rect</code> using <code>.filter</code> on the selection</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code below! -->
+
+    <!-- Transcribe your code and output below! -->
+    <script>
+        var selection = d3.selectAll('rect')
+    .filter((d, i) => i & 1);
+  selection
+    .call(d => d.attr('fill', 'orange'));
+    </script>
+    <pre><code class="js">var selection = d3.selectAll('rect')
+    .filter((d, i) => i & 1);
+  selection
+    .call(d => d.attr('fill', 'orange'));</code></pre>
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+  
+</body>
+
+</html>

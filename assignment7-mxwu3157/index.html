@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>DSCI 554 Assignment</title>
+        <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+            rel="stylesheet" />
+        <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <link rel="stylesheet" href="./style.css">
+
+        <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
+            rel="stylesheet">
+
+        <link rel="stylesheet" href="./lab/github-dark-dimmed.min.css">
+        <script src="./lab/highlight.min.js"></script>
+
+        <script
+            src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+        <link rel="stylesheet"
+            href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css"/>
+        <script src="./node_modules/d3/dist/d3.min.js"></script>
+
+        <script>
+	hljs.highlightAll();
+	hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+    </head>
+
+
+    <body>
+        <div class="container">
+            <div>
+                <h1>DSCI554-A7</h1>
+                <div>Meixian Wu <a href="mailto:meixianw@usc.edu">meixianw@usc.edu</a></div>
+            </div>
+
+            <div>
+                <h3>About Dataset</h3>
+                <p>
+                    <a target="_blank"
+                        href="https://docs.google.com/spreadsheets/d/1VRXg7apK5vTooA-CawHi5BRqVkFjImrF8yFCFFL0n_g/edit?usp=sharing">Link</a>
+                    UN dataset of my choice. <a target="_blank"
+                        href="http://data.un.org/Data.aspx?d=EDATA&f=cmID%3AES">(UN
+                        World Database)</a>
+                </p>
+                <p>
+                    This dataset is the total solar power production of the 10
+                    selected countries in million kilowatte-hours from
+                    2004-2020.
+                    The dataset is a subset from The Energy Statistics Database,
+                    which contains comprehensive energy statistics on the
+                    production, trade, conversion and final consumption of
+                    primary and secondary; conventional and non-conventional;
+                    and new and renewable sources of energy.
+                </p>
+            </div>
+
+            <div>
+                <!-- <h2>1. Animated bars with sorting and filtering</h2> -->
+                <div class="card p-3">
+                    <h2 class="text-center">Solar power production (2019)</h2>
+                    <div class="text-center mb-2" >
+                        Show <span class="btn btn-light filter" id="all">all</span>
+                        <span class="btn btn-light filter" id="lower">Lowest 5 countries</span>
+                        <span class="btn btn-light filter" id="higher">Highest 5 countries</span>
+                        
+                    </div>
+                    <div class="text-center mb-2">
+                        Sort by <span class="btn btn-light sort" id="name">name-ALP</span>
+                        <span class="btn btn-light sort" id="amount-a">amount-ASC</span>
+                        <span class="btn btn-light sort" id="amount-d">amount- DESC</span>
+                    </div>
+
+                    <div class="text-center mb-2">
+                        
+                        <span class="btn btn-outline-secondary" id="reset">Reset</span>
+                    </div>
+
+                    <div id="chart"></div>
+                    <script src="./a7_bar.js"></script>
+                    
+
+
+                </div>
+            </div>
+
+        </div>
+    </body>
+
+</html>

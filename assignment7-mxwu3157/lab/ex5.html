@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex5</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex5: axis transitions </h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex5: axis transitions</li>
+    </ol>
+  </nav>
+
+  <h2>1. Axis domain transition</h2>
+
+  <div>Implement and test the code.</div>
+
+  <pre><code class="HTML" data-trim data-noescape>&lt;style&gt;
+  .axis0 line,
+  .axis0 path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .tick line {
+    stroke: black;
+  }
+
+  .tick {
+    stroke: black;
+  }
+
+  text {
+    stroke: none;
+    fill: black;
+  }
+&lt;/style&gt;
+&lt;svg id="svg0" width="960" height="50" style="background-color: mistyrose"&gt;&lt;/svg&gt;
+&lt;script&gt;
+  var data = [0, 20, 100, 500, 700, 1000]
+
+  var x0 = d3.scaleLinear()
+    .domain(d3.extent(data))
+    .range([0, 900]);
+
+  var axis0 = d3.axisBottom()
+    .scale(x0);
+
+  var svg = d3.select("#svg0");
+
+  svg.append("g")
+    .attr("class", "axis0")
+    .attr("transform", "translate(30,20)")
+    .call(axis0);
+
+  var flag = false;
+  svg.on("click", () => {
+    x0.domain([0, flag ? 1000 : 500]);
+    flag = !flag;
+
+    d3.select(".axis0")
+      .transition()
+      .duration(1000)
+      .call(axis0);
+  });
+&lt;/script&gt;</code></pre>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <!-- Add your code below! -->
+    <style>
+  .axis0 line,
+  .axis0 path {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
+
+  .tick line {
+    stroke: black;
+  }
+
+  .tick {
+    stroke: black;
+  }
+
+  text {
+    stroke: none;
+    fill: black;
+  }
+</style>
+<svg id="svg0" width="960" height="50" style="background-color: mistyrose"></svg>
+<script>
+  var data = [0, 20, 100, 500, 700, 1000]
+
+  var x0 = d3.scaleLinear()
+    .domain(d3.extent(data))
+    .range([0, 900]);
+
+  var axis0 = d3.axisBottom()
+    .scale(x0);
+
+  var svg = d3.select("#svg0");
+
+  svg.append("g")
+    .attr("class", "axis0")
+    .attr("transform", "translate(30,20)")
+    .call(axis0);
+
+  var flag = false;
+  svg.on("click", () => {
+    x0.domain([0, flag ? 1000 : 500]);
+    flag = !flag;
+
+    d3.select(".axis0")
+      .transition()
+      .duration(1000)
+      .call(axis0);
+  });
+</script>
+
+  </div>
+
+  <h2>2. Axis type transition</h2>
+
+  <div>Implement the code provide and finish to implement where marked with 🚧.</div>
+
+  <pre><code class="HTML" data-trim data-noescape>
+    &lt;svg id="svg1" width="960" height="50" style="background-color: mistyrose"&gt;&lt;/svg&gt;
+    &lt;script&gt;
+      var data = [10, 2200, 100000, 50000000, 70000000, 100000000]
+
+      var x1 = d3.scaleLinear()  //🚧 set domain and range
+
+      var x2 = d3.scaleLog()  //🚧 set domain and range
+
+      var axis = d3.axisBottom()
+        .scale(x1);
+
+      var svg = d3.select("#svg1");
+
+      svg.append("g")
+        .attr("class", "axis1")
+        .attr("transform", "translate(30,20)")
+        .call(axis);
+
+      var flag = false;
+      svg.on("click", function () {
+        d3.select(".axis1")
+          .transition()
+          .duration(1000)
+          .call(axis.scale(x1));  //🚧 update to set scale x2 when flag is false
+        flag = !flag;
+      });
+    &lt;/script&gt;
+  </code></pre>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <!-- Add your code below! -->  
+
+    <svg id="svg1" width="960" height="50" style="background-color: mistyrose"></svg>
+    <script>
+      var data = [10, 2200, 100000, 50000000, 70000000, 100000000]
+
+      var x1 = d3.scaleLinear()
+      .domain(d3.extent(data))
+      .range([0,900])
+        //🚧 set domain and range
+
+      var x2 = d3.scaleLog()
+      .domain(d3.extent(data))
+      .range([0,900]);
+        //🚧 set domain and range
+
+      var axis = d3.axisBottom()
+        .scale(x1);
+
+      var svg = d3.select("#svg1");
+
+      svg.append("g")
+        .attr("class", "axis1")
+        .attr("transform", "translate(30,20)")
+        .call(axis);
+
+      var flag1 = false;
+      svg.on("click", function () {
+        d3.select(".axis1")
+          .transition()
+          .duration(1000)
+          .call(axis.scale(flag1 ? x1 : x2));  //🚧 update to set scale x2 when flag is false
+        flag1 = !flag1;
+      });
+    </script>
+  
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

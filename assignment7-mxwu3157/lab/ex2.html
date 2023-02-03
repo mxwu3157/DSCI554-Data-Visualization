@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex2</title>
+
+  <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex2: handling button events</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex2: handling button events</li>
+    </ol>
+  </nav>
+
+  <h2>Demo: Button events with vanilla JavaScript and with D3</h3>
+
+    <div class="alert alert-danger">
+      <div class="fw-bold">🚨 Arrow functions do not bind their own <code>this</code></div>
+      Be aware if you use <code>this</code> in event handlers that arrow functions inherit <code>this</code> from the
+      parent scope or lexical scope, which interferes with <code>this</code> set by D3 event binding.
+    </div>
+
+    <pre><code class="HTML">&lt;div class="mb-3"&gt;
+  &lt;button onclick="onClick(this, event)" class="btn btn-primary"&gt;With onclick attribute&lt;/button&gt;
+&lt;/div&gt;
+&lt;div class="mb-3"&gt;
+  &lt;button id="btn-js" class="btn btn-primary"&gt;With getElementById&lt;/button&gt;
+  &lt;button id="btn-d3" class="btn btn-primary"&gt;With D3 select by id&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;script&gt;
+//event handler using vanilla JS
+function onClick(button, event) {
+  console.log('event', event); //event object
+  console.log('event.target', event.target);  //event target: the button
+  console.log('this', this);  //this is the window
+
+  //ways to set the button text
+  button.textContent = 'button.textContent';
+  //d3.select(button).text('d3.select(button)');  //with d3 select
+  //d3.select(event.target).text('d3.select(event.target)');  //with d3 select element
+}
+
+//attaching event handler to button with vanilla JS
+var btn = document.getElementById('btn-js');
+btn.addEventListener('click', function (event) {
+  console.log('event', event); //event object
+  console.log('event.target', event.target);  //event target: the button
+  console.log('this', this);  //this is the current DOM element
+
+  //ways to set the button text
+  //btn.textContent = 'btn.textContent'; //with vanilla JS
+  //event.target.textContent = 'event.target.textContent'; //with the target 
+  //d3.select('#btn-js').text("d3.select('#btn-js')");  //with d3 select
+  d3.select(this).text('d3.select(this)');  //with d3 select this
+});
+
+//attaching event handler to button with D3
+//see https://github.com/d3/d3-selection/blob/v3.0.0/README.md#selection_on
+d3.select('#btn-d3')
+  .on('click', function (event) {
+    console.log(event); //event object
+    console.log('event.target', event.target);  //event target: the button
+    console.log(this);  //this is the current DOM element
+
+    //ways to set the button text
+    //event.target.textContent = 'event.target.textContent'; //with the target 
+    //d3.select('#btn-d3').text("d3.select('#btn-d3')");  //with d3 select
+    //d3.select(this).text('d3.select(this)');  //with d3 select this
+  });
+&lt;/script&gt;</code></pre>
+
+    <div class="mb-3">
+      <button onclick="onClick(this, event)" class="btn btn-primary">With onclick attribute</button>
+    </div>
+    <div class="mb-3">
+      <button id="btn-js" class="btn btn-primary">With getElementById</button>
+      <button id="btn-d3" class="btn btn-primary">With D3 select by id</button>
+    </div>
+
+    <script>
+      //event handler using vanilla JS
+      function onClick(button, event) {
+        console.log('event', event); //event object
+        console.log('event.target', event.target);  //event target: the button
+        console.log('this', this);  //this is the window
+
+        //ways to set the button text
+        button.textContent = 'button.textContent';
+        //d3.select(button).text('d3.select(button)');  //with d3 select
+        //d3.select(event.target).text('d3.select(event.target)');  //with d3 select element
+      }
+
+      //attaching event handler to button with vanilla JS
+      var btn = document.getElementById('btn-js');
+      btn.addEventListener('click', function (event) {
+        console.log('event', event); //event object
+        console.log('event.target', event.target);  //event target: the button
+        console.log('this', this);  //this is the current DOM element
+
+        //ways to set the button text
+        //btn.textContent = 'btn.textContent'; //with vanilla JS
+        //event.target.textContent = 'event.target.textContent'; //with the target 
+        //d3.select('#btn-js').text("d3.select('#btn-js')");  //with d3 select
+        d3.select(this).text('d3.select(this)');  //with d3 select this
+      });
+
+      //attaching event handler to button with D3
+      //see https://github.com/d3/d3-selection/blob/v3.0.0/README.md#selection_on
+      d3.select('#btn-d3')
+        .on('click', function (event) {
+          console.log(event); //event object
+          console.log('event.target', event.target);  //event target: the button
+          console.log(this);  //this is the current DOM element
+
+          //ways to set the button text
+          //event.target.textContent = 'event.target.textContent'; //with the target 
+          //d3.select('#btn-d3').text("d3.select('#btn-d3')");  //with d3 select
+          //d3.select(this).text('d3.select(this)');  //with d3 select this
+        });
+    </script>
+
+    <h2>1. Controls with vanilla JavaScript</h2>
+
+    <div>Implement the code provided in the page and use vanilla JavaScript to print in the console the name of the
+      button and dropdowns when clicked.</div>
+
+    <pre><code class="html">&lt;div&gt;
+  &lt;button class="btn btn-primary"&gt;Primary&lt;/button&gt;
+  &lt;button class="btn btn-secondary"&gt;Secondary&lt;/button&gt;
+  &lt;button class="btn btn-success"&gt;Success&lt;/button&gt;
+  &lt;button class="btn btn-danger"&gt;Danger&lt;/button&gt;
+  &lt;button class="btn btn-warning"&gt;Warning&lt;/button&gt;
+  &lt;button class="btn btn-info"&gt;Info&lt;/button&gt;
+  &lt;button class="btn btn-light"&gt;Light&lt;/button&gt;
+  &lt;button class="btn btn-dark"&gt;Dark&lt;/button&gt;
+
+  &lt;button onclick="buttonOnClick('Dark')" class="btn btn-link"&gt;Link&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class="mt-2 dropdown"&gt;
+  &lt;button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false"&gt;
+    Dropdown button
+  &lt;/button&gt;
+  &lt;ul class="dropdown-menu"&gt;
+    &lt;li&gt;&lt;a class="dropdown-item"&gt;Action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item"&gt;Another action&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="dropdown-item"&gt;Something else here&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+    
+    &lt;div class="grp"&gt;
+  &lt;span class="btn" id="filter1"&gt;Filter 1&lt;/span&gt;
+  &lt;span class="btn" id="filter2"&gt;Filter 2&lt;/span&gt;
+  &lt;span class="btn" id="filter3"&gt;Filter 3&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="grp"&gt;
+  &lt;span class="btn" id="sort1"&gt;Sort 1&lt;/span&gt;
+  &lt;span class="btn" id="sort2"&gt;Sort 2&lt;/span&gt;
+&lt;/div&gt;
+  </code></pre>
+
+    <div class="card p-3">
+      <div>Answer</div>
+
+      <!-- Add your code below! -->
+      <script>
+        function buttonOnClick(name) {
+          console.log(name); //event object
+
+        };
+
+
+      </script>
+      <div>
+        <button onclick="buttonOnClick('Primary')" class="btn btn-primary">Primary</button>
+        <button onclick="buttonOnClick('Secondary')" class="btn btn-secondary">Secondary</button>
+        <button onclick="buttonOnClick('Success')" class="btn btn-success">Success</button>
+        <button onclick="buttonOnClick('Danger')" class="btn btn-danger">Danger</button>
+        <button onclick="buttonOnClick('Warning')" class="btn btn-warning">Warning</button>
+        <button onclick="buttonOnClick('Info')" class="btn btn-info">Info</button>
+        <button onclick="buttonOnClick('Light')" class="btn btn-light">Light</button>
+        <button onclick="buttonOnClick('Dark')" class="btn btn-dark">Dark</button>
+        <button onclick="buttonOnClick('Link')" class="btn btn-link">Link</button>
+      </div>
+
+      <div class="mt-2 dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+          <li><a onclick="buttonOnClick('Action')" class="dropdown-item">Action</a></li>
+          <li><a onclick="buttonOnClick('Another action')" class="dropdown-item">Another action</a></li>
+          <li><a onclick="buttonOnClick('Something else here')" class="dropdown-item">Something else here</a></li>
+        </ul>
+      </div>
+
+
+
+    </div>
+
+    <h2>2. Controls with D3</h2>
+
+    <div>Implement the code provided in exercise 1 and use D3 to print in the console the name of the button and
+      dropdowns when clicked.</div>
+
+    <div class="card p-3">
+      <div>Answer</div>
+      <!-- Add your code below! -->
+      
+      <div>
+        <button id="Primary"  class="btn btn-primary">Primary</button>
+        <button id="Secondary"  class="btn btn-secondary">Secondary</button>
+        <button id="Success"  class="btn btn-success">Success</button>
+        <button id="Danger"  class="btn btn-danger">Danger</button>
+        <button id="Warning"  class="btn btn-warning">Warning</button>
+        <button id="Info"  class="btn btn-info">Info</button>
+
+        <button id="Light"  class="btn btn-light">Light</button>
+        <button id="Dark"  class="btn btn-dark">Dark</button>
+        <button id="Link"  class="btn btn-link">Link</button>
+      </div>
+
+
+
+      <div class="mt-2 dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Dropdown button
+        </button>
+        <ul class="dropdown-menu">
+          <li><a id="dp1"  class="dropdown-item">Action</a></li>
+          <li><a id="dp2" class="dropdown-item">Another action</a></li>
+          <li><a id="dp3"  class="dropdown-item">Something else here</a>
+          </li>
+        </ul>
+      </div>
+
+      <script>
+
+        function buttonOnClick2() {
+          console.log(d3.select(this).text()); //event object
+
+        };
+
+        d3.select('#Primary')
+          .on('click', buttonOnClick2);
+        d3.select('#Secondary')
+          .on('click', buttonOnClick2);
+        d3.select('#Success')
+          .on('click', buttonOnClick2);
+        d3.select('#Danger')
+          .on('click', buttonOnClick2);
+        d3.select('#Warning')
+          .on('click', buttonOnClick2);
+        d3.select('#Info')
+          .on('click', buttonOnClick2);
+        d3.select('#Light')
+          .on('click', buttonOnClick2);
+        d3.select('#Dark')
+          .on('click', buttonOnClick2);
+        d3.select('#Link')
+          .on('click', buttonOnClick2);
+        d3.select('#dp1')
+          .on('click', buttonOnClick2);
+        d3.select('#dp2')
+          .on('click', buttonOnClick2);
+        d3.select('#dp3')
+          .on('click', buttonOnClick2);
+
+      </script>
+
+
+    </div>
+
+
+    </div>
+
+    <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

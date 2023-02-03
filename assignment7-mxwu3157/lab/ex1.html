@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex1</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex1: array operations</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex1: array operations</li>
+    </ol>
+  </nav>
+
+  <h2>Demo: basic array operations</h2>
+
+  <pre><code class="HTML">&lt;script&gt;
+  //ARRAYS OF NUMBERS
+  array0 = [4, 1, 16, 9];  //array0 = [4, 1, 16, 9]
+
+  // assign
+  array1 = array0;  //array1 = [4, 1, 16, 9]; 
+                    //array0 == array1 = true;
+                    //array0 === array1 = true
+
+  array2 = JSON.parse(JSON.stringify(array0)); //array2 = [4, 1, 16, 9];
+                                               //array0 == array2 = false;
+                                               //array0 === array2 = false;
+                                               //array2[0] == array0[0] = true
+
+  //slice(start, end): slices array from start index to end index excluded
+  //slice() and slice(0): duplicate array
+  array3 = array0.slice(0);  //array3 = [4, 1, 16, 9]; 
+                             //array0 == array3 = false;
+                             //array0 === array3 = false;
+                             //array3[0] == array0[0] = true
+
+  array4 = array0.slice();  //array4 = [4, 1, 16, 9];
+                            //array0 == array3 = false;
+                            //array0 === array3 = false;
+                            //array3[0] == array0[0] = true
+
+  array5 = array0.slice(0, 2);  //array5 =  [4, 1]
+
+  array6 = array0.slice(-2);  //array6 = [16, 9]
+
+  array7 = array0.slice(-2, -1);  //array7 = [16]
+
+  min = d3.min(array0);  //min = 1
+
+  max = d3.max(array0);  //max = 16
+
+  extent = d3.extent(array0);  //extent = [1, 16]
+
+  //array.sort([compareFunction]): sorts in place and returns the sorted array.
+  //default sort order: (compareFunction == undefined) according to Unicode order not numeric order!
+
+  array7 = JSON.parse(JSON.stringify(array0));  //array7 = [1, 16, 4, 9] 
+
+  array8 = array7.sort();  //array7 = [1, 16, 4, 9];
+                           //array8 = [1, 16, 4, 9];
+                           //array7 == array8 = true;
+                           //array7 === array8 = true;
+                           //array7[0] == array8[0] = true
+
+  array9 = [1, 16, 4, 9]; //initialization
+  array9 = JSON.parse(JSON.stringify(array0));  //initialization
+
+  array9.sort(d3.ascending);  //array9 = [1, 4, 9, 16]
+
+  array10 = [1, 16, 4, 9];
+  array10.sort(d3.descending);  //array10 = [16, 9, 4, 1]
+
+  found = array0.find(d => d == 1); //found = 1
+
+  //array.splice(start, deleteCount [,items...]): works in place and returns array of deleted
+
+  array10 = [4, 1, 16, 9];
+  array11 = array10.splice(1, 0, 5);  //array10 = [4, 5, 1, 16, 9];
+                                      //array11 = [];
+
+  array12 = [4, 1, 16, 9];
+  array13 = array12.splice(1, 2);  //array12 = [4, 9];
+                                   //array13 = [1, 16]
+
+  //array.map(mapFunction(currentValue[, index[, array]]) {...}): maps mapFunction to each value and returns array of mapped
+
+  array14 = array0.map(d => d * 3);  //array15 = [12, 3, 48, 27]
+
+  //ARRAYS OF OBJECTS
+  data0 = [{ key: 'first', val: 1 }, { key: 'second', val: 2 }];  //data0 = [{"key":"first","val":1},
+                                                                             {"key":"second","val":2}]
+
+  res = d3.min(data0)  //res = {key: 'first', val: 1}
+
+  min2 = d3.min(data0, (d) => d.val);  //min2 = 1
+
+  max2 = d3.max(data0, (d) => d.key);  //max2 = 'second'
+
+  data1 = [{"key":"first","val":1},
+           {"key":"second","val":2}];
+  data1.sort(d3.descending); //data1 = [{"key":"first","val":1},
+                                        {"key":"second","val":2}]
+
+  data2 = [{"key":"first","val":1},
+           {"key":"second","val":2}];
+  data2.sort((a, b) => d3.descending(a.val, b.val)); //data2 = [{"key":"second","val":2},
+                                                                {"key":"first","val":1}]
+
+  data3 = [{"key":"first","val":1},
+           {"key":"second","val":2}]; 
+  data3.splice(2, 0, { key: 'third', val: '3', date: Date.now() });  //data3 = [{"key":"first","val":1},
+                                                                                {"key":"second","val":2},
+                                                                                {"key":"third","val":"3","date":1633197487177}]
+
+  data4 = [{"key":"first","val":1},
+           {"key":"second","val":2}];
+  data4.splice(1, 1);  //data4 = [{"key":"first","val":1}]
+
+  data5 = [{"key":"first","val":1},
+           {"key":"second","val":2}];
+  data5.splice(0, 1);  //data5 = [{"key":"second","val":2}]
+
+  first = data0.find(d => d.key == 'first');  //first = {key: 'first', val: 1}
+
+  data6 = data0.map((d) => { return { key: d.key, val: 3 * d.val, date: Date.now() }; });  
+  
+  //data6 = [{"key":"first","val":3,"date":1633204709120},
+             {"key":"second","val":6,"date":1633204709120}]
+&lt;/script&gt;</code></pre>
+
+  <h2>1. Array operations practice</h2>
+
+  We will use data from the Motor Trend Car Road Tests dataset (R mtcars dataset).</p>
+
+  <pre><code class="plaintext">name                mpg     cyl   disp    hp    drat    wt      qsec    vs    am
+Mazda RX4           21.0    6     160.0   110   3.90    2.620   16.46   0     1	
+Mazda RX4 Wag       21.0    6     160.0   110   3.90    2.875   17.02   0     1	
+Datsun 710          22.8    4     108.0   93    3.85    2.320   18.61   1     1	
+Hornet 4 Drive	    21.4    6     258.0   110   3.08    3.215   19.44   1     0	
+Hornet Sportabout   18.7    8     360.0   175   3.15    3.440   17.02   0     0	
+Valiant             18.1    6     225.0   105   2.76    3.460   20.22   1     0	
+Duster 360          14.3    8     360.0   245   3.21    3.570   15.84   0     0	
+Merc 240D           24.4    4     146.7   62    3.69    3.190   20.00   1     0	
+Merc 230            22.8    4     140.8   95    3.92    3.150   22.90   1     0	
+Merc 280            19.2    6     167.6   123   3.92    3.440   18.30   1     0</code></pre>
+
+  <div>Write and execute code in the page to answer the questions by transcribing the code in
+    code blocks and adding the answer as comments.</div>
+
+  <script>
+    data = [
+      { name: 'Mazda RX4', mpg: 21.0, cyl: 6, disp: 160.0, hp: 110, drat: 3.90, wt: 2.620, qsec: 16.46, vs: 0, am: 1 },
+      { name: 'Mazda RX4 Wag', mpg: 21.0, cyl: 6, disp: 160.0, hp: 110, drat: 3.90, wt: 2.875, qsec: 17.02, vs: 0, am: 1 },
+      { name: 'Datsun 710', mpg: 22.8, cyl: 4, disp: 108.0, hp: 93, drat: 3.85, wt: 2.320, qsec: 18.61, vs: 1, am: 1 },
+      { name: 'Hornet 4 Drive', mpg: 21.4, cyl: 6, disp: 258.0, hp: 110, drat: 3.08, wt: 3.215, qsec: 19.44, vs: 1, am: 0 },
+      { name: 'Hornet Sportabout', mpg: 18.7, cyl: 8, disp: 360.0, hp: 175, drat: 3.15, wt: 3.440, qsec: 17.02, vs: 0, am: 0 },
+      { name: 'Valiant', mpg: 18.1, cyl: 6, disp: 225.0, hp: 105, drat: 2.76, wt: 3.460, qsec: 20.22, vs: 1, am: 0 },
+      { name: 'Duster 360', mpg: 14.3, cyl: 8, disp: 360.0, hp: 245, drat: 3.21, wt: 3.570, qsec: 15.84, vs: 0, am: 0 },
+      { name: 'Merc 240D', mpg: 24.4, cyl: 4, disp: 146.7, hp: 62, drat: 3.69, wt: 3.190, qsec: 20.00, vs: 1, am: 0 },
+      { name: 'Merc 230', mpg: 22.8, cyl: 4, disp: 140.8, hp: 95, drat: 3.92, wt: 3.150, qsec: 22.90, vs: 1, am: 0 },
+      { name: 'Merc 280', mpg: 19.2, cyl: 6, disp: 167.6, hp: 123, drat: 3.92, wt: 3.440, qsec: 18.30, vs: 1, am: 0 }
+    ];
+    // data = JSON.parse(JSON.stringify(data));
+    ans = data.sort((a, b) => d3.descending(a.wt, b.wt));
+    ans = ans.map((d,i) => { d['index'] = i; return d; });  
+data =[3,4,5,6];
+    deepCopyData = JSON.parse(JSON.stringify(data))
+
+    console.log(data)
+    console.log(deepCopyData)
+
+    
+    console.log(1, data == deepCopyData);
+    console.log(1, data === deepCopyData);
+    console.log(1, data[0] == deepCopyData[0]);
+    console.log(typeof(deepCopyData))
+    console.log(typeof(data))
+  </script>
+  
+  
+
+  <h3>Question 1: Compute the minimum name when the names are sorted in alphabetic order</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    
+
+    <pre><code class="js">data = JSON.parse(JSON.stringify(data));
+ans = d3.min(data, (d)=>d.name)
+// ans = Datsun 710</code></pre>
+  </div>
+
+  <h3>Question 2: Compute the maximum name when the names are sorted in alphabetic order</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code here! -->
+    
+    <!-- Transcribe your code and output below! -->
+    <pre><code class="js">
+      <!-- data = JSON.parse(JSON.stringify(data)); -->
+ans = d3.max(data, (d)=>d.name)
+// ans = Valiant</code></pre>
+  </div>
+
+  <h3>Question 3: Compute the domain of names when the names are sorted in alphabetic order</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code here! -->
+
+    <!-- Transcribe your code and output below! -->
+    <pre><code class="js">
+      <!-- data = JSON.parse(JSON.stringify(data)); -->
+ans = d3.extent(data, (d)=>d.name)
+// ans =  ['Datsun 710', 'Valiant'] </code></pre>
+  </div>
+
+  <h3>Question 4: Compute the domain of mpg</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code here! -->
+
+    <!-- Transcribe your code and output below! -->
+    <pre><code class="js">
+      <!-- data = JSON.parse(JSON.stringify(data)); -->
+ans = d3.extent(data, (d)=>d.mpg)
+// ans =  [14.3, 24.4]</code></pre>
+  </div>
+
+  <h3>Question 5: Sort the array by name in descending order (opposite to alphabetic)</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code here! -->
+
+
+    <!-- Transcribe your code and output below! -->
+    <pre><code class="js">ans = data.sort((a, b) => d3.descending(a.name, b.name))
+// ans = [
+// { name: 'Valiant', mpg: 18.1, cyl: 6, disp: 225.0, hp: 105, drat: 2.76, wt: 3.460, qsec: 20.22, vs: 1, am: 0 },
+// { name: 'Merc 280', mpg: 19.2, cyl: 6, disp: 167.6, hp: 123, drat: 3.92, wt: 3.440, qsec: 18.30, vs: 1, am: 0 }
+// { name: 'Merc 240D', mpg: 24.4, cyl: 4, disp: 146.7, hp: 62, drat: 3.69, wt: 3.190, qsec: 20.00, vs: 1, am: 0 },
+// { name: 'Merc 230', mpg: 22.8, cyl: 4, disp: 140.8, hp: 95, drat: 3.92, wt: 3.150, qsec: 22.90, vs: 1, am: 0 },
+// { name: 'Mazda RX4 Wag', mpg: 21.0, cyl: 6, disp: 160.0, hp: 110, drat: 3.90, wt: 2.875, qsec: 17.02, vs: 0, am: 1 },
+// { name: 'Mazda RX4', mpg: 21.0, cyl: 6, disp: 160.0, hp: 110, drat: 3.90, wt: 2.620, qsec: 16.46, vs: 0, am: 1 },
+// { name: 'Hornet Sportabout', mpg: 18.7, cyl: 8, disp: 360.0, hp: 175, drat: 3.15, wt: 3.440, qsec: 17.02, vs: 0, am: 0 },
+// { name: 'Hornet 4 Drive', mpg: 21.4, cyl: 6, disp: 258.0, hp: 110, drat: 3.08, wt: 3.215, qsec: 19.44, vs: 1, am: 0 },
+// { name: 'Duster 360', mpg: 14.3, cyl: 8, disp: 360.0, hp: 245, drat: 3.21, wt: 3.570, qsec: 15.84, vs: 0, am: 0 },
+// { name: 'Datsun 710', mpg: 22.8, cyl: 4, disp: 108.0, hp: 93, drat: 3.85, wt: 2.320, qsec: 18.61, vs: 1, am: 1 },
+// ]
+    </code></pre>
+  </div>
+
+  <h3>Question 6: Sort the array by disp from largest to smallest</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code here! -->
+
+    <!-- Transcribe your code and output below! -->
+    <pre><code class="js">ans = data.sort((a, b) => d3.descending(a.disp, b.disp))
+// ans = [
+// { name: 'Hornet Sportabout', mpg: 18.7, cyl: 8, disp: 360.0, hp: 175, drat: 3.15, wt: 3.440, qsec: 17.02, vs: 0, am: 0 },
+// { name: 'Duster 360', mpg: 14.3, cyl: 8, disp: 360.0, hp: 245, drat: 3.21, wt: 3.570, qsec: 15.84, vs: 0, am: 0 },
+// { name: 'Hornet 4 Drive', mpg: 21.4, cyl: 6, disp: 258.0, hp: 110, drat: 3.08, wt: 3.215, qsec: 19.44, vs: 1, am: 0 },
+// { name: 'Valiant', mpg: 18.1, cyl: 6, disp: 225.0, hp: 105, drat: 2.76, wt: 3.460, qsec: 20.22, vs: 1, am: 0 },
+// { name: 'Merc 280', mpg: 19.2, cyl: 6, disp: 167.6, hp: 123, drat: 3.92, wt: 3.440, qsec: 18.30, vs: 1, am: 0 }
+// { name: 'Mazda RX4', mpg: 21.0, cyl: 6, disp: 160.0, hp: 110, drat: 3.90, wt: 2.620, qsec: 16.46, vs: 0, am: 1 },
+// { name: 'Mazda RX4 Wag', mpg: 21.0, cyl: 6, disp: 160.0, hp: 110, drat: 3.90, wt: 2.875, qsec: 17.02, vs: 0, am: 1 },
+// { name: 'Merc 240D', mpg: 24.4, cyl: 4, disp: 146.7, hp: 62, drat: 3.69, wt: 3.190, qsec: 20.00, vs: 1, am: 0 },
+// { name: 'Merc 230', mpg: 22.8, cyl: 4, disp: 140.8, hp: 95, drat: 3.92, wt: 3.150, qsec: 22.90, vs: 1, am: 0 },
+// { name: 'Datsun 710', mpg: 22.8, cyl: 4, disp: 108.0, hp: 93, drat: 3.85, wt: 2.320, qsec: 18.61, vs: 1, am: 1 },
+// ];
+    </code></pre>
+  </div>
+
+  <h3>Question 7: Array of top 5 objects sorted by value hp from largest to smallest</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code here! -->
+
+    <!-- Transcribe your code and output below! -->
+    <pre><code class="js">ans = data.sort((a, b) => d3.descending(a.hp, b.hp)).slice(0,5)
+      // ans = [
+      // { name: 'Duster 360', mpg: 14.3, cyl: 8, disp: 360.0, hp: 245, drat: 3.21, wt: 3.570, qsec: 15.84, vs: 0, am: 0 },
+      // { name: 'Hornet Sportabout', mpg: 18.7, cyl: 8, disp: 360.0, hp: 175, drat: 3.15, wt: 3.440, qsec: 17.02, vs: 0, am: 0 },
+      // { name: 'Merc 280', mpg: 19.2, cyl: 6, disp: 167.6, hp: 123, drat: 3.92, wt: 3.440, qsec: 18.30, vs: 1, am: 0 }
+      // { name: 'Mazda RX4', mpg: 21.0, cyl: 6, disp: 160.0, hp: 110, drat: 3.90, wt: 2.620, qsec: 16.46, vs: 0, am: 1 },
+      // { name: 'Mazda RX4 Wag', mpg: 21.0, cyl: 6, disp: 160.0, hp: 110, drat: 3.90, wt: 2.875, qsec: 17.02, vs: 0, am: 1 },
+      //]
+    </code></pre>
+  </div>
+
+  <h3>Question 8: Array of bottom 5 objects sorted by value hp from largest to smallest</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code here! -->
+
+
+    <!-- Transcribe your code and output below! -->
+    <pre><code class="js">ans = data.sort((a, b) => d3.descending(a.hp, b.hp)).slice(5)
+// ans = [
+// { name: 'Hornet 4 Drive', mpg: 21.4, cyl: 6, disp: 258.0, hp: 110, drat: 3.08, wt: 3.215, qsec: 19.44, vs: 1, am: 0 },
+// { name: 'Valiant', mpg: 18.1, cyl: 6, disp: 225.0, hp: 105, drat: 2.76, wt: 3.460, qsec: 20.22, vs: 1, am: 0 },
+// { name: 'Merc 230', mpg: 22.8, cyl: 4, disp: 140.8, hp: 95, drat: 3.92, wt: 3.150, qsec: 22.90, vs: 1, am: 0 },
+// { name: 'Datsun 710', mpg: 22.8, cyl: 4, disp: 108.0, hp: 93, drat: 3.85, wt: 2.320, qsec: 18.61, vs: 1, am: 1 },
+// { name: 'Merc 240D', mpg: 24.4, cyl: 4, disp: 146.7, hp: 62, drat: 3.69, wt: 3.190, qsec: 20.00, vs: 1, am: 0 },
+]</code></pre>
+  </div>
+
+  <h3>Question 9: Array extended with <code>index</code> property for the array sorted by <code>wt</code> from largest (index = 0) to smallest (index = array length -1)</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- SOLUTION -->
+
+    <!-- Transcribe your code and output below! -->
+    <pre><code class="js">ans = data.sort((a, b) => d3.descending(a.wt, b.wt));
+      ans = ans.map((d,i) => { d['index'] = i; return d; }); 
+    
+      // ans = [
+      // { name: 'Duster 360', mpg: 14.3, cyl: 8, disp: 360.0, hp: 245, drat: 3.21, wt: 3.570, qsec: 15.84, vs: 0, am: 0, index: 0 },
+      // { name: 'Valiant', mpg: 18.1, cyl: 6, disp: 225.0, hp: 105, drat: 2.76, wt: 3.460, qsec: 20.22, vs: 1, am: 0, index: 1 },
+      // { name: 'Hornet Sportabout', mpg: 18.7, cyl: 8, disp: 360.0, hp: 175, drat: 3.15, wt: 3.440, qsec: 17.02, vs: 0, am: 0, index: 2 },
+      // { name: 'Merc 280', mpg: 19.2, cyl: 6, disp: 167.6, hp: 123, drat: 3.92, wt: 3.440, qsec: 18.30, vs: 1, am: 0, index: 3 }
+      // { name: 'Hornet 4 Drive', mpg: 21.4, cyl: 6, disp: 258.0, hp: 110, drat: 3.08, wt: 3.215, qsec: 19.44, vs: 1, am: 0, index: 4 },
+      // { name: 'Merc 240D', mpg: 24.4, cyl: 4, disp: 146.7, hp: 62, drat: 3.69, wt: 3.190, qsec: 20.00, vs: 1, am: 0, index: 5 },
+      // { name: 'Merc 230', mpg: 22.8, cyl: 4, disp: 140.8, hp: 95, drat: 3.92, wt: 3.150, qsec: 22.90, vs: 1, am: 0, index: 6 },
+      // { name: 'Mazda RX4 Wag', mpg: 21.0, cyl: 6, disp: 160.0, hp: 110, drat: 3.90, wt: 2.875, qsec: 17.02, vs: 0, am: 1, index: 7 },
+      // { name: 'Mazda RX4', mpg: 21.0, cyl: 6, disp: 160.0, hp: 110, drat: 3.90, wt: 2.620, qsec: 16.46, vs: 0, am: 1, index: 8 },
+      // { name: 'Datsun 710', mpg: 22.8, cyl: 4, disp: 108.0, hp: 93, drat: 3.85, wt: 2.320, qsec: 18.61, vs: 1, am: 1, index: 9 },
+      // ];
+
+</code></pre>
+  </div>
+
+  <h3>Question 10: Array deep copy</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Add your code here! -->
+
+    <!-- Transcribe your code and output below! -->
+    <pre><code class="js">
+deepCopyData = JSON.parse(JSON.stringify(data))
+//deepCopyData = [
+//{ name: 'Mazda RX4', mpg: 21.0, cyl: 6, disp: 160.0, hp: 110, drat: 3.90, wt: 2.620, qsec: 16.46, vs: 0, am: 1 },
+//{ name: 'Mazda RX4 Wag', mpg: 21.0, cyl: 6, disp: 160.0, hp: 110, drat: 3.90, wt: 2.875, qsec: 17.02, vs: 0, am: 1 },
+//{ name: 'Datsun 710', mpg: 22.8, cyl: 4, disp: 108.0, hp: 93, drat: 3.85, wt: 2.320, qsec: 18.61, vs: 1, am: 1 },
+//{ name: 'Hornet 4 Drive', mpg: 21.4, cyl: 6, disp: 258.0, hp: 110, drat: 3.08, wt: 3.215, qsec: 19.44, vs: 1, am: 0 },
+//{ name: 'Hornet Sportabout', mpg: 18.7, cyl: 8, disp: 360.0, hp: 175, drat: 3.15, wt: 3.440, qsec: 17.02, vs: 0, am: 0 },
+//{ name: 'Valiant', mpg: 18.1, cyl: 6, disp: 225.0, hp: 105, drat: 2.76, wt: 3.460, qsec: 20.22, vs: 1, am: 0 },
+//{ name: 'Duster 360', mpg: 14.3, cyl: 8, disp: 360.0, hp: 245, drat: 3.21, wt: 3.570, qsec: 15.84, vs: 0, am: 0 },
+//{ name: 'Merc 240D', mpg: 24.4, cyl: 4, disp: 146.7, hp: 62, drat: 3.69, wt: 3.190, qsec: 20.00, vs: 1, am: 0 },
+//{ name: 'Merc 230', mpg: 22.8, cyl: 4, disp: 140.8, hp: 95, drat: 3.92, wt: 3.150, qsec: 22.90, vs: 1, am: 0 },
+//{ name: 'Merc 280', mpg: 19.2, cyl: 6, disp: 167.6, hp: 123, drat: 3.92, wt: 3.440, qsec: 18.30, vs: 1, am: 0 }
+//];
+      
+    </code></pre>
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>
