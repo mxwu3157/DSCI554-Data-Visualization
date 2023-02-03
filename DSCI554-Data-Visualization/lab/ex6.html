@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab 2 ex6</title>
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+  <script src="./draw.js"></script>
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <h1>🏋🏽‍♂️ ex6: Bubble chart with vanilla Javascript code</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab 2</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex6: Bubble chart with vanilla Javascript code</li>
+    </ol>
+  </nav>
+
+  Implement a bubble chart for the data of <a href="ex5.html" target="_blank" rel="noopener noreferrer">ex5.html</a> in the answer box:
+  <ol>
+    <li>Open <a target="_blank" href="inkscape-bubble-chart.svg">inkscape-bubble-chart.svg</a> and transcribe the data as javascript comments</li>
+    <li>Create <code>draw.js</code> and add the Javascript code below:
+      <div class="ml-2">
+      <pre><code class="html">&lt;svg id="chart" style="background-color:lemonchiffon" width="900px" height="500px"&gt;&lt;/svg&gt;
+
+&lt;script&gt;
+function drawRect(svg, x, y, width, height, fill) {
+  var rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+  rect.setAttribute('x', x);
+  rect.setAttribute('y', y);
+  rect.setAttribute('width', width);
+  rect.setAttribute('height', height);
+  rect.setAttribute('fill', fill);
+  svg.appendChild(rect);  //append to svg
+};
+
+function drawCircle(svg, cx, cy, r, fill) {
+  var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  circle.setAttribute('cx', cx);
+  circle.setAttribute('cy', cy);
+  circle.setAttribute('r', r);
+  circle.setAttribute('fill', fill);
+  svg.appendChild(circle);  //append to svg
+};
+
+function drawText(svg, string, x, y, fill, stroke) {
+  var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  text.setAttribute('x', x);
+  text.setAttribute('y', y);
+  text.setAttribute('fill', fill);
+  text.setAttribute('stroke', stroke);
+  text.setAttribute('stroke-width', 1);
+  text.setAttribute('font-size', '14px');
+  text.innerHTML = string;
+  svg.appendChild(text);  //append to svg
+};
+
+function drawTextCentered(svg, string, x, y, fill, stroke) {
+  var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  text.setAttribute('style', 'text-anchor: middle; alignment-baseline: middle;');
+  text.setAttribute('x', x);
+  text.setAttribute('y', y);
+  text.setAttribute('fill', fill);
+  text.setAttribute('stroke', stroke);
+  text.setAttribute('stroke-width', 1);
+  text.setAttribute('font-size', '14px');
+  text.innerHTML = string;
+  svg.appendChild(text);  //append to svg
+};
+
+function drawLine(svg, x1, y1, x2, y2, stroke) {
+  var line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  line.setAttribute('x1', x1);
+  line.setAttribute('y1', y1);
+  line.setAttribute('x2', x2);
+  line.setAttribute('y2', y2);
+  line.setAttribute('stroke', stroke);
+  line.setAttribute('stroke-width', 2);
+  svg.appendChild(line);  //append to svg
+};
+
+//draw the chart!
+var svg = document.getElementById('chart');
+
+var keys =[
+  { label: 'Label', key: '#2f56c2' },
+];
+
+//draw the legend
+var i = 0;
+keys.forEach(d => {
+  drawRect(svg, 572, 71 + 30 * i, 15, 15, d.key);
+  drawText(svg, d.label, 595, 83 + 30 * i);
+  i++;
+})
+
+//draw an axis
+drawLine(svg, 129, 67, 129, 388, 'black');  //stroke has not default for line!
+
+//draw a bubble
+drawCircle(svg, 150, 100, 10, keys[0].key);
+drawTextCentered(svg, 'IRQ', 150, 100, 'white', 'black');
+
+//draw a rectangle
+drawRect(svg, 10, 10, 100, 100);
+&lt;/script&gt;</code></pre>
+    </li>
+    <li>Add <code class="html">&lt;svg id="chart" style="background-color:lemonchiffon" width="900px" height="500px"&gt;&lt;/svg&gt;</code> and load <code>draw.js</code> in the answer</li>
+    <li>Use the functions to draw axes and bubble charts with the data of step 1.</li>
+  </ol>
+
+  <div class="answer">
+    <div><b>Answer</b></div>
+    <!-- Add your code here! -->
+    <svg id="chart" style="background-color:lemonchiffon" width="900px" height="500px"></svg>
+    <script src="./draw.js"></script>
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

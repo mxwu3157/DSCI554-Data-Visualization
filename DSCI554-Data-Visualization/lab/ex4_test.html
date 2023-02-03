@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab 2 ex4</title>
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5"></script>
+  <!-- Import vega-embed -->
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ Vega-Lite scatterplot</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab 2</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex4: Vega-Lite scatterplot</li>
+    </ol>
+  </nav>
+  
+  <h2>Vega-Lite demo</h2>
+
+  <div>Vega-Lite is a high-level grammar of interactive graphics. It provides a concise, declarative JSON syntax to
+    create an expressive range of visualizations for data analysis and presentation.</div>
+
+  <div class="mt-2">We demonstrate <a target="_blank" href="https://vega.github.io/vega-lite/">Vega-Lite</a>
+    format, the <a target="_blank" href="https://vega.github.io/vega-lite/examples/">example gallery</a>, and discuss
+    the following
+    from the <a target="_blank" href="https://vega.github.io/vega-lite/ecosystem.html">Vega-Lite Ecosystem</a>:
+    <ul>
+      <li><a target="_blank" href="https://altair-viz.github.io/">Altair</a> exposes a Python API for building
+        statistical
+        visualizations that follows Vega-Lite syntax.</li>
+      <li><a target="_blank" href="https://vegawidget.github.io/altair/">Altair wrapper in R</a></li>
+      <li><a target="_blank" href="https://github.com/vega/vega-lite-api">Vega-Lite API</a> is a JavaScript API for
+        creating Vega-Lite JSON specifications.</li>
+      <li><a target="_blank" href="https://github.com/vega/vega-embed">Vega-Embed</a>, a convenience wrapper for Vega
+        and
+        Vega-Lite.</li>
+    </ul>
+  </div>
+
+  <div>We demonstrate the <a target="_blank" href="https://vega.github.io/vega-lite/examples/bar.html">Simple Bar
+      Chart</a> example:
+    <ul>
+      <li>Discuss the <code>spec</code></li>
+      <li><a target="_blank" href="https://vega.github.io/editor/#/examples/vega-lite/bar">View the chart and edit the
+          <code>spec</code> in the online editor</a>
+        and learn to export as <code>png</code>, <code>svg</code>, and add the chart in the page as images and as svg code</li>
+      <li>Demonstrate how to use <a target="_blank" href="https://github.com/vega/vega-embed">Vega-Embed</a> in the page
+      </li>
+    </ul>
+  </div>
+  <h1>🏋🏽‍♂️ ex4: Vega-Lite scatterplot</h1>
+
+  In the Answer box below:
+  <ol>
+    <li>Implement the <a target="_blank" href="https://github.com/vega/vega-embed">Vega-Embed</a> code in the Vega-Embed
+      README.md</li>
+    <li>Implement this <a href="https://vega.github.io/vega-lite/examples/point_2d.html">Vega-lite scatterplot</a> using
+      <a target="_blank" href="https://github.com/vega/vega-embed">Vega-Embed</a> loading the data with
+      <code>"data": { "url": "..."}</code> with <code>cars.json</code> from CDN
+    </li>
+    <li>Implement this <a href="https://vega.github.io/vega-lite/examples/point_2d.html">Vega-lite scatterplot</a> using
+      <a target="_blank" href="https://github.com/vega/vega-embed">Vega-Embed</a> loading the data with
+      <code>"data": { "url": "..."}</code> with a local copy of <code>cars.json</code>
+    </li>
+    <li>Implement this <a href="https://vega.github.io/vega-lite/examples/point_2d.html">Vega-lite scatterplot</a> using
+      <a target="_blank" href="https://github.com/vega/vega-embed">Vega-Embed</a> manually adding the data for <code>cars.json</code> in the page with
+      <code>"data": { "values": [...]}</code>
+    </li>
+  </ol>
+
+  <div class="answer">
+    
+    <!-- Add your code here! -->
+    <h3>1</h3><br>
+  
+    <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/vega@[VERSION]"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@[VERSION]"></script>
+    <!-- Import vega-embed -->
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@[VERSION]"></script>
+  
+    <div id="vis"></div>
+  
+    <script type="text/javascript">
+      var spec = "https://raw.githubusercontent.com/vega/vega/master/docs/examples/bar-chart.vg.json";
+      vegaEmbed('#vis', spec).then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+      
+    <h3>2</h3><br>
+
+    <div id="vis1"></div>
+
+    <script type="text/javascript">
+      var spec1 = 
+      {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "description": "A scatterplot showing horsepower and miles per gallons for various cars.",
+        "data": { "url": "https://raw.githubusercontent.com/vega/vega/main/docs/data/cars.json" },
+        "mark": "point",
+        "encoding": {
+          "x": { "field": "Horsepower", "type": "quantitative" },
+          "y": { "field": "Miles_per_Gallon", "type": "quantitative" }
+        }
+      };
+      vegaEmbed('#vis1', spec1).then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+
+
+    <h3>3</h3><br>
+
+    <div id="vis2"></div>
+    <script type="text/javascript">
+      var spec2 = 
+      {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "description": "A scatterplot showing horsepower and miles per gallons for various cars.",
+        "data": {"url": "data/cars.json"},
+        "mark": "point",
+        "encoding": {
+          "x": { "field": "Horsepower", "type": "quantitative" },
+          "y": { "field": "Miles_per_Gallon", "type": "quantitative" }
+        }
+      };
+      vegaEmbed('#vis2', spec2).then(function (result) {
+        // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+      }).catch(console.error);
+    </script>
+    
+
+
+    
+
+
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+</body>
+
+</html>

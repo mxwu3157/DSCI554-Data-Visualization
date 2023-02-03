@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   id="svg8"
+   version="1.1"
+   viewBox="0 0 228.60001 125.94166"
+   height="476"
+   width="864"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient4463">
+      <stop
+         style="stop-color:#000303;stop-opacity:1;"
+         offset="0"
+         id="stop4461" />
+    </linearGradient>
+    <rect
+       id="rect946"
+       height="9.1315785"
+       width="0.17832902"
+       y="56.477933"
+       x="92.998583" />
+    <marker
+       style="overflow:visible"
+       id="marker1171"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1169" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker1131"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1129" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Send"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.2,0,0,-0.2,-1.2,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path854" />
+    </marker>
+  </defs>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer2">
+    <ellipse
+       cy="51.24625"
+       cx="93.554993"
+       id="circle939-0"
+       style="display:inline;opacity:1;fill:#c26868;fill-opacity:1;stroke:#000303;stroke-width:0.26458333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       rx="27.160408"
+       ry="26.794682" />
+    <ellipse
+       cy="79.741196"
+       cx="118.32701"
+       id="circle939-0-3"
+       style="display:inline;fill:#c26868;fill-opacity:1;stroke:#000303;stroke-width:0.26458333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       rx="10.579951"
+       ry="10.908987" />
+    <ellipse
+       cy="59.917152"
+       cx="135.99516"
+       id="circle939-0-0"
+       style="display:inline;fill:#c26868;fill-opacity:1;stroke:#000303;stroke-width:0.26458333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       rx="15.242957"
+       ry="15.571992" />
+    <ellipse
+       cy="56.860256"
+       cx="60.552433"
+       id="circle939-0-9"
+       style="display:inline;fill:#c26868;fill-opacity:1;stroke:#000303;stroke-width:0.26458333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;opacity:1;stroke-opacity:1"
+       rx="6.7398305"
+       ry="6.7031393" />
+    <ellipse
+       cy="44.85165"
+       cx="124.01089"
+       id="circle939-0-8"
+       style="display:inline;fill:#c26868;fill-opacity:1;stroke:#000303;stroke-width:0.26458333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;opacity:1;stroke-opacity:1"
+       rx="3.9054544"
+       ry="3.9601951" />
+    <ellipse
+       cy="36.503311"
+       cx="58.934731"
+       id="circle939-0-6"
+       style="display:inline;fill:#c26868;fill-opacity:1;stroke:#000303;stroke-width:0.26458333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;opacity:1;stroke-opacity:1"
+       rx="9.7570686"
+       ry="9.4460831" />
+    <ellipse
+       cy="70.385002"
+       cx="70.769058"
+       id="circle939-0-90"
+       style="display:inline;fill:#c26868;fill-opacity:1;stroke:#000303;stroke-width:0.26458333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;opacity:1;stroke-opacity:1"
+       rx="2.1682565"
+       ry="2.1315656" />
+    <ellipse
+       cy="30.560816"
+       cx="115.2157"
+       id="circle939-0-16"
+       style="display:inline;fill:#c26868;fill-opacity:1;stroke:#000303;stroke-width:0.26458333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;opacity:1;stroke-opacity:1"
+       rx="1.711099"
+       ry="2.040134" />
+    <ellipse
+       cy="80.58358"
+       cx="102.85349"
+       id="circle939-0-4"
+       style="display:inline;fill:#c26868;fill-opacity:1;stroke:#000303;stroke-width:0.26458333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;opacity:1;stroke-opacity:1"
+       rx="3.448297"
+       ry="3.5030377" />
+    <ellipse
+       cy="84.543854"
+       cx="145.3333"
+       id="circle939-0-48"
+       style="display:inline;fill:#c26868;fill-opacity:1;stroke:#000303;stroke-width:0.26458333;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;opacity:1;stroke-opacity:1"
+       rx="11.494267"
+       ry="11.183282" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.88056px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold';opacity:1;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="88.855888"
+       y="52.36562"
+       id="text3277"><tspan
+         id="tspan3275"
+         style="stroke-width:0.264583;fill:#000000"
+         x="88.855888"
+         y="52.36562">China</tspan><tspan
+         style="stroke-width:0.264583;fill:#000000"
+         x="88.855888"
+         y="57.21632"
+         id="tspan3279" /></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.88056px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold';opacity:1;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="133.82123"
+       y="60.702747"
+       id="text3283"><tspan
+         id="tspan3281"
+         style="stroke-width:0.264583;fill:#000000"
+         x="133.82123"
+         y="60.702747">USA</tspan></text>
+    <text
+       id="text931-6"
+       y="55.178513"
+       x="120.46253"
+       style="font-size:11.1949px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';display:inline;opacity:0.1;fill:#000000;fill-opacity:1;stroke:#808080;stroke-width:1.19945"
+       xml:space="preserve"
+       transform="scale(0.87310507,1.1453375)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.88056px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold';opacity:1;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="141.7188"
+       y="85.031273"
+       id="text3287"><tspan
+         id="tspan3285"
+         style="stroke-width:0.264583;fill:#000000"
+         x="141.7188"
+         y="85.031273">Japan</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:1;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="109.53491"
+       y="30.720976"
+       id="text3291"><tspan
+         id="tspan3289"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583;fill:#000000"
+         x="109.53491"
+         y="30.720976">Singapore</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;opacity:1;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="65.464943"
+       y="71.682274"
+       id="text3295"><tspan
+         id="tspan3293"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82222px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583;fill:#000000"
+         x="65.464943"
+         y="71.682274">Malaysia</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.88056px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold';opacity:1;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="119.77523"
+       y="42.241341"
+       id="text3299"><tspan
+         id="tspan3297"
+         style="stroke-width:0.264583;fill:#000000"
+         x="119.77523"
+         y="42.241341">Canada</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:2.82223px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="23.772182"
+       y="10.60605"
+       id="text3325"><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:4.58611px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;stroke-width:0.264583"
+         x="23.772182"
+         y="10.60605"
+         id="tspan3431">Bubble Cloud Chart for Electricity generation of some world countries in 2019</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.88056px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold';opacity:1;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="51.018757"
+       y="37.852627"
+       id="text3303"><tspan
+         id="tspan3301"
+         style="stroke-width:0.264583;fill:#000000"
+         x="51.018757"
+         y="37.852627">Germany</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.88056px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold';opacity:1;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="113.74074"
+       y="81.008286"
+       id="text3307"><tspan
+         id="tspan3305"
+         style="stroke-width:0.264583;fill:#000000"
+         x="113.74074"
+         y="81.008286">India</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.88056px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold';opacity:1;fill:#000000;fill-opacity:1;stroke-width:0.264583"
+       x="57.601826"
+       y="59.064732"
+       id="text3311"><tspan
+         id="tspan3309"
+         style="stroke-width:0.264583;fill:#000000"
+         x="57.601826"
+         y="59.064732">UK</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52035px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman,  Bold';white-space:pre;inline-size:27.3153;display:inline;opacity:1;fill:#000000;fill-opacity:1;stroke-width:0.240024"
+       x="83.608025"
+       y="83.744621"
+       id="text3315"
+       transform="matrix(1.1023218,0,0,1.2316404,-14.629036,-20.882776)"><tspan
+         x="83.608025"
+         y="83.744621"
+         id="tspan8030"><tspan
+           style="font-size:2.82222px;-inkscape-font-specification:'Times New Roman, Bold'"
+           id="tspan8028">United Arab Emirates
+</tspan></tspan></text>
+  </g>
+</svg>
