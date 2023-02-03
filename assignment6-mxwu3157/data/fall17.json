@@ -1,0 +1,15 @@
+{
+    "name" : "Fall Semester 2017",
+    "instructional_days" : 70,
+    "events" : [
+      { "name": "Registration Deadline", "start": "2017-08-18", "end": "" },
+      { "name": "Classes Begin", "start": "2017-08-21", "end": "" },
+      { "name": "Labor Day", "start": "2017-09-04", "end": "" },
+
+      { "name": "Thanksgiving Holiday", "start": "2017-11-22", "end": "2017-11-26" },
+      { "name": "Classes End", "start": "2017-12-01", "end": "" },
+      { "name": "Study Days", "start": "2017-12-02", "end": "2017-12-05" },
+      { "name": "Exams", "start": "2017-12-06", "end": "2017-12-13" },
+      { "name": "Winter Recess", "start": "2017-12-14", "end": "2018-01-07" }
+    ]
+  }

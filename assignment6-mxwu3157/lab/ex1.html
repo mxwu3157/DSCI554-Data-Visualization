@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex1</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex1: D3 timeline with axis and margin convention</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex1: HTML table with D3</li>
+    </ol>
+  </nav>
+
+  <h2>1. D3 timeline with axis and margin convention</h2>
+
+  <div>Use the code and information provided to create a timeline for USC schedule of classes for the fall semester of
+    2018. Load the data as JSON.</div>
+  <pre><code class="plaintext">Fall Semester 2018: 71 instructional days
+Open Registration       Mon-Fri August 13-17
+Move-In                 Wed August 15
+Classes Begin	        Mon August 20
+Labor Day               Mon September 3
+Thanksgiving Holiday    Wed-Sun	November 21-25
+Classes End             Fri November 30
+Study Days              Sat-Tue	December 1-4
+Exams	                Wed-Wed	December 5-12
+Winter Recess	        Thu-Sun	December 13 – January 6</code></pre>
+
+  <pre><code class="json">{
+  "name" : "Fall Semester 2018",
+  "instructional_days" : 71,
+  "events" : [
+    { "name": "Open Registration", "start": "2018-08-13", end: "2018-8-17" },
+    { "name": "Move-In", "start": "2018-08-15", end: "" },
+    { "name": "Classes Begin", "start": "2018-08-20", end: "" },
+    { "name": "Labor Day", "start": "2018-09-03", end: "" },
+    { "name": "Thanksgiving Holiday", "start": "2018-11-21", end: "2018-11-25" },
+    { "name": "Classes End", "start": "2018-11-30", end: "" },
+    { "name": "Study Days", "start": "2018-12-01", end: "2018-12-04" },
+    { "name": "Exams", "start": "2018-12-05", end: "2018-12-12" },
+    { "name": "Winter Recess", "start": "2018-12-13", end: "2019-01-06" }
+  ]
+}</code></pre>
+
+  <pre><code class="HTML">&lt;style&gt;
+  path {
+    stroke: black;
+  }
+
+  .tick line {
+    stroke: black;
+  }
+
+  .tick {
+    stroke: black;
+  }
+
+  .tick text {
+    stroke: none;
+    fill: blue;
+    font-size: 8px;
+  }
+
+  text.label {
+    font-size: 8px;
+    text-anchor: middle;
+    alignment-baseline: middle;
+  }
+
+  chart {
+    background-color: #f8f8f8;
+  }
+&lt;/style&gt;
+
+&lt;div class="fw-bold" id="title"&gt;&lt;/div&gt;
+&lt;svg id="chart"&gt;&lt;/svg&gt;
+
+&lt;script src='./node_modules/d3/dist/d3.min.js'&gt;&lt;/script&gt;
+&lt;script src='./node_modules/dayjs/dayjs.min.js'&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  d3.json('fall18.json').then(data => {
+    var events = data.events;
+
+    events = events.map(d => {
+      return {
+        name: d.name,
+        start: dayjs(d.start).toDate(),
+        end: d.end ? dayjs(d.end).toDate() :  null,
+      };
+    });
+
+    //compute total semester days between first and last event
+    var min = dayjs(d3.min(events, d => d.start));
+    var max = dayjs(d3.max(events, d => d.start));
+    var semesterDays = max.diff(min, 'day');
+
+    //compute class days between classes begin and classes end
+    min = dayjs(events.find(d => d.name == 'Classes Begin').start);  //using array.find
+    max = dayjs(events.find(d => d.name == 'Classes End').start);
+    var classesDays = max.diff(min, 'day');
+
+    d3.select('#title').text(`Fall semester 2018: ${semesterDays} days, ${data.instructional_days} instructional days, ${classesDays} classes days`);
+
+    //////////////////////////////////////////////////////////////////////
+    //set-up margins convention
+    var margin = { top: 50, right: 30, bottom: 10, left: 30 };
+    var width = 1200 - margin.left - margin.right,
+      height = 120 - margin.top - margin.bottom;
+
+    //////////////////////////////////////////////////////////////////////
+    //plot
+    var svg = d3.select('#chart')
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+    svg.append('rect')  //show drawing area
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', width)
+      .attr('height', height)
+      .attr('fill', 'white')
+
+    var fromDay = dayjs(events[0].start).startOf('month').toDate(); 
+    var toDay = dayjs(events[events.length - 1].start).startOf('month').add(1, 'month').toDate();
+
+    var x = d3.scaleTime()
+      .domain([fromDay, toDay])
+      .range([0, width]);
+
+    var xAxis = d3.axisBottom()
+      .scale(x);
+
+    svg.append('g')
+      .attr('transform', 'translate(0,20)')
+      .call(xAxis);
+
+    svg.selectAll('mark')
+      .data(events)
+      .enter()
+      .append('rect')
+      .attr('x', d => x(d.start))
+      .attr('y', 5)
+      .attr('width', d => d.end ? x(d.end) - x(d.start) : 5)
+      .attr('height', 15)
+      .attr('fill', (d, i) => { return i % 2 ? '#999' : '#444' });  //alternate colors so we can distinguish individual events
+
+    svg.selectAll('label')  //already have 'text' elements added by the axis
+      .data(events)
+      .enter()
+      .append('text')
+      .attr("x", d => {
+        var start = x(d.start);
+        var end = d.end ? x(d.end) : d.end;
+        return end ? start + (end - start) / 2 : start;
+      })
+      .attr("y", (d, i) => -10 * (i % 3))  //alternate labels so they don't overlap!
+      .classed('label', true)  //same as .attr('class', 'label')
+      .text(d => { return d.name });
+  });
+&lt;/script&gt;</code></pre>
+
+  <div class="answer">
+    <cap>Answer</cap>
+    <!-- Add your code here! -->
+    <style>
+      path {
+        stroke: black;
+      }
+    
+      .tick line {
+        stroke: black;
+      }
+    
+      .tick {
+        stroke: black;
+      }
+    
+      .tick text {
+        stroke: none;
+        fill: blue;
+        font-size: 8px;
+      }
+    
+      text.label {
+        font-size: 8px;
+        text-anchor: middle;
+        alignment-baseline: middle;
+      }
+    
+      #chart1
+       {
+        background-color: #f8f8f8;
+      }
+    </style>
+    
+    <div class="fw-bold" id="title"></div>
+    <svg id="chart1" style="width: 100%;"></svg>
+    
+    <script src='./node_modules/d3/dist/d3.min.js'></script>
+    <script src='./node_modules/dayjs/dayjs.min.js'></script>
+    
+    <script>
+      d3.json('fall18.json').then(data => {
+        var events = data.events;
+    
+        events = events.map(d => {
+          return {
+            name: d.name,
+            start: dayjs(d.start).toDate(),
+            end: d.end ? dayjs(d.end).toDate() :  null,
+          };
+        });
+    
+        //compute total semester days between first and last event
+        var min = dayjs(d3.min(events, d => d.start));
+        var max = dayjs(d3.max(events, d => d.start));
+        var semesterDays = max.diff(min, 'day');
+    
+        //compute class days between classes begin and classes end
+        min = dayjs(events.find(d => d.name == 'Classes Begin').start);  //using array.find
+        max = dayjs(events.find(d => d.name == 'Classes End').start);
+        var classesDays = max.diff(min, 'day');
+    
+        d3.select('#title').text(`Fall semester 2018: ${semesterDays} days, ${data.instructional_days} instructional days, ${classesDays} classes days`);
+    
+        //////////////////////////////////////////////////////////////////////
+        //set-up margins convention
+        var margin = { top: 50, right: 30, bottom: 10, left: 30 };
+        var default_width = 1200;
+        // default_width = $("#chart1").width();
+        var width = 1200 - margin.left - margin.right,
+          height = 120 - margin.top - margin.bottom;
+    
+        //////////////////////////////////////////////////////////////////////
+        //plot
+        var svg = d3.select('#chart1')
+          .attr('width', width + margin.left + margin.right)
+          .attr('height', height + margin.top + margin.bottom)
+          .append('g')
+          .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+    
+        svg.append('rect')  //show drawing area
+          .attr('x', 0)
+          .attr('y', 0)
+          .attr('width', width)
+          .attr('height', height)
+          .attr('fill', 'white')
+    
+        var fromDay = dayjs(events[0].start).startOf('month').toDate(); 
+        var toDay = dayjs(events[events.length - 1].start).startOf('month').add(1, 'month').toDate();
+    
+        var x = d3.scaleTime()
+          .domain([fromDay, toDay])
+          .range([0, width]);
+    
+        var xAxis = d3.axisBottom()
+          .scale(x);
+    
+        svg.append('g')
+          .attr('transform', 'translate(0,20)')
+          .call(xAxis);
+    
+        svg.selectAll('mark')
+          .data(events)
+          .enter()
+          .append('rect')
+          .attr('x', d => x(d.start))
+          .attr('y', 5)
+          .attr('width', d => d.end ? x(d.end) - x(d.start) : 5)
+          .attr('height', 15)
+          .attr('fill', (d, i) => { return i % 2 ? '#999' : '#444' });  //alternate colors so we can distinguish individual events
+    
+        svg.selectAll('label')  //already have 'text' elements added by the axis
+          .data(events)
+          .enter()
+          .append('text')
+          .attr("x", d => {
+            var start = x(d.start);
+            var end = d.end ? x(d.end) : d.end;
+            return end ? start + (end - start) / 2 : start;
+          })
+          .attr("y", (d, i) => -10 * (i % 3))  //alternate labels so they don't overlap!
+          .classed('label', true)  //same as .attr('class', 'label')
+          .text(d => { return d.name });
+      });
+    </script>
+    
+  </div>
+
+  <h2>2. D3 timeline with axis, margin convention and d3 data join using enter selection</h2>
+
+  Create a new JSON file to include all the information that was computed or hard-coded in the page in exercise 1. Rewrite the code of exercise 1 to use d3 data join enter selection and the new JSON file. 
+
+  <div class="answer">
+    <cap>Answer</cap>
+    <!-- Add your code here! -->
+    
+    
+    <div class="fw-bold" id="title2"></div>
+    <svg id="chart2"></svg>
+
+    <script>
+      d3.json('fall18_2.json').then(data => {
+        var events = data.events;
+    
+        events = events.map(d => {
+          return {
+            name: d.name,
+            start: dayjs(d.start).toDate(),
+            end: d.end ? dayjs(d.end).toDate() :  null,
+          };
+        });
+        var margin = data.margin;
+        var width = data.width;
+        var height = data.height;
+        var fromDay = dayjs(data.fromDay).toDate(); 
+        var toDay = dayjs(data.toDay).toDate();
+   
+    
+        d3.select('#title2').text(`${data.name} ; ${data.semester_days} days, ${data.instructional_days} instructional days, ${data.classes_days} classes days`);
+    
+      
+        //////////////////////////////////////////////////////////////////////
+        //plot
+        var svg = d3.select('#chart2')
+          .attr('width', width + margin.left + margin.right)
+          .attr('height', height + margin.top + margin.bottom)
+          .append('g')
+          .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+    
+        svg.append('rect')  //show drawing area
+          .attr('x', 0)
+          .attr('y', 0)
+          .attr('width', width)
+          .attr('height', height)
+          .attr('fill', 'white')
+    
+        var x = d3.scaleTime()
+          .domain([fromDay, toDay])
+          .range([0, width]);
+    
+        var xAxis = d3.axisBottom()
+          .scale(x);
+    
+        svg.append('g')
+          .attr('transform', 'translate(0,20)')
+          .call(xAxis);
+    
+        svg.selectAll('mark')
+          .data(events)
+          .enter()
+          .append('rect')
+          .attr('x', d => x(d.start))
+          .attr('y', 5)
+          .attr('width', d => d.end ? x(d.end) - x(d.start) : 5)
+          .attr('height', 15)
+          .attr('fill', (d, i) => { return i % 2 ? '#999' : '#444' });  //alternate colors so we can distinguish individual events
+    
+        svg.selectAll('label')  //already have 'text' elements added by the axis
+          .data(events)
+          .enter()
+          .append('text')
+          .attr("x", d => {
+            var start = x(d.start);
+            var end = d.end ? x(d.end) : d.end;
+            return end ? start + (end - start) / 2 : start;
+          })
+          .attr("y", (d, i) => -10 * (i % 3))  //alternate labels so they don't overlap!
+          .classed('label', true)  //same as .attr('class', 'label')
+          .text(d => { return d.name });
+      });
+    </script>
+   
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>
+</body>
+
+</html>

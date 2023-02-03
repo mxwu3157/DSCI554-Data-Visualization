@@ -1,0 +1,14 @@
+{
+    "name" : "Fall Semester 2020",
+    "instructional_days" : 68,
+    "events" : [
+      { "name": "Registration Deadline", "start": "2020-8-21", "end": "" },
+      { "name": "Classes Begin", "start": "2020-08-17", "end": "" },
+      { "name": "Labor Day", "start": "2020-09-07", "end": "" },
+
+      { "name": "Classes End", "start": "2020-11-13", "end": "" },
+      { "name": "Study Days", "start": "2020-11-14", "end": "2020-11-16" },
+      { "name": "Exams", "start": "2020-11-17", "end": "2020-11-24" },
+      { "name": "Winter Recess", "start": "2020-11-25", "end": "2021-01-10" }
+    ]
+  }

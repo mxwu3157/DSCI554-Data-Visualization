@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  <title>DSCI 554 Assignment</title>
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./lab/github-dark-dimmed.min.css">
+  <script src="./lab/highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-color@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-format@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-interpolate@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-time@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-time-format@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-scale@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
+
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+  <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+</head>
+<style>
+  path {
+    stroke: black;
+  }
+
+  .tick line {
+    stroke: black;
+  }
+
+  .tick {
+    stroke: black;
+  }
+
+  .tick text {
+    stroke: none;
+    fill: black;
+    font-size: 9px;
+  }
+
+  text.label {
+    font-size: 8px;
+    text-anchor: middle;
+    alignment-baseline: middle;
+  }
+
+  svg.timeline
+   {
+    background-color: #f8f8f8;
+    position:relative;
+    margin-left: auto;
+  margin-right: auto;
+    
+  }
+  svg text.axis_title{
+    font-size:12px;
+    font-weight: bold;
+  
+  }
+  svg .title{
+    font-size:15px;
+    font-weight: bold;
+
+  }
+  .chart{
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    
+
+  }
+  p.subheader{
+    text-align: center;  
+  }
+  
+</style> 
+<body>
+
+
+  <div class="container">
+  <!-- <div>Meixian Wu <a href="mailto:meixianw@usc.edu">meixianw@usc.edu</a></div> -->
+  <div class="intro">
+    <h1>DSCI554-A6</h1>
+    <div >Meixian Wu <a href="mailto:meixianw@usc.edu">meixianw@usc.edu</a></div>
+    <div style="height:50px"></div>
+    <p >
+      Data Source: <a href="https://databank.worldbank.org/reports.aspx?source=2&series=EN.ATM.CO2E.KT&country=#">Here</a>
+      </p>
+      <p>
+      The selected datasets contains the <span STYLE="font-weight:bold">CO2 emission amount </span> (in kilo-ton), the <span STYLE="font-weight:bold">percentage of land the cover by forest</span>, and the <span STYLE="font-weight:bold">percentage of land used for agriculture</span> in 2017.
+      The below table and three charts are ploted based on those data for a selected 20 countires. Vriables can be transformed, for example taking the relative percentage, to best acconmmendate the nature of chart. 
+  </p>
+  <h4>Definition of variables according to WorldBank</h4>
+  <li>
+    Forest area is land under natural or planted stands of trees of at least 5 meters in situ, whether
+     productive or not, and excludes tree stands in agricultural production systems 
+      and trees in urban parks and gardens.
+  </li>
+  <li>
+    Agricultural land refers to the share of land area that is under permanent crops, 
+    and under permanent pastures. 
+     Land under permanent crops is land cultivated with crops that occupy the land for long periods 
+     and need not be replanted after each harvest. Permanent pasture is land used for five or more years
+       for forage, including natural and cultivated crops.
+  </li>
+  <li>
+    Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of 
+    cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and
+    gas flaring.
+  </li>
+  
+  </div>
+  <div style="height:50px"></div>
+      
+  <h3>1. HTML table</h3>
+  <p>
+
+  </p>
+  <!-- insert D3 table here -->
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+
+  
+  <table id="table1" class="table table-bordered table-striped table-hover " style="width:50%;margin:auto">
+ 
+  </table>
+  <script src="./d3_script/table.js"></script>
+
+
+  <div style="height:100px"></div>
+  <h3>2. SVG bar chart</h3>
+  <div class="row">
+  <p class="flex-row">The bar chart shown the relative percentage of the CO2 emission of the 20 countries, it was transformed from raw emission amount as the original data has a large range. We can see that Japan, Germany, Canada and Indonesia are about 50%-25% of India. The rest of the countries are relative trival compared with other major contributor countries, which is about 10%-0.1% of the maximum. </p>
+</div>
+  <!-- insert Inkscape SVG design here -->
+  <p class="subheader">InkScape Design</p>
+  <img class="chart" src="./a5_svg/bar2.svg"/>
+
+  <!-- insert D3 bar chart here -->
+  <p class="subheader chart">D3 Implementation</p>
+  <svg   style="background-color: rgb(234, 234, 234);  " id="barplot" class="img-thumbnail chart"></svg>
+  <!-- <div id ="barplot"></div> -->
+  <script src="./d3_script/bar_chart.js"></script>
+
+
+
+
+<div style="height:100px"></div>
+  <h3>3. SVG lollipop chart</h3>
+  <div class="row">
+  <p>
+    The Lollipop chart shows those emission amount compared with the word average level. The average level is at 170,000 kt in 2017. We can see that over half of those countries are below the average. And For countries like Canadam Germany, Japan, and India, they contributed significantly, and is way higher than average.
+  </p>
+</div>
+  <!-- insert Inkscape SVG design here -->
+  <p class="subheader">InkScape Design</p>
+  <img class="chart" src="./a5_svg/lollipop2.svg"/>
+  <!-- insert D3 lollipop chart here -->
+  <p class="subheader">D3 Implementation</p>
+  <svg   style="background-color: rgb(234, 234, 234);  " id="lollipop_plot" class="img-thumbnail chart"></svg>
+    <script src="./d3_script/lollipop_chart.js"></script>
+
+
+
+
+
+  <div style="height:100px"></div>
+  <h3>4. SVG bubble chart</h3>
+  <div class="row">
+  <p>
+    The bubble chart display the scatter position of the 20 countries based on their Agriculture Area% and Forest Area%, with bubble radius representing the emission amout. 
+    We can abserve that there is a general inverse relation between Agriculture Area% and Forest Area%. </p>
+    
+    <li>Iraq and Afghanistanhas relative low Forest Area%, about 2%; Japan and Sweden has relative high Forest area%, which is about 70%.</li>
+    <li>India, Nigeria, Morocco has relative high agriculture area %, about 60-75%; and Singapor, Canada,Sweden,Japan has relative low agriculture area%, about 1-7%. </li>
+    <p>We can see that the size of bubble does not show string correlation with either forest area% and agriculture area%. Therefore, it is likely that the land use % of forst and agriculure is not determinent to CO2 emission  
+  </p>
+</div>
+  <!-- insert Inkscape SVG design here -->
+  <p class="subheader">InkScape Design</p>
+  <img class="chart" src="./a5_svg/bubble2.svg"/>
+  <!-- insert D3 bubble chart here -->
+  <p class="subheader">D3 Implementation</p>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <style>
+    .bubbles {
+      stroke-width: 1px;
+      stroke: black;
+      opacity: .8
+    }
+    .bubbles:hover {
+      stroke: black;
+    }
+    </style>
+  <svg style="background-color: rgb(234, 234, 234);  " id="bubble_chart" class="img-thumbnail chart"></svg>
+  <script src="./d3_script/bubble_chart.js"></script>
+  <div style="height:100px"></div>
+
+
+
+
+
+
+  <!-- timeline -->
+  <h3>Timeline Plots</h3>
+<h5>Timeline plots I - using lab-ex1 code</h3>
+  <p>The below are the timeline chart for the last 5 fall semesters. Common Events are: registration deadline date, class begin date, class end date, study days, exams periods, winter recess period. The holidays are Labor Days, Thanksgiving days, fall recess, but depends on specific semesters.
+Most of the fall semesters has at least 70 instructional days, except fall 2020, possibly due to the pendamic reason. 
+  </p>
+<div class="row">
+  <script src='./node_modules/d3/dist/d3.min.js'></script>
+  <script src='./node_modules/dayjs/dayjs.min.js'></script>
+
+  <div class="fw-bold" id="title1" style="text-align:center;margin-top: 15px; "></div>
+  <svg id="timeline1" style="width: 840; height:140px;" class="timeline"></svg>
+  <script src='./js_scripts/timeline1.js' data-param1='timeline1' data-param2='title1' data-param3='./data/fall17.json'></script>
+
+  <div class="fw-bold" id="title2" style="text-align:center;margin-top: 15px;"></div>
+  <svg id="timeline2" style="width: 840; height:140px;" class="timeline"></svg>
+  <script src='./js_scripts/timeline2.js' data-param1='timeline1' data-param2='title1' data-param3='./data/fall18.json'></script>
+
+  <div class="fw-bold" id="title3" style="text-align:center;margin-top: 15px;"></div>
+  <svg id="timeline3" style="width:840;height:140px;" class="timeline"></svg>
+  <script src='./js_scripts/timeline3.js' data-param1='timeline1' data-param2='title1' data-param3='./data/fall19.json'></script>
+
+  <div class="fw-bold" id="title4" style="text-align:center;margin-top: 15px;"></div>
+  <svg id="timeline4" style="width: 840;height:140px;" class="timeline"></svg>
+  <script src='./js_scripts/timeline4.js' data-param1='timeline1' data-param2='title1' data-param3='./data/fall20.json'></script>
+
+
+  <div class="fw-bold" id="title5" style="text-align:center;margin-top: 15px;"></div>
+  <svg id="timeline5" style="width: 840;height:140px;" class="timeline"></svg>
+  <script src='./js_scripts/timeline5.js' data-param1='timeline2' data-param2='title2' data-param3='./data/fall21.json'></script>
+
+
+</div>
+<div style="height:50px"></div>
+
+<h5>Timeline plots II - using timelines-chart</h3>
+<div class="row">
+  <script src="//unpkg.com/timelines-chart"></script>
+  <script src="//unpkg.com/timelines-chart@2"></script>
+  <script src='./node_modules/d3/dist/d3.min.js'></script>
+  <script src='./node_modules/dayjs/dayjs.min.js'></script>
+	<script src="random-data.js"></script>
+<div height="600px" width="400" id="myPlot" style="background: lightyellow"></div>
+<!-- <script>
+  var data = getRandomData(true);
+  console.log('skdjfboaegbvkjabekvoej')
+  console.log(data)
+  TimelinesChart()
+    .data(data)
+    .zQualitative(true)
+    (document.getElementById('myPlot'));
+</script> --> 
+
+
+	<script src="./js_scripts/timeline_npmjs.js"></script>
+
+</div>
+
+<footer class="text-center text-white" style="background-color: #d5d5d500;">
+  <!-- Grid container -->
+  <div class="container p-4"></div>
+  <!-- Grid container -->
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+   The End - 10/12/2022 DSCI554 A6
+  </div>
+</footer>
+
+
+</div>
+<div class="mt-3 text-end" height="200px">
+  <a  href="#">
+    <i class="bi bi-arrow-up"></i> top </a>
+</div>
+</body>
+
+</html>

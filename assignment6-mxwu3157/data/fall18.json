@@ -1,0 +1,15 @@
+{
+    "name" : "Fall Semester 2018",
+    "instructional_days" : 71,
+    "events" : [
+      { "name": "Open Registration", "start": "2018-08-13", "end": "2018-8-17" },
+      { "name": "Move-In", "start": "2018-08-15", "end": "" },
+      { "name": "Classes Begin", "start": "2018-08-20", "end": "" },
+      { "name": "Labor Day", "start": "2018-09-03", "end": "" },
+      { "name": "Thanksgiving Holiday", "start": "2018-11-21", "end": "2018-11-25" },
+      { "name": "Classes End", "start": "2018-11-30", "end": "" },
+      { "name": "Study Days", "start": "2018-12-01", "end": "2018-12-04" },
+      { "name": "Exams", "start": "2018-12-05", "end": "2018-12-12" },
+      { "name": "Winter Recess", "start": "2018-12-13", "end": "2019-01-06" }
+    ]
+  }

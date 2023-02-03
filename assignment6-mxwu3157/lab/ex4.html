@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex4</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex4: D3 line chart with axes and margin convention</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex1: HTML table with D3</li>
+    </ol>
+  </nav>
+  <h2>1. Basic line chart</h2>
+
+  <div>Implement a basic line chart with the code provided.</div>
+
+  <pre><code class="HTML">&lt;style&gt;
+svg text {
+  font-family: Courier;
+  font-size: 10px;
+  text-anchor: unset;
+  alignment-baseline: unset;
+}
+&lt;/style&gt;
+
+&lt;script src='./node_modules/d3/dist/d3.min.js'&gt;&lt;/script&gt;
+
+&lt;svg id="chart" width="960" height="500"&gt;&lt;/svg&gt;
+
+&lt;script&gt;
+var parseTime = d3.timeParse('%d-%b-%y');
+
+d3.tsv('data.tsv', d => {
+  d.date = parseTime(d.date);
+  d.close = +d.close;
+  return d;
+}).then(data => {
+  var svg = d3.select('#chart'),
+    margin = {
+      top: 40,
+      right: 20,
+      bottom: 30,
+      left: 50
+    },
+    width = +svg.attr('width') - margin.left - margin.right,
+    height = +svg.attr('height') - margin.top - margin.bottom,
+    g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+  var x = d3.scaleTime()
+    .rangeRound([0, width]);
+
+  var y = d3.scaleLinear()
+    .rangeRound([height, 0]);
+
+  var line = d3.line()
+    .x(d => x(d.date))
+    .y(d => y(d.close));
+
+  x.domain([new Date(2007, 3, 1), new Date(2007, 7, 31)]); //🚧 hard-coded values
+  y.domain([93, 146]); //🚧 hard-coded values
+
+  g.append('g')
+    .attr('transform', 'translate(0,' + height + ')')
+    .call(d3.axisBottom(x));
+
+  g.append('g')
+    .call(d3.axisLeft(y))
+    .append('text')
+    .attr('fill', '#000')
+    .attr('transform', 'rotate(-90)')
+    .attr('y', 6)
+    .attr('dy', '0.71em')
+    .attr('text-anchor', 'end')
+    .text('Price ($)');
+
+  g.append('path')
+    .datum(data)
+    .attr('fill', 'none')
+    .attr('stroke', 'steelblue')
+    .attr('stroke-linejoin', 'round')
+    .attr('stroke-linecap', 'round')
+    .attr('stroke-width', 1.5)
+    .attr('d', line);
+});
+&lt;/script&gt;</code></pre>
+  </div>
+
+  <div class="answer">
+    <div>Answer</div>
+
+    <!-- Add your answers below! -->
+    <style>
+      svg text {
+        font-family: Courier;
+        font-size: 10px;
+        text-anchor: unset;
+        alignment-baseline: unset;
+      }
+      </style>
+      
+      <script src='./node_modules/d3/dist/d3.min.js'></script>
+      
+      <svg id="chart" width="960" height="500"></svg>
+      
+      <script>
+      var parseTime = d3.timeParse('%d-%b-%y');
+      
+      d3.tsv('data.tsv', d => {
+        d.date = parseTime(d.date);
+        d.close = +d.close;
+        return d;
+      }).then(data => {
+        var svg = d3.select('#chart'),
+          margin = {
+            top: 40,
+            right: 20,
+            bottom: 30,
+            left: 50
+          },
+          width = +svg.attr('width') - margin.left - margin.right,
+          height = +svg.attr('height') - margin.top - margin.bottom,
+          g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+      
+        var x = d3.scaleTime()
+          .rangeRound([0, width]);
+      
+        var y = d3.scaleLinear()
+          .rangeRound([height, 0]);
+      
+        var line = d3.line()
+          .x(d => x(d.date))
+          .y(d => y(d.close));
+      
+        x.domain([new Date(2007, 3, 1), new Date(2007, 7, 31)]); //🚧 hard-coded values
+        y.domain([93, 146]); //🚧 hard-coded values
+      
+        g.append('g')
+          .attr('transform', 'translate(0,' + height + ')')
+          .call(d3.axisBottom(x));
+      
+        g.append('g')
+          .call(d3.axisLeft(y))
+          .append('text')
+          .attr('fill', '#000')
+          .attr('transform', 'rotate(-90)')
+          .attr('y', 6)
+          .attr('dy', '0.71em')
+          .attr('text-anchor', 'end')
+          .text('Price ($)');
+      
+        g.append('path')
+          .datum(data)
+          .attr('fill', 'none')
+          .attr('stroke', 'steelblue')
+          .attr('stroke-linejoin', 'round')
+          .attr('stroke-linecap', 'round')
+          .attr('stroke-width', 1.5)
+          .attr('d', line);
+      });
+      </script>
+   
+  </div>
+
+  <h2>2 - Basic line chart improvements</h2>
+
+  Improve the code of exercise 1 to remove values that were hard coded where marked with 🚧:
+  <ul>
+    <li>Set the domains with <code>array.map()</code> and <code>d3.extent</code> (see <a href="https://github.com/d3/d3-array">d3-array</a>)</li>
+    <li>Format the y axis labels using <code>.tickFormat(d3.format('.2s'))</code> (see <a href="https://github.com/d3/d3-scale/blob/main/README.md#tickFormat">d3.tickFormat</a>)</li>
+  </ul>
+
+  <div class="answer">
+    <div>Answer</div>
+      <!-- Add your answer below! -->
+   
+        <svg id="chart4_2" width="960" height="500"></svg>
+        
+        <script>
+        var parseTime = d3.timeParse('%d-%b-%y');
+        
+        d3.tsv('data.tsv', d => {
+          d.date = parseTime(d.date);
+          d.close = +d.close;
+          return d;
+        }).then(data => {
+          var svg = d3.select('#chart4_2'),
+            margin = {
+              top: 40,
+              right: 20,
+              bottom: 30,
+              left: 50
+            },
+            width = +svg.attr('width') - margin.left - margin.right,
+            height = +svg.attr('height') - margin.top - margin.bottom,
+            g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+        
+          var x = d3.scaleTime()
+            .rangeRound([0, width]);
+        
+          var y = d3.scaleLinear()
+            .rangeRound([height, 0]);
+        
+          var line = d3.line()
+            .x(d => x(d.date))
+            .y(d => y(d.close));
+        
+            a = d3.extent(data,d=>d.date)
+            console.log(a)
+          x.domain(d3.extent(data,d=>d.date)); //🚧 hard-coded values
+          y.domain(d3.extent(data,d=>d.close)); //🚧 hard-coded values
+          console.log('date')
+      console.log(d3.extent(data,d=>d.date));
+      console.log('close')
+      console.log(d3.extent(data,d=>d.close));
+      
+          g.append('g')
+            .attr('transform', 'translate(0,' + height + ')')
+            .call(d3.axisBottom(x));
+        
+          g.append('g')
+            .call(d3.axisLeft(y).tickFormat(d3.format('.2s')) )
+            .append('text')
+            .attr('fill', '#000')
+            .attr('transform', 'rotate(-90)')
+            .attr('y', 6)
+            .attr('dy', '0.71em')
+            .attr('text-anchor', 'end')
+            .text('Price ($)');
+        
+          g.append('path')
+            .datum(data)
+            .attr('fill', 'none')
+            .attr('stroke', 'steelblue')
+            .attr('stroke-linejoin', 'round')
+            .attr('stroke-linecap', 'round')
+            .attr('stroke-width', 1.5)
+            .attr('d', line);
+        });
+        </script>
+    
+  </div>
+
+  <h3>3. Basic line chart with data loaded from file</h3>
+
+  <div>Use the code of exercise 2 to implement a bar chart loading the data provided in
+    <code>time_series_covid19_recovered_global_Afghanistan.csv</code>. Use <code>parseTime2</code> to parse
+    the dates (see <a target="_blank" href="https://github.com/d3/d3-time-format">d3-time-format</a>):
+  </div>
+
+  <pre><code class="js">
+var parseTime2 = d3.timeParse('%m/%d/%y');  //Why not redefine parseTime?
+    </code></pre>
+
+  <div class="answer">
+    <div>Answer</div>
+      <!-- Add your answer below! -->
+      <svg id="chart4_3" width="960" height="500"></svg>
+        
+        <script>
+        // var parseTime2 = d3.timeParse('%m/%d/%y'); 
+         var parseTime2 = d3.timeParse('%m/%d/%Y');
+        
+        d3.csv('time_series_covid19_recovered_global_Afghanistan.csv', d => {
+          d.date = parseTime2(d.Date);
+          d.count = +d.Count;
+          return d;
+        }).then(data => {
+          var svg = d3.select('#chart4_3'),
+            margin = {
+              top: 40,
+              right: 20,
+              bottom: 30,
+              left: 50
+            },
+            width = +svg.attr('width') - margin.left - margin.right,
+            height = +svg.attr('height') - margin.top - margin.bottom,
+            g = svg.append('g').attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+        
+          var x = d3.scaleTime()
+            .rangeRound([0, width]);
+        
+          var y = d3.scaleLinear()
+            .rangeRound([height, 0]);
+        
+          var line = d3.line()
+            .x(d => x(d.date))
+            .y(d => y(d.count));
+            console.log(data);
+        
+          x.domain(d3.extent(data,d=>d.date)); //🚧 hard-coded values
+          y.domain(d3.extent(data,d=>d.count)); //🚧 hard-coded values
+          console.log('date')
+      console.log(d3.extent(data,d=>d.date));
+      console.log('close')
+      console.log(d3.extent(data,d=>d.count));
+      
+          g.append('g')
+            .attr('transform', 'translate(0,' + height + ')')
+            .call(d3.axisBottom(x));
+        
+          g.append('g')
+            .call(d3.axisLeft(y).tickFormat(d3.format('.2s')) )
+            .append('text')
+            .attr('fill', '#000')
+            .attr('transform', 'rotate(-90)')
+            .attr('y', 6)
+            .attr('dy', '0.71em')
+            .attr('text-anchor', 'end')
+            .text('Comfirmed Case Count');
+            console.log(d3.extent(data,d=>d.count));
+
+          g.append('path')
+            .datum(data)
+            .attr('fill', 'none')
+            .attr('stroke', 'steelblue')
+            .attr('stroke-linejoin', 'round')
+            .attr('stroke-linecap', 'round')
+            .attr('stroke-width', 1.5)
+            .attr('d', line);
+        });
+        
+        </script>
+     
+    <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+  </div>
+</body>
+
+</html>

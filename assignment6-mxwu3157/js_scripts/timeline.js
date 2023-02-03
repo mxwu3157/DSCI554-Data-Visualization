@@ -1,0 +1,88 @@
+ svg_id=document.currentScript.dataset.param1;
+ title_id=document.currentScript.dataset.param2;
+ file_path=document.currentScript.dataset.param3;
+ console.log(svg_id)
+
+d3.json(file_path).then(data => {
+    var events = data.events;
+
+    events = events.map(d => {
+      return {
+        name: d.name,
+        start: dayjs(d.start).toDate(),
+        end: d.end ? dayjs(d.end).toDate() :  null,
+      };
+    });
+
+    //compute total semester days between first and last event
+    var min = dayjs(d3.min(events, d => d.start));
+    var max = dayjs(d3.max(events, d => d.start));
+    var semesterDays = max.diff(min, 'day');
+
+    //compute class days between classes begin and classes end
+    min = dayjs(events.find(d => d.name == 'Classes Begin').start);  //using array.find
+    max = dayjs(events.find(d => d.name == 'Classes End').start);
+    var classesDays = max.diff(min, 'day');
+
+    d3.select('#'+ title_id).text(`${data.name} : ${semesterDays} days, ${data.instructional_days} instructional days, ${classesDays} classes days`);
+
+    //////////////////////////////////////////////////////////////////////
+    //set-up margins convention
+    var margin = { top: 50, right: 30, bottom: 10, left: 30 };
+    var default_width = 1200;
+    // default_width = $("#chart1").width();
+    var width = 1200 - margin.left - margin.right,
+      height = 120 - margin.top - margin.bottom;
+
+    //////////////////////////////////////////////////////////////////////
+    //plot
+    var svg = d3.select('#' + svg_id)
+      .attr('width', width + margin.left + margin.right)
+      .attr('height', height + margin.top + margin.bottom)
+      .append('g')
+      .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+    svg.append('rect')  //show drawing area
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('width', width)
+      .attr('height', height)
+      .attr('fill', 'white')
+
+    var fromDay = dayjs(events[0].start).startOf('month').toDate(); 
+    var toDay = dayjs(events[events.length - 1].start).startOf('month').add(1, 'month').toDate();
+
+    var x = d3.scaleTime()
+      .domain([fromDay, toDay])
+      .range([0, width]);
+
+    var xAxis = d3.axisBottom()
+      .scale(x);
+
+    svg.append('g')
+      .attr('transform', 'translate(0,20)')
+      .call(xAxis);
+
+    svg.selectAll('mark')
+      .data(events)
+      .enter()
+      .append('rect')
+      .attr('x', d => x(d.start))
+      .attr('y', 5)
+      .attr('width', d => d.end ? x(d.end) - x(d.start) : 5)
+      .attr('height', 15)
+      .attr('fill', (d, i) => { return i % 2 ? '#999' : '#444' });  //alternate colors so we can distinguish individual events
+
+    svg.selectAll('label')  //already have 'text' elements added by the axis
+      .data(events)
+      .enter()
+      .append('text')
+      .attr("x", d => {
+        var start = x(d.start);
+        var end = d.end ? x(d.end) : d.end;
+        return end ? start + (end - start) / 2 : start;
+      })
+      .attr("y", (d, i) => -10 * (i % 3))  //alternate labels so they don't overlap!
+      .classed('label', true)  //same as .attr('class', 'label')
+      .text(d => { return d.name });
+  });
