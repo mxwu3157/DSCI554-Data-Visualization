@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DSCI 554 Lab ex04</title>
+
+	<link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<link rel="stylesheet" href="./style.css">
+
+	<link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="./github-dark-dimmed.min.css">
+	<script src="./highlight.min.js"></script>
+
+	<script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+	<link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+	<script>
+		hljs.highlightAll();
+		hljs.addPlugin(new CopyButtonPlugin());
+	</script>
+
+	 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+     integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+     crossorigin=""/>
+
+	  <!-- Make sure you put this AFTER Leaflet's CSS -->
+ <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+     crossorigin=""></script>
+</head>
+
+<body>
+	<h1>🏋🏽‍♂️ ex04: Leaflet</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex04: Leaflet</li>
+    </ol>
+  </nav>
+
+	<h2>1. Display a map using leaflet</h2>
+
+	<div>Implement the map in <a target="_blank" href="https://leafletjs.com/examples/quick-start/">Leaflet Quick Start Guide</a>.</div>
+<style>
+	#map { height: 180px; }
+</style>
+	<div class="card p-3 mb-3">
+		<div>Answer</div>
+		<!-- Your answer below -->
+		 <div id="map"></div>
+		 <script>
+			var map = L.map('map').setView([51.505, -0.09], 13);
+			L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+	id: 'mapbox/streets-v11',
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+		 </script>
+
+	</div>
+
+	<h2>2. Implement a USC map using Leaflet</h2>
+
+	<p>Implement the map of ex03.1 then:
+	<ul>
+		<li>Change to use mapbox tiles:
+			<pre><code class="js" data-trim data-noescape>L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+  attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+  maxZoom: 18,
+  id: 'mapbox/streets-v11',
+  tileSize: 512,
+  zoomOffset: -1,
+  accessToken: 'your.mapbox.access.token'
+}).addTo(map);</code></pre>
+
+		</li>
+		<li>Set a dark style (see <a target="_blank" href="https://docs.mapbox.com/help/glossary/style-url/">style URL</a> and <a target="_blank" href="https://www.mapbox.com/maps/dark">Mapbox Dark</a>)</li>
+		<li>Center on USC</li>
+		<li>Add a pin for USC with a popup (see <a href="https://leafletjs.com/examples/quick-start/">Leaflet Quick Start Guide</a>)</li>
+	</ul>
+	</p>
+	<style>
+		#map2 {
+			height: 580px;
+		}
+	</style>
+
+	<div class="card p-3">
+		<div>Answer</div>
+		<!-- Your answer below -->
+		<link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css"
+			rel="stylesheet">
+		<script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+		<div id="map2"></div>
+		 <script>
+			var map2 = L.map('map2').setView([34.0237637252747,-118.28485047274489 ], 14)
+			L.tileLayer('https://api.mapbox.com/styles/v1/meixianw/cla8ubs9t000114p5slwtuade/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWVpeGlhbnciLCJhIjoiY2xhOHRkbTVmMDAwZTNzczRmeGJxZmV6NyJ9.dDkKu_xEIOqlr05h2dh2EQ', {
+  attribution: 'Map data © OpenStreetMap contributors, CC-BY-SA, Imagery © Mapbox',
+  maxZoom: 18,
+  id: 'meixianw/dark-v10',
+  tileSize: 512,
+  zoomOffset: -1}).addTo(map2);
+var marker = L.marker([34.0237637252747,-118.28485047274489 ]).addTo(map2);
+marker.bindPopup("<b>Here is USC UPC</b>").openPopup();
+
+L.mapbox.styleLayer(
+      'mapbox://styles/mapbox/streets-v11'
+    ).addTo(map2)
+
+
+// L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/dark-v10.html?title=true&access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4M29iazA2Z2gycXA4N2pmbDZmangifQ.-g_vE53SD2WrJ6tFX7QHmA').addTo(map2)
+
+
+		 </script>
+
+	</div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

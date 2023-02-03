@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex07</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+<script src="https://unpkg.com/topojson@3"></script>
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+  <script src="node_modules/d3/dist/d3.min.js"></script>
+
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex07: D3 TopoJSON map</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex07: D3 TopoJSON map</li>
+    </ol>
+  </nav>
+
+  <h2>Demo: working with projected TopoJSON</h2>
+
+  <div>To improve performance, we want not to have to project when plotting the map. For this we can use projected
+    coordinates. When doing so the path
+    generator projection does not need to be set. To plot paths corresponding to the features of the map, we need to
+    extract
+    the features from the TopoJSON, this is done with <code>topojson.feature</code>
+    effectively recreating a GeoJSON object. Often we also want to stroke the interior features boundaries, to do this
+    efficiently we can use <code>topojson.mesh()</code>.
+  </div>
+
+  <h3>References:</h3>
+  <ul>
+    <li><a target="_blank" href="https://github.com/topojson/topojson">TopoJSON repository</a></li>
+    <li><a target="_blank"
+        href="https://github.com/topojson/topojson-client/blob/master/README.md#mesh">TopoJSON Client repository: topojson.mesh</a></li>
+    <li><a target="_blank"
+        href="https://github.com/topojson/topojson-client/blob/master/README.md#feature">TopoJSON Client repository: topojson.feature</a></li>
+    <li><a target="_blank" href="https://github.com/d3/d3-geo#path_projection">d3-geo repository: path.projection</a></li>
+    <li><a target="_blank" href="https://github.com/topojson/us-atlas">us-atlas repository</a></li>
+    <li><a target="_blank" href="https://github.com/topojson/world-atlas">world-atlas repository</a></li>
+  </ul>
+  <script src="node_modules/topojson-client/dist/topojson-client.js"></script>
+<script>
+  d3.json('data/us-10m.v1.json').then(us => {
+  
+    //create path generator
+    var path = d3.geoPath();
+
+    //see https://github.com/d3/d3-geo#path_projection
+    var projection = d3.geoPath().projection();
+
+    //convert to GeoJSON features
+    var features = topojson.feature(us, us.objects.states).features;  
+
+    //generate mesh for edges that are shared by multiple features 
+    var d = path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)); 
+  });
+</script>
+
+
+  <div class="mt-2 accordion mb-2" id="accordionOne">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="false" aria-controls="collapseOne">
+          Demo code
+        </button>
+      </h2>
+
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+        data-bs-parent="#accordionOne">
+        <div class="accordion-body">
+          <pre><code class="js" data-trim data-noescape>&lt;script src="node_modules/topojson-client/dist/topojson-client.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+  d3.json('data/us-10m.v1.json').then(us =&gt; {
+  
+    //create path generator
+    var path = d3.geoPath();
+
+    //see https://github.com/d3/d3-geo#path_projection
+    var projection = d3.geoPath().projection();
+
+    //convert to GeoJSON features
+    var features = topojson.feature(us, us.objects.states).features;  
+
+    //generate mesh for edges that are shared by multiple features 
+    var d = path(topojson.mesh(us, us.objects.states, (a, b) =&gt; a !== b)); 
+  });
+&lt;/script&gt;
+</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>1. Implement the map using the code provided.</h2>
+
+  <div>The code is adapted from <a target="_blank" href="https://bl.ocks.org/mbostock/4090848">Block 4090848</a> and
+    uses CSS hover pseudo-class to implement highlighting on mouse hover.</div>
+
+  <div class="mt-2 accordion mb-2" id="accordionTwo">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+          aria-expanded="false" aria-controls="collapseTwo">
+          US states TopoJSON map code
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+        data-bs-parent="#accordionTwo">
+        <div class="accordion-body">
+          <pre><code class="HTML" data-trim data-noescape>&lt;style&gt;
+  .states {
+    fill: whitesmoke;
+  }
+
+  .states :hover {
+    fill: red;
+  }
+
+  .state-borders {
+    fill: none;
+    stroke: black;
+    stroke-width: 0.5px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    pointer-events: none;
+  }
+&lt;/style&gt;
+
+&lt;script src="node_modules/topojson-client/dist/topojson-client.min.js"&gt;&lt;/script&gt;
+&lt;svg style="background-color:lightblue" width="960" height="600"&gt;&lt;/svg&gt;
+
+&lt;script&gt;
+  d3.json('data/us-10m.v1.json').then(us =&gt; {
+    var svg = d3.select('svg');
+    var path = d3.geoPath();
+
+    svg.append('g')
+      .attr('class', 'states')
+      .selectAll('path')
+      .data(topojson.feature(us, us.objects.states).features)
+      .enter()
+      .append('path')
+      .attr('d', path);
+
+    svg.append('path')
+      .attr('class', 'state-borders')
+      .attr('d', path(topojson.mesh(us, us.objects.states, (a, b) =&gt; a !== b)));
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <!-- Your answer below -->
+    <style>
+  .states {
+    fill: whitesmoke;
+  }
+
+  .states :hover {
+    fill: red;
+  }
+
+  .state-borders {
+    fill: none;
+    stroke: black;
+    stroke-width: 0.5px;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    pointer-events: none;
+  }
+</style>
+
+<script src="node_modules/topojson-client/dist/topojson-client.min.js"></script>
+<svg style="background-color:lightblue" width="960" height="600"></svg>
+
+<script>
+  d3.json('data/us-10m.v1.json').then(us => {
+    var svg = d3.select('svg');
+    var path = d3.geoPath();
+
+    svg.append('g')
+      .attr('class', 'states')
+      .selectAll('path')
+      .data(topojson.feature(us, us.objects.states).features)
+      .enter()
+      .append('path')
+      .attr('d', path);
+
+    svg.append('path')
+      .attr('class', 'state-borders')
+      .attr('d', path(topojson.mesh(us, us.objects.states, (a, b) => a !== b)));
+  });
+</script>
+
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

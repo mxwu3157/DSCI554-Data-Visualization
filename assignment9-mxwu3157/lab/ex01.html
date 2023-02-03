@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>DSCI 554 Lab ex01</title>
+
+		<link href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+			rel="stylesheet" />
+		<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<link rel="stylesheet" href="./style.css">
+
+		<link href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
+			rel="stylesheet">
+
+		<link rel="stylesheet" href="./github-dark-dimmed.min.css">
+		<script src="./highlight.min.js"></script>
+
+		<script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+		<link rel="stylesheet"
+			href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+		<script>
+		hljs.highlightAll();
+		hljs.addPlugin(new CopyButtonPlugin());
+	</script>
+		<script src="./node_modules/d3/dist/d3.min.js"></script>
+	</head>
+
+	<body>
+		<h1>🏋🏽‍♂️ ex01: Geographical coordinates and map projection</h1>
+
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+				<li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex01:
+					Geographical coordinates in Google Maps</li>
+			</ol>
+		</nav>
+
+		<h2>Demo: reading location coordinates in Google Maps</h2>
+		<div>You can get longitude and latitude of placeholders information by:</div>
+		<ul>
+			<li>Searching for a location and right clicking the pin</li>
+			<li>Right clicking a pin on the map</li>
+			<li>Dropping a pin with <q>What's here</q> and right clicking</li>
+		</ul>
+
+		<h2>1. Location coordinates in Google Maps</h2>
+
+		<div>Find UPC coordinates in <a href="https://www.google.com/maps"
+				target="_blank">Google Maps</a> to complete the answer.</div>
+
+		<div class="card p-3 mb-3">
+			<div>Answer</div>
+			<div class="mt-2">Geographical coordinates in degrees as Northing and
+				Easting:
+				<ul>
+					<li>
+						Longitude: -118° 17.0938 E
+					</li>
+					<li>
+						Latitude: 34° 1.4177 N
+					</li>
+				</ul>
+			</div>34.02362892746541, -118.28489746525655
+
+			<div class="mt-2">Geographical coordinates in degrees as Northing and
+				Westing:
+				<ul>
+					<li>
+						Longitude: 118° 17.1317 W
+					</li>
+					<li>
+						Latitude: 34° 1.2483 N
+					</li>
+				</ul>
+			</div>
+
+			<div class="mt-2">Geographical coordinates in degrees, minutes and seconds as
+				Northing and Westing:
+				<ul>
+					<li>
+						Longitude: 118° 17'7.9'' W
+					</li>
+					<li>
+						Latitude:34° 1'14.9'' N
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<h2>2. Characterize the map</h2>
+
+		<div>Set the checkboxes that correspond to the map shown below.</div>
+
+		<iframe
+			src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d56620391.84366516!2d-77.5717573!3d29.984187!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sus!4v1666471460872!5m2!1sen!2sus"
+			width="960" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+			referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+		<div class="card p-3">
+			<div>Answer</div>
+			<!-- 
+			Check all that applies. Set the checkbox as marked with the checked property:
+		  <input type="checkbox" checked />
+		-->
+			<div><b>Map type: </b>
+				<input type="checkbox" checked/> slippy map
+				<input type="checkbox" /> static map
+				<input type="checkbox" /> thematic map</div>
+			<div><b>Map format: </b> 
+				<input type="checkbox" checked/> Vector 
+				<input type="checkbox" /> Raster 
+				</div>
+			<div><b>Projection: </b> 
+				<input type="checkbox" checked/> Mercator 
+				<input
+					type="checkbox" /> Albers conic 
+					<input
+					type="checkbox" /> Lambert conformal conic 
+					<input type="checkbox" /> UTM
+			</div>
+			<div><b>Projection type: </b> 
+				<input type="checkbox" checked/> Cylindrical 
+				<input
+					type="checkbox" /> Conic 
+					<input
+					type="checkbox" /> Azimuthal 
+					<input type="checkbox" /> </div>
+			<div><b>Projection properties preserved: </b> 
+				<input type="checkbox" checked/>
+				Conformal 
+				<input type="checkbox" />
+				Equal-area 
+				<input type="checkbox" /> Equidistant 
+				<input type="checkbox" />
+				Azimuthal</div>
+			<br>
+		</div>
+
+		<div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi
+					bi-arrow-up"></i> top</a></div>
+
+	</body>
+
+</html>
