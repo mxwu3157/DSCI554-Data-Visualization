@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex4</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex4: general update pattern with keys</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex4: general update pattern with keys</li>
+    </ol>
+  </nav>
+
+  <h2>1. Bar chart transitions with the general update pattern.</h2>
+
+  <div>Implement the code in the page then complete the code where marked with 🚧.</div>
+
+  <pre><code class="HTML" data-trim data-noescape>&lt;style&gt;
+  .button:hover {
+    background-color: #ffe2e2;
+  }
+
+  .button {
+    border-radius: 3px;
+    background-color: #ddd;
+    padding: 5px;
+    margin: 5px;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #444;
+    text-align: left;
+    display: inline-block;
+    cursor: pointer;
+  }
+&lt;/style&gt;
+
+&lt;div&gt;
+  &lt;span class="button" id="dataset1"&gt;dataset 1&lt;/span&gt;
+  &lt;span class="button" id="dataset2"&gt;dataset 2&lt;/span&gt;
+  &lt;span class="button" id="dataset3"&gt;dataset 3&lt;/span&gt;
+&lt;/div&gt;
+
+&lt;svg width="450" height="100" style="background-color: #ddd" id="svg"&gt;&lt;/svg&gt;
+
+&lt;script&gt;
+  var dataset1 = [{ key: 'A', value: 0 }, { key: 'B', value: 1 }, { key: 'C', value: 2 }];
+  var dataset2 = [{ key: 'A', value: 0 }, { key: 'B', value: 1 }, { key: 'D', value: 3 }];
+  var dataset3 = [{ key: 'B', value: 1 }, { key: 'A', value: 0 }, { key: 'C', value: 2 }, { key: 'D', value: 3 }];
+  var colors = ['#1b9e77', '#d95f02', '#7570b3', '#e7298a']
+
+  dataset1 = dataset1.map(d => {
+    d.color = colors[d.value];
+    return d;
+  });
+
+  //🚧 add color to datasets 2 and 3
+
+  //set dataset 1 to start
+  update(dataset1);
+
+  //set dataset1 button background-color to lightpink to indicate it is selected
+  d3.select('#dataset1').style('background-color', 'lightpink');
+
+  d3.select('#dataset1')
+    .on('click', function(d) {
+      d3.selectAll('.button').style('background-color', '#ddd'); //reset color of all the buttons
+      d3.select(this).style('background-color', 'lightpink'); //set `this` button color
+      update(dataset1);
+    });
+
+  //🚧 implement buttons "dataset2" and "dataset3"
+  
+  d3.select('#svg')
+    .on('click', function() {
+      update(dataset1); //reset
+      
+      d3.selectAll('.button').style('background-color', '#ddd');
+      d3.select('#dataset1').style('background-color', 'lightpink')
+    });
+
+  function update(data) {
+    var svg = d3.select('#svg');
+    var rects = svg.selectAll('rect')
+      .data(data, d => d.key);
+
+    rects.exit()  // EXIT SELECTION -- here we decide to exit first
+      .transition()
+      .delay(1000)
+      .duration(1000)
+      .style('opacity', 0)
+      .remove();
+
+    var enter = rects.enter() // ENTER SELECTION
+      .append('rect')
+      .attr('fill', d => d.color)
+      .merge(rects) // UPDATE + ENTER SELECTION
+      .transition()
+      .duration(3000)
+      .delay((d, i) => i * 1000)
+      .attr('x', 0)
+      .attr('y', (d, i) => i * 25)
+      .attr('width', d => 100 + d.value * 100)
+      .attr('height', 20);
+  }
+&lt;/script&gt;</code></pre>
+
+  Annotated transitions between datasets:
+  <pre><code class="js" data-trim data-noescape>       dataset1 = [{ key: 'A', value: 0 }, { key: 'B', value: 1 }, { key: 'C', value: 2 }                        ]
+transition 1 → 2             ↓                       ↓                       ❌                      +
+       dataset2 = [{ key: 'A', value: 0 }, { key: 'B', value: 1 },                         { key: 'D', value: 3 }]
+transition 2 → 3                          ↔                                  +                       ↓
+       dataset3 = [{ key: 'B', value: 1 }, { key: 'A', value: 0 }, { key: 'C', value: 2 }, { key: 'D', value: 3 }]
+transition 3 → 1                          ↔                                  ↓                       ❌
+       dataset1 = [{ key: 'A', value: 0 }, { key: 'B', value: 1 }, { key: 'C', value: 2 }                        ]
+</code></pre>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <!-- Add your code below! -->
+    <style>
+  .button:hover {
+    background-color: #ffe2e2;
+  }
+
+  .button {
+    border-radius: 3px;
+    background-color: #ddd;
+    padding: 5px;
+    margin: 5px;
+    font-size: 0.85em;
+    font-weight: bold;
+    color: #444;
+    text-align: left;
+    display: inline-block;
+    cursor: pointer;
+  }
+</style>
+
+<div>
+  <span class="button" id="dataset1">dataset 1</span>
+  <span class="button" id="dataset2">dataset 2</span>
+  <span class="button" id="dataset3">dataset 3</span>
+</div>
+
+<svg width="450" height="100" style="background-color: #ddd" id="svg"></svg>
+
+<script>
+  var dataset1 = [{ key: 'A', value: 0 }, { key: 'B', value: 1 }, { key: 'C', value: 2 }];
+  var dataset2 = [{ key: 'A', value: 0 }, { key: 'B', value: 1 }, { key: 'D', value: 3 }];
+  var dataset3 = [{ key: 'B', value: 1 }, { key: 'A', value: 0 }, { key: 'C', value: 2 }, { key: 'D', value: 3 }];
+  var colors = ['#1b9e77', '#d95f02', '#7570b3', '#e7298a']
+
+  dataset1 = dataset1.map(d => {
+    d.color = colors[d.value];
+    return d;
+  });
+  //🚧 add color to datasets 2 and 3
+  dataset2 = dataset2.map(d => {
+    d.color = colors[d.value];
+    return d;
+  });
+
+  dataset3 = dataset3.map(d => {
+    d.color = colors[d.value];
+    return d;
+  });
+
+
+
+  //set dataset 1 to start
+  update(dataset1);
+
+  //set dataset1 button background-color to lightpink to indicate it is selected
+  d3.select('#dataset1').style('background-color', 'lightpink');
+
+  d3.select('#dataset1')
+    .on('click', function(d) {
+      d3.selectAll('.button').style('background-color', '#ddd'); //reset color of all the buttons
+      d3.select(this).style('background-color', 'lightpink'); //set `this` button color
+      update(dataset1);
+    });
+
+  //🚧 implement buttons "dataset2" and "dataset3"
+
+  d3.select('#dataset2')
+    .on('click', function(d) {
+      d3.selectAll('.button').style('background-color', '#ddd'); //reset color of all the buttons
+      d3.select(this).style('background-color', 'lightpink'); //set `this` button color
+      update(dataset2);
+    });
+
+    d3.select('#dataset3')
+    .on('click', function(d) {
+      d3.selectAll('.button').style('background-color', '#ddd'); //reset color of all the buttons
+      d3.select(this).style('background-color', 'lightpink'); //set `this` button color
+      update(dataset3);
+    });
+
+  
+  d3.select('#svg')
+    .on('click', function() {
+      update(dataset1); //reset
+      
+      d3.selectAll('.button').style('background-color', '#ddd');
+      d3.select('#dataset1').style('background-color', 'lightpink')
+    });
+
+  function update(data) {
+    var svg = d3.select('#svg');
+    var rects = svg.selectAll('rect')
+      .data(data, d => d.key);
+
+    rects.exit()  // EXIT SELECTION -- here we decide to exit first
+      .transition()
+      .delay(1000)
+      .duration(1000)
+      .style('opacity', 0)
+      .remove();
+
+    var enter = rects.enter() // ENTER SELECTION
+      .append('rect')
+      .attr('fill', d => d.color)
+      .merge(rects) // UPDATE + ENTER SELECTION
+      .transition()
+      .duration(3000)
+      .delay((d, i) => i * 1000)
+      .attr('x', 0)
+      .attr('y', (d, i) => i * 25)
+      .attr('width', d => 100 + d.value * 100)
+      .attr('height', 20);
+  }
+</script>
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

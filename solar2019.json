@@ -1,0 +1,42 @@
+[
+    {
+        "name": "Canada",
+        "amount": 40790
+    },
+    {
+        "name": "China",
+        "amount": 224460
+    },
+    {
+        "name": "Germany",
+        "amount": 46392
+    },
+    {
+        "name": "India",
+        "amount": 50563
+    },
+    {
+        "name": "Japan",
+        "amount": 68952.571
+    },
+    {
+        "name": "Malaysia",
+        "amount": 9430.489
+    },
+    {
+        "name": "Singapore",
+        "amount": 4100
+    },
+    {
+        "name": "United Arab Emirates",
+        "amount": 3779.8
+    },
+    {
+        "name": "United Kingdom",
+        "amount": 12918.07
+    },
+    {
+        "name": "United States",
+        "amount": 97478.316
+    }
+]

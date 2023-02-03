@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex6</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+<body>
+
+  <h1>🏋🏽‍♂️ ex6: bar chart with sorting and transitions </h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex6: bar chart with sorting and transitions</li>
+    </ol>
+  </nav>
+
+  <h2>1. Sorting bars with smooth transitions</h2>
+
+  <div class="mb-2">Implement the code in the page and finish to implement where marked with 🚧.</div>
+
+  <div class="accordion mb-2" id="accordionOne">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Starter code to implement
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionOne">
+        <div class="accordion-body">
+          <pre><code class="HTML" data-trim data-noescape>&lt;style&gt;
+  .bar {
+    fill: #e25a0077;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+  }
+
+  .axis text {
+    font-family: Courier;
+    font-size: 12px;
+  }
+
+  text {
+    font-family: Courier;
+    font-size: 0.85em;
+  }
+
+  text.ylabel {
+    text-anchor: middle;
+    alignment-baseline: central;
+    transform: rotate(-90deg);
+  }
+
+  .super {
+    baseline-shift: super;
+    font-size: 0.7em;
+  }
+
+  .button {
+    border-radius: 3px;
+    background-color: #eee;
+    padding: 5px;
+    margin: 5px;
+    color: #444;
+    display: inline-block;
+    cursor: default;
+    font-family: Courier;
+    font-size: 0.85em;
+    font-weight: bold;
+    cursor: default;
+    user-select: none;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  svg {
+    display: block;
+    margin: auto;
+    background-color: #fafafa;
+  }
+&lt;/style&gt;
+
+&lt;div class="center"&gt;
+  &lt;h2&gt;Planets of the solar system&lt;/h2&gt;
+  Show
+  &lt;span class="button" id="distance"&gt;distance to sun&lt;/span&gt;
+  &lt;span class="button" id="temperature"&gt;temperature&lt;/span&gt;
+  &lt;span class="button" id="gravity"&gt;gravity&lt;/span&gt;
+  as a function of gravity (&lt;span&gt;m⋅s&lt;sup&gt;-2&lt;/sup&gt;&lt;/span&gt;)
+&lt;/div&gt;
+
+&lt;div id="chart"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var margin = { top: 20, left: 75, bottom: 50, right: 50 },
+    width = 850 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
+
+  var svg = d3.select('#chart')
+    .append('svg')
+    .attr('width', width + margin.left + margin.right)
+    .attr('height', height + margin.top + margin.bottom)
+    .append('g')
+    .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
+
+  var data;
+  d3.tsv('planets.tsv', d =&gt; {
+    return {
+      name: d.name,
+      gravity: +d.gravity,
+      temperature: +d.temperature,
+      distance: +d.distance,
+    };
+  }).then(result =&gt; {
+    data = result;
+    data.sort((a, b) =&gt; d3.ascending(a.distance, b.distance));  //sort data in ascending order by distance
+    draw();  //draw the bar chart
+    toggle('#distance');  //toggle distance button
+  });
+
+  ///////////////////////////////////////////////////////////////
+  // Controls
+  ///////////////////////////////////////////////////////////////
+
+  function toggle(id) {
+    d3.selectAll('.button')
+      .style('background-color', '#ddd');
+    d3.select(id)
+      .style('background-color', '#e25a0077');
+  }
+
+  //sort by distance button
+  d3.select('#distance')
+    .on('click', () =&gt; {
+      data.sort((a, b) =&gt; d3.ascending(a.distance, b.distance));  //sort data in ascending order by distance
+      x.domain(data.map(d =&gt; d.name));
+      transition();  //transition the bars
+      toggle('#distance');  //set controls
+    });
+
+  //sort by temperature button
+  d3.select('#temperature')
+    .on('click', () =&gt; {
+      //🚧 sort by temperature and transition bars and axis
+    });
+
+  //sort by gravity button
+  d3.select('#gravity')
+    .on('click', () =&gt; {
+      //🚧 sort by gravity and transition bars and axis
+    });
+
+  ///////////////////////////////////////////////////////////////
+  // axes and transitions
+  ///////////////////////////////////////////////////////////////
+
+  var x = d3.scaleBand();
+  var y = d3.scaleLinear();
+
+  var xAxis;
+  var delay = function (d, i) {
+    return i * 50;
+  };
+
+  function transition() {
+    var transition = svg.transition()  //set-up the transition
+      .duration(750)
+
+    transition  //transition the bars
+      .selectAll('rect')
+      .delay(delay)
+      .attr('x', d =&gt; x(d.name))
+
+    transition  //transition the axis
+      .select('#x-axis')
+      .call(xAxis);
+  }
+
+  ///////////////////////////////////////////////////////////////
+  // draw the chart
+  ///////////////////////////////////////////////////////////////
+
+  function draw() {
+    x.domain(data.map(d =&gt; d.name))
+      .range([0, width])
+      .paddingInner(0.2);
+
+    y.domain([0, d3.max(data, d =&gt; d.gravity)])
+      .range([height, 0]);
+
+    svg.selectAll('rect')
+      .data(data, d =&gt; d.name)
+      .enter()
+      .append('rect')
+      .attr('class', 'bar')
+      .attr('x', d =&gt; x(d.name))
+      .attr('y', d =&gt; y(d.gravity))
+      .attr('width', x.bandwidth())
+      .attr('height', d =&gt; height - y(d.gravity));
+
+    xAxis = d3.axisBottom()
+      .scale(x);
+
+    svg.append('g')
+      .attr('id', 'x-axis')
+      .attr('class', 'axis')
+      .attr('transform', 'translate(0,' + height + ')')
+      .call(xAxis);
+
+    var yAxis = d3.axisLeft()
+      .scale(y)
+      .ticks(5, 'd');
+
+    svg.append('g')
+      .attr('class', 'axis')
+      .call(yAxis);
+
+    svg.append('text')
+      .attr('x', - height / 2)
+      .attr('y', - margin.left * 0.6)
+      .attr('class', 'ylabel')
+      .append('tspan').text('Gravity (m⋅s')
+      .append('tspan').text('-2')
+      .attr('class', 'super')
+      .append('tspan').text(')');  //🚧 fix the last parenthesis in (m.s-2)
+  }
+&lt;/script&gt;</code></pre>          
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <!-- Add your code below! -->
+    <style>
+  .bar {
+    fill: #e25a0077;
+  }
+
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+  }
+
+  .axis text {
+    font-family: Courier;
+    
+    font-size: 12px;
+  }
+
+  text {
+    font-family: Courier;
+    alignment-baseline: central;
+    font-size: 0.85em;
+  }
+
+  text.ylabel {
+    text-anchor: middle;
+    alignment-baseline: central;
+    transform: rotate(-90deg);
+  }
+
+  .super {
+    baseline-shift: super;
+    font-size: 0.7em;
+  }
+
+  .button {
+    border-radius: 3px;
+    background-color: #eee;
+    padding: 5px;
+    margin: 5px;
+    color: #444;
+    display: inline-block;
+    cursor: default;
+    font-family: Courier;
+    font-size: 0.85em;
+    font-weight: bold;
+    cursor: default;
+    user-select: none;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  svg {
+    display: block;
+    margin: auto;
+    background-color: #fafafa;
+  }
+</style>
+
+<div class="center">
+  <h2>Planets of the solar system</h2>
+  Show
+  <span class="button" id="distance">distance to sun</span>
+  <span class="button" id="temperature">temperature</span>
+  <span class="button" id="gravity">gravity</span>
+  as a function of gravity (<span>m⋅s<sup>-2</sup></span>)
+</div>
+
+<div id="chart"></div>
+
+<script>
+  var margin = { top: 20, left: 75, bottom: 50, right: 50 },
+    width = 850 - margin.left - margin.right,
+    height = 350 - margin.top - margin.bottom;
+
+  var svg = d3.select('#chart')
+    .append('svg')
+    .attr('width', width + margin.left + margin.right)
+    .attr('height', height + margin.top + margin.bottom)
+    .append('g')
+    .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
+
+  var data;
+  d3.tsv('planets.tsv', d => {
+    return {
+      name: d.name,
+      gravity: +d.gravity,
+      temperature: +d.temperature,
+      distance: +d.distance,
+    };
+  }).then(result => {
+    data = result;
+    data.sort((a, b) => d3.ascending(a.distance, b.distance));  //sort data in ascending order by distance
+    draw();  //draw the bar chart
+    toggle('#distance');  //toggle distance button
+  });
+
+  ///////////////////////////////////////////////////////////////
+  // Controls
+  ///////////////////////////////////////////////////////////////
+
+  function toggle(id) {
+    d3.selectAll('.button')
+      .style('background-color', '#ddd');
+    d3.select(id)
+      .style('background-color', '#e25a0077');
+  }
+
+  //sort by distance button
+  d3.select('#distance')
+    .on('click', () => {
+      data.sort((a, b) => d3.ascending(a.distance, b.distance));  //sort data in ascending order by distance
+      x.domain(data.map(d => d.name));
+      transition();  //transition the bars
+      toggle('#distance');  //set controls
+    });
+
+  //sort by temperature button
+  d3.select('#temperature')
+    .on('click', () => {
+      data.sort((a, b) => d3.ascending(a.temperature, b.temperature));  //sort data in ascending order by distance
+      x.domain(data.map(d => d.name));
+      transition();  //transition the bars
+      toggle('#temperature');  //set controls
+      //🚧 sort by temperature and transition bars and axis
+    });
+
+  //sort by gravity button
+  d3.select('#gravity')
+    .on('click', () => {
+       data.sort((a, b) => d3.ascending(a.gravity, b.gravity));  //sort data in ascending order by distance
+      x.domain(data.map(d => d.name));
+      transition();  //transition the bars
+      toggle('#gravity');  //set controls
+      
+      //🚧 sort by gravity and transition bars and axis
+    });
+
+  ///////////////////////////////////////////////////////////////
+  // axes and transitions
+  ///////////////////////////////////////////////////////////////
+
+  var x = d3.scaleBand();
+  var y = d3.scaleLinear();
+
+  var xAxis;
+  var delay = function (d, i) {
+    return i * 50;
+  };
+
+  function transition() {
+    var transition = svg.transition()  //set-up the transition
+      .duration(750)
+
+    transition  //transition the bars
+      .selectAll('rect')
+      .delay(delay)
+      .attr('x', d => x(d.name))
+
+    transition  //transition the axis
+      .select('#x-axis')
+      .call(xAxis);
+  }
+
+  ///////////////////////////////////////////////////////////////
+  // draw the chart
+  ///////////////////////////////////////////////////////////////
+
+  function draw() {
+    x.domain(data.map(d => d.name))
+      .range([0, width])
+      .paddingInner(0.2);
+
+    y.domain([0, d3.max(data, d => d.gravity)])
+      .range([height, 0]);
+
+    svg.selectAll('rect')
+      .data(data, d => d.name)
+      .enter()
+      .append('rect')
+      .attr('class', 'bar')
+      .attr('x', d => x(d.name))
+      .attr('y', d => y(d.gravity))
+      .attr('width', x.bandwidth())
+      .attr('height', d => height - y(d.gravity));
+
+    xAxis = d3.axisBottom()
+      .scale(x);
+
+    svg.append('g')
+      .attr('id', 'x-axis')
+      .attr('class', 'axis')
+      .attr('transform', 'translate(0,' + height + ')')
+      .call(xAxis);
+
+    var yAxis = d3.axisLeft()
+      .scale(y)
+      .ticks(5, 'd');
+
+    svg.append('g')
+      .attr('class', 'axis')
+      .call(yAxis);
+
+    svg.append('text')
+      .attr('x', - height / 2)
+      .attr('y', - margin.left * 0.6)
+      .attr('class', 'ylabel')
+      .append('tspan').text('Gravity (m⋅s')
+      .append('tspan').text('-2')
+      .attr('class', 'super')
+      .select(function(){return this.parentNode;})
+      .append('tspan').text(')')
+      ;  //🚧 fix the last parenthesis in (m.s-2)??
+  }
+</script>
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>
