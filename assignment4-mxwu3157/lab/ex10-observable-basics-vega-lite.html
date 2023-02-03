@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex10</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css"/>
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+<body>
+
+  <h1>🏋🏽‍♂️ ex10: Observable basics and graphing with Vega-Lite's JavaScript API</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab 2</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex10: Observable basics and graphing with Vega-Lite's JavaScript API</li>
+    </ol>
+  </nav>
+
+  <h1>Demo</h1>
+
+  Observable:
+  <ul>
+    <li><a target="_blank" href="https://observablehq.com/guide/first-steps">First steps with observable</a></li>
+    <li><a target="_blank" href="https://observablehq.com/@observablehq/introduction-to-data">Introduction to Data</a></li>
+    <li><a target="_blank" href="https://observablehq.com/@observablehq/summary-table">Summary table</a></li>
+  </ul>
+
+  Observable Plot:
+  <ul>
+    <li><a target="_blank" href="https://observablehq.com/@observablehq/plot">Observable Plot</a></li>
+    <li><a target="_blank" href="https://observablehq.com/guide/athletes">Explore Olympic athletes with charts</a></li>
+    <li><a target="_blank" href="https://observablehq.com/guide/electricity">Analyze electricity usage vs.
+        temperature</a></li>
+  </ul>
+
+  Vega-lite API:
+  <ul>
+    <li><a target="_blank" href="https://observablehq.com/@uwdata/introduction-to-vega-lite">Introduction to Vega-Lite</a></li>
+    <li><a target="_blank" href="https://vega.github.io/vega-lite-api/">Vega-lite API</a> and <a target="_blank" href="https://observablehq.com/@vega/vega-lite-api-v5?collection=@vega/vega-lite-api">Vega-Lite API v5</a> notebooks</li>
+    <li><a target="_blank" href="https://observablehq.com/@uwdata/data-types-graphical-marks-and-visual-encoding-channels">Data Types, Graphical Marks, and Visual Encoding Channels</a></li>
+    <li><a target="_blank" href="https://observablehq.com/@uwdata/multi-view-composition?collection=@uwdata/visualization-curriculum">Multi-View Composition</a></li>
+    <li><a target="_blank" href="https://observablehq.com/@observablehq/vega-lite">Charting with Vega-Lite</a></li>
+    <li><a target="_blank" href="https://observablehq.com/collection/@vega/vega-lite-api">Vega-Lite API Collection</a></li>
+    <li><a target="_blank" href="https://vega.github.io/vega-lite-api/api/">Vega-Lite JavaScript API Reference</a></li>
+  </ul>
+
+  <h1>Exercises:</h1>
+
+  <ul>
+    <li>Create an Observable notebook and share it with the graders and instructor.</li>
+    <li>Update this <a href="https://observablehq.com/d/3f7f198ae4e4395a">link to your Observable notebook</a></li>
+    <li>Complete the exercises in the Observable notebook</li>
+  </ul>
+
+  <pre><code id="sample-code" class="markdown"># ex10: Observable notebook
+
+## 😜 Exercise 0
+
+1. load `data/iris.csv` in the notebook
+2. Create a summary table using the
+[summary table notebook](https://observablehq.com/@observablehq/summary-table)
+3. Transform the data using the code below and create a summary table of `irisTyped`
+
+```js
+irisTyped = iris.map(d => {
+  return {
+    sepal_length: +d.sepal_length,
+    sepal_width: +d.sepal_width,
+    petal_length: +d.petal_length,
+    petal_width: +d.petal_width,
+    species: d.species
+  }
+});
+```</code></pre>
+
+<pre><code id="sample-code" class="markdown">## 😜 Exercise 1
+Using the Vega-Lite's JavaScript API create a scatterplot of the `iris.csv` dataset:
+
+- map `x` to 'sepal_length' (use `.fieldQ(...)`) and set the title to 'Sepal length (cm)'
+- map `y` to 'sepal_width' (use `.fieldQ(...)`) and set the title to 'Sepal width (cm)'
+- set title of the plot to 'Iris dataset' (use `.title(...)`</code></pre>
+
+<pre><code id="sample-code" class="markdown">## 😜 Exercise 2
+
+Using the Vega-Lite's JavaScript API create a scatterplot of the `iris.csv` dataset:
+
+- map `x` to 'sepal_length' and set the title to 'Sepal length (cm)'
+- map `y` to 'sepal_width' and set the title to 'Sepal width (cm)'
+- map `color` to `species` and set the title to 'Species'
+- map `size` to `petal_length` and set the title to 'Petal length (cm)'
+- set title label to 'Iris dataset'</code></pre>
+
+<pre><code id="sample-code" class="markdown">## 🤔 Exercise 3
+
+Realize the plot of Exercise 2 using [vega-embed](https://observablehq.com/@mbostock/hello-vega-lite/2)</code></pre>
+
+<pre><code id="sample-code" class="markdown">## 🤔 Exercise 4
+
+Using the Vega-Lite's JavaScript API create a scatterplot of altitude over time:
+
+- load `data/SMO-VOR-2015.csv` in the notebook
+- map `x` to `ptime` and set the title to 'Penetration time'
+- map `y` to `alt` and set the title to 'Altitude (feets)'
+- set plot title to 'SMO VOR 2015 dataset'
+- add tooltips for 'flight'</code></pre>
+
+<pre><code id="sample-code" class="markdown">## 😜 Exercise 5
+
+Using the Vega-Lite's JavaScript API create a boxplot of altitude by month:
+
+- load `data/SMO-VOR-2015.csv` in the notebook
+- map `x` to 'month' and unset the title (use `title(null)`)
+- map `y` to 'alt' and set the title to 'Altitude (feets)'
+- map `color` to 'ops' and set the title to 'Operations'
+- set plot title to 'SMO VOR 2015 dataset'
+- add tooltips for 'flight'</code></pre>
+
+<pre><code id="sample-code" class="markdown">## 🤔 Exercise 6
+
+Using the Vega-Lite's JavaScript API create a histogram of the altitude:
+
+- load `data/SMO-VOR-2015.csv` in the notebook
+- map `x` to `alt`
+- set x axis label to 'Altitude (feets)'
+- set y axis label to 'Counts'
+- set title label to 'SMO VOR 2015 dataset'</code></pre>
+
+<pre><code id="sample-code" class="markdown">## 😜 Exercise 7
+
+Using the Vega-Lite's JavaScript API create histograms of altitude faceted by month:
+
+- load `data/SMO-VOR-2015.csv` in the notebook
+- map `x` to `alt`
+- set x axis label to 'Altitude (feets)'
+- set y axis label to 'Counts'
+- set title label to 'SMO VOR 2015 dataset'
+- facet by month with `vl.column().fieldT('ptime').timeUnit('utcmonth')`</code></pre>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>
