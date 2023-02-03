@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>DSCI 554 Assignment</title>
+        <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./lab/github-dark-dimmed.min.css">
+  <script src="./lab/highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-color@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-format@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-interpolate@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-time@3"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-time-format@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-scale@4"></script>
+  <script src="https://cdn.jsdelivr.net/npm/d3-array@3"></script>
+
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+  <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+    </head>
+
+    <body>
+        <div class="container p-5">
+            <h1>DSCI554-A8</h1>
+        <div>Meixian Wu <a href="mailto:meixianw@usc.edu">meixianw@usc.edu</a></div>
+        <div class="mx-auto my-5">
+            <h2>About Dataset</h2>
+            <p>
+                <a target="_blank"
+                    href="https://docs.google.com/spreadsheets/d/1VRXg7apK5vTooA-CawHi5BRqVkFjImrF8yFCFFL0n_g/edit?usp=sharing">Link</a>
+                UN dataset of my choice.
+            </p>
+            <p>
+                This dataset is the total solar power production of the 10
+                selected countries in million kilowatte-hours from 2004-2020.
+                The dataset is a subset from The Energy Statistics Database,
+                which contains comprehensive energy statistics on the
+                production, trade, conversion and final consumption of primary
+                and secondary; conventional and non-conventional; and new and
+                renewable sources of energy.
+            </p>
+        </div>
+        <div class="mx-auto my-5 row">
+            <h2 class="mt-2">1. Bubble chart</h2>
+            <p>The Bubble chart described the total solar power production of the 10
+                selected countries in million kilowatte-hours in 2019 for 10 countries selected by continent</p>
+
+         
+
+            <div class="col-md-8 mx-auto">
+                <svg width="960" height="500" id="vis_bubble"></svg>
+                <script src="https://d3js.org/d3.v7.min.js"></script>
+                <script src="bubble_obs.js"></script>
+            </div>
+        </div>
+
+
+        <div class="mx-auto my-5 row">
+            <h2 class="mt-2">2. Multi-line chart</h2>
+            <p>The Multi-line described the total solar power production of the 10
+                selected countries in million kilowatte-hours in 2016-2019 for 5 countries selected</p>
+
+        
+            <div class="col-md-8 mx-auto">
+                <svg width="960" height="500" id="vis_line"></svg>
+                <script src="https://d3js.org/d3.v7.min.js"></script>
+                <script src="line.js"></script>
+            </div>
+        </div>
+
+        <div class="mx-auto my-5 row">
+            <h2 class="mt-2">3. D3 pie chart</h2>
+            <p>The Pie chart described the total solar power production of the 10
+                selected countries in million kilowatte-hours in 2019 for 5 countries selected</p>
+
+         
+
+            <div class="col-md-8 mx-auto">
+                <svg width="960" height="500" id="vis_pie"></svg>
+                <script src="https://d3js.org/d3.v7.min.js"></script>
+                <script src="pie.js"></script>
+            </div>
+        </div>
+
+        
+</div>
+<footer class="text-center text-white" style="background-color: #d5d5d500;">
+  <!-- Grid container -->
+  <div class="container p-4"></div>
+  <!-- Grid container -->
+
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+   The End - 10/30/2022 DSCI554 A8
+  </div>
+</footer>
+
+    </body>
+
+</html>

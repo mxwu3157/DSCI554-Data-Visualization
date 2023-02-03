@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex5</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex5: histogram</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex5: histogram</li>
+    </ol>
+  </nav>
+
+  <h2>Demo: histogram in D3 code</h2>
+
+  <div>See <a target="_blank" href="https://observablehq.com/@d3/d3-bin">d3.bin</a>.</div>
+  
+  <div class="mt-2 accordion mb-2" id="accordionOne">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          D3 histogram code
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionOne">
+        <div class="accordion-body">
+
+          <pre><code class="HTML" data-trim data-noescape>&lt;style&gt;
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: black;
+    shape-rendering: crispEdges;
+  }
+
+  text {
+    stroke: none;
+    fill: black;
+  }
+
+  text.label {
+    font-size: 0.7em;
+    font-weight: bold;
+  }
+
+  .bar {
+    fill: orange;
+  }
+&lt;/style&gt;
+
+&lt;b&gt;Unemployment rate by county, August 2016.&lt;/b&gt;
+&lt;svg id="chart"&gt;&lt;/svg&gt;
+
+&lt;script&gt;
+  d3.csv('unemployment-x.csv', d =&gt; +d.rate)
+    .then(data =&gt; {
+      var margin = { top: 50, left: 100, bottom: 20, right: 50 },
+        width = 600 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+
+      var svg = d3.select('#chart')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
+
+      var x = d3.scaleLinear()
+        .domain([0, d3.max(data)])
+        .range([0, width])
+        .nice();
+
+      var bin = d3.bin();  // define binning operator used to generate bins: see https://observablehq.com/@d3/d3-bin
+
+      var thresholds = x.ticks(20);  //define the breaks for the bins: see https://observablehq.com/@d3/scale-ticks
+
+      var bin = d3.bin()
+        .domain(x.domain()) //use the entire domain of the data as returned from the bin scale
+        .thresholds(thresholds); //set thresholds
+
+      var bins = bin(data);  //generates the binned data
+
+      // and look for scale.nice
+      var y = d3.scaleLinear()
+        .domain([0, d3.max(bins, d =&gt; d.length)])
+        .range([height, 0])
+        .nice();  //extend input to the nearest value for start and end: see https://observablehq.com/@d3/d3-scalelinear
+
+      var bar = svg.selectAll('.bar')
+        .data(bins)  //data join with bins
+        .enter()
+        .append('g')
+        .attr('class', 'bar')
+        .attr('transform', d =&gt; 'translate(' + x(d.x0) + ',' + y(d.length) + ')');
+
+      bar.append('rect')
+        .attr('x', 0)
+        .attr('width', d =&gt; x(d.x1) - x(d.x0))
+        .attr('height', d =&gt; height - y(d.length));
+
+      var xAxis = d3.axisBottom()
+        .scale(x);
+
+      svg.append('g')
+        .attr('class', 'axis')
+        .attr('transform', 'translate(0,' + height + ')')
+        .call(xAxis);
+
+      var yAxis = d3.axisLeft()
+        .scale(y)
+        .ticks(10, '.0f');
+
+      svg.append('g')
+        .attr('class', 'axis')
+        .call(yAxis);
+
+      svg.append('text')
+        .attr('x', 5)
+        .attr('y', 5)
+        .attr('class', 'label')
+        .text('Counties');
+
+      svg.append('text')
+        .attr('x', 0.75 * width)
+        .attr('y', height - 5)
+        .attr('class', 'label')
+        .text('Unemployment (%)');
+    });
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: black;
+      shape-rendering: crispEdges;
+    }
+
+    text {
+      stroke: none;
+      fill: black;
+    }
+
+    text.label {
+      font-size: 0.7em;
+      font-weight: bold;
+    }
+
+    .bar {
+      fill: orange;
+    }
+  </style>
+
+  <div class="mt-3 text-center"><h4>Unemployment rate by county, August 2016.</h4>
+    <svg id="chart"></svg>
+  </div>
+
+  <script>
+    d3.csv('unemployment-x.csv', d => +d.rate)
+      .then(data => {
+        var margin = { top: 50, left: 100, bottom: 20, right: 50 },
+          width = 600 - margin.left - margin.right,
+          height = 400 - margin.top - margin.bottom;
+
+        var svg = d3.select('#chart')
+          .attr('width', width + margin.left + margin.right)
+          .attr('height', height + margin.top + margin.bottom)
+          .append('g')
+          .attr('transform', 'translate(' + margin.left + ', ' + margin.top + ')');
+
+        var x = d3.scaleLinear()
+          .domain([0, d3.max(data)])
+          .range([0, width])
+          .nice();
+
+        var bin = d3.bin();  // define binning operator used to generate bins: see https://observablehq.com/@d3/d3-bin
+
+        var thresholds = x.ticks(20);  //define the breaks for the bins: see https://observablehq.com/@d3/scale-ticks
+
+        var bin = d3.bin()
+          .domain(x.domain()) //use the entire domain of the data as returned from the bin scale
+          .thresholds(thresholds); //set thresholds
+
+        var bins = bin(data);  //generates the binned data
+
+        // and look for scale.nice
+        var y = d3.scaleLinear()
+          .domain([0, d3.max(bins, d => d.length)])
+          .range([height, 0])
+          .nice();  //extend input to the nearest value for start and end: see https://observablehq.com/@d3/d3-scalelinear
+
+        var bar = svg.selectAll('.bar')
+          .data(bins)  //data join with bins
+          .enter()
+          .append('g')
+          .attr('class', 'bar')
+          .attr('transform', d => 'translate(' + x(d.x0) + ',' + y(d.length) + ')');
+
+        bar.append('rect')
+          .attr('x', 0)
+          .attr('width', d => x(d.x1) - x(d.x0))
+          .attr('height', d => height - y(d.length));
+
+        var xAxis = d3.axisBottom()
+          .scale(x);
+
+        svg.append('g')
+          .attr('class', 'axis')
+          .attr('transform', 'translate(0,' + height + ')')
+          .call(xAxis);
+
+        var yAxis = d3.axisLeft()
+          .scale(y)
+          .ticks(10, '.0f');
+
+        svg.append('g')
+          .attr('class', 'axis')
+          .call(yAxis);
+
+        svg.append('text')
+          .attr('x', 5)
+          .attr('y', 5)
+          .attr('class', 'label')
+          .text('Counties');
+
+        svg.append('text')
+          .attr('x', 0.75 * width)
+          .attr('y', height - 5)
+          .attr('class', 'label')
+          .text('Unemployment (%)');
+      });
+  </script>
+
+  <h2 class="mt-2">1. D3 histogram from Observable</h2>
+
+  <div>Implement <a href="https://observablehq.com/@d3/histogram" target="_blank">this Observable histogram</a></div>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <!-- Your answer below -->
+    <svg width="960" height="500" id="vis1"></svg>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script>
+      // Copyright 2021 Observable, Inc.
+// Released under the ISC license.
+// https://observablehq.com/@d3/histogram
+function Histogram(data, {
+  value = d => d, // convenience alias for x
+  domain, // convenience alias for xDomain
+  label, // convenience alias for xLabel
+  format, // convenience alias for xFormat
+  type = d3.scaleLinear, // convenience alias for xType
+  x = value, // given d in data, returns the (quantitative) x-value
+  y = () => 1, // given d in data, returns the (quantitative) weight
+  thresholds = 40, // approximate number of bins to generate, or threshold function
+  normalize, // whether to normalize values to a total of 100%
+  marginTop = 20, // top margin, in pixels
+  marginRight = 30, // right margin, in pixels
+  marginBottom = 30, // bottom margin, in pixels
+  marginLeft = 40, // left margin, in pixels
+  width = 640, // outer width of chart, in pixels
+  height = 400, // outer height of chart, in pixels
+  insetLeft = 0.5, // inset left edge of bar
+  insetRight = 0.5, // inset right edge of bar
+  xType = type, // type of x-scale
+  xDomain = domain, // [xmin, xmax]
+  xRange = [marginLeft, width - marginRight], // [left, right]
+  xLabel = label, // a label for the x-axis
+  xFormat = format, // a format specifier string for the x-axis
+  yType = d3.scaleLinear, // type of y-scale
+  yDomain, // [ymin, ymax]
+  yRange = [height - marginBottom, marginTop], // [bottom, top]
+  yLabel = "↑ Frequency", // a label for the y-axis
+  yFormat = normalize ? "%" : undefined, // a format specifier string for the y-axis
+  color = "currentColor" // bar fill color
+} = {}) {
+  // Compute values.
+  const X = d3.map(data, x);
+  const Y0 = d3.map(data, y);
+  const I = d3.range(X.length);
+
+  // Compute bins.
+  const bins = d3.bin().thresholds(thresholds).value(i => X[i])(I);
+  const Y = Array.from(bins, I => d3.sum(I, i => Y0[i]));
+  if (normalize) {
+    const total = d3.sum(Y);
+    for (let i = 0; i < Y.length; ++i) Y[i] /= total;
+  }
+
+  // Compute default domains.
+  if (xDomain === undefined) xDomain = [bins[0].x0, bins[bins.length - 1].x1];
+  if (yDomain === undefined) yDomain = [0, d3.max(Y)];
+
+  // Construct scales and axes.
+  const xScale = xType(xDomain, xRange);
+  const yScale = yType(yDomain, yRange);
+  const xAxis = d3.axisBottom(xScale).ticks(width / 80, xFormat).tickSizeOuter(0);
+  const yAxis = d3.axisLeft(yScale).ticks(height / 40, yFormat);
+  yFormat = yScale.tickFormat(100, yFormat);
+
+  const svg = d3.create("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr("viewBox", [0, 0, width, height])
+      .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+
+  svg.append("g")
+      .attr("transform", `translate(${marginLeft},0)`)
+      .call(yAxis)
+      .call(g => g.select(".domain").remove())
+      .call(g => g.selectAll(".tick line").clone()
+          .attr("x2", width - marginLeft - marginRight)
+          .attr("stroke-opacity", 0.1))
+      .call(g => g.append("text")
+          .attr("x", -marginLeft)
+          .attr("y", 10)
+          .attr("fill", "currentColor")
+          .attr("text-anchor", "start")
+          .text(yLabel));
+
+  svg.append("g")
+      .attr("fill", color)
+    .selectAll("rect")
+    .data(bins)
+    .join("rect")
+      .attr("x", d => xScale(d.x0) + insetLeft)
+      .attr("width", d => Math.max(0, xScale(d.x1) - xScale(d.x0) - insetLeft - insetRight))
+      .attr("y", (d, i) => yScale(Y[i]))
+      .attr("height", (d, i) => yScale(0) - yScale(Y[i]))
+    .append("title")
+      .text((d, i) => [`${d.x0} ≤ x < ${d.x1}`, yFormat(Y[i])].join("\n"));
+
+  svg.append("g")
+      .attr("transform", `translate(0,${height - marginBottom})`)
+      .call(xAxis)
+      .call(g => g.append("text")
+          .attr("x", width - marginRight)
+          .attr("y", 27)
+          .attr("fill", "currentColor")
+          .attr("text-anchor", "end")
+          .text(xLabel));
+
+  return svg.node();
+}
+var parseTime = d3.timeParse("%d-%b-%y");
+
+d3.csv("unemployment-x.csv", d => { 
+  return {
+    rate: +d.rate
+};}).then(unemployment =>{
+  var chart = Histogram(unemployment, {
+  value: d => d.rate,
+  label: "Unemployment rate (%) →",
+  width:900,
+  height: 500,
+  color: "steelblue"
+})
+d3.select('#vis1').node().appendChild(chart);
+});
+    </script>
+
+  </div>
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

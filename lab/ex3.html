@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex3</title>
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex3: using color scales</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex3: using color scales</li>
+    </ol>
+  </nav>
+
+  <h2>Demo: basic d3 color scales</h2>
+
+  <div>We use here <a target="_blank" href="https://github.com/d3/d3-scale-chromatic">d3-scale-chromatic</a> that is a
+    module
+    that provides sequential, diverging and categorical color schemes designed to work with d3-scale’s d3.scaleOrdinal and
+    d3.scaleSequential. Most of these schemes in d3-scale-chromatic are derived from Cynthia A. Brewer’s <a
+      target="_blank" href="https://colorbrewer2.org/">ColorBrewer</a>.
+    Since ColorBrewer publishes only discrete color schemes, the sequential and diverging scales are interpolated using
+    uniform B-splines.
+  </div>
+
+  <div class="mt-2 accordion mb-2" id="accordionOne">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Code used to render the scales
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionOne">
+        <div class="accordion-body">
+
+          <pre><code class="HTML" data-trim data-noescape>&lt;div id="scales" style="background-color: white; font-size: 0.85em"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+  var drawScale = (scale, description, data) =&gt; {
+  var card = d3.select('#scales')
+      .append('div')
+      .html(description)
+      .style('color', 'black')
+      .attr('class', 'card p-2 mb-2');
+
+    data.map(v =&gt; {
+      card
+        .append('div')
+        .text('scale(' + v + ')=' + scale(v))
+        .style('background-color', scale(v))
+        .attr('class', 'p-2 mt-2');
+    });
+  };
+
+  ////
+  var scale = d3.scaleLinear()
+    .domain([0, 1])
+    .range(['rgb(255, 245, 235)', 'rgb(127, 39, 4)']);
+
+  drawScale(scale, 
+    `&lt;h3&gt;scaleLinear&lt;/h3&gt;
+    Scale with a linear relationship between input and output.
+    &lt;pre&gt;&lt;code class="js"&gt;scale = d3.scaleLinear()
+.domain([0, 1])
+.range(['rgb(255, 245, 235)', 'rgb(127, 39, 4)']);&lt;/code&gt;&lt;/pre&gt;`, 
+    [0, 0.25, 0.5, 0.75, 1]);
+
+  ////
+  scale = d3.scaleSequential(d3.interpolateOranges);
+  drawScale(scale, 
+    `&lt;h3&gt;scaleSequential&lt;/h3&gt;
+    &lt;div&gt;Sequential scale with domain and interpolator function.
+    The &lt;a target="_blank" href="https://github.com/d3/d3-scale-chromatic#interpolateOranges"&gt;d3.interpolateOranges&lt;/a&gt; 
+    interpolator is from &lt;a target="_blank" href="https://github.com/d3/d3-scale-chromatic"&gt;d3-scale-chromatic&lt;/a&gt;.&lt;/div&gt;
+    &lt;pre&gt;&lt;code class="js"&gt;scale = d3.scaleSequential(d3.interpolateOranges);&lt;/code&gt;&lt;/pre&gt;`, 
+    [0, 0.25, 0.5, 0.75, 1]);
+
+  ////
+  scale = d3.scaleDiverging(d3.interpolateRdBu);
+  drawScale(scale, 
+    `&lt;h3&gt;scaleDiverging&lt;/h3&gt;
+    &lt;div&gt;Same as sequential for diverging scales.
+    The &lt;a target="_blank" href="https://github.com/d3/d3-scale-chromatic#interpolateRdBu"&gt;d3.interpolateRdBu&lt;/a&gt;
+    interpolator is from &lt;a target="_blank" href="https://github.com/d3/d3-scale-chromatic"&gt;d3-scale-chromatic&lt;/a&gt;.&lt;/div&gt;
+    &lt;pre&gt;&lt;code class="js"&gt;scale = d3.scaleDiverging(d3.interpolateRdBu);&lt;/code&gt;&lt;/pre&gt;`, 
+    [0, 0.25, 0.5, 0.75, 1]);
+
+  ////
+  scale = d3.scaleQuantize()
+    .domain([0, 1])
+    .range(['blue', 'red']);
+  drawScale(scale, 
+    `&lt;h3&gt;scaleQuantize&lt;/h3&gt;
+    Same as linear with a discrete range
+    &lt;pre&gt;&lt;code class="js"&gt;scale = d3.scaleQuantize()
+.domain([0, 1])
+.range(['blue', 'red']);&lt;/code&gt;&lt;/pre&gt;`,
+    [0, 0.49, 0.51, 1]);
+
+  ////
+  var data = [0.02, 0.04, 0.06, 0.08, 0.10];
+  scale = d3.scaleThreshold()
+    .domain(data)  //breaks
+    .range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
+
+  drawScale(scale,
+    `&lt;h3&gt;scaleThreshold&lt;/h3&gt;
+    &lt;div&gt;Similar to quantize mapping arbitrary subsets of the domain to discrete values in the range
+      &lt;pre&gt;&lt;code class="js"&gt;data = [0.02, 0.04, 0.06, 0.08, 0.10];
+scale = d3.scaleThreshold()
+.domain(data)  //breaks
+.range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);&lt;/code&gt;&lt;/pre&gt;`, 
+  [0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10]);
+
+  ////
+  data = [0, 15, 16, 39, 40, 67, 68, 100];
+  scale = d3.scaleQuantile()
+    .domain(data)
+    .range(['blue', 'orange', 'green', 'purple']);
+
+  drawScale(scale,
+    `&lt;h3&gt;scaleQuantile&lt;/h3&gt;
+    &lt;div&gt;Map sampled input domain to a discrete range. 
+    Domain values sorted and treated as a population sample. 
+    &lt;pre&gt;&lt;code class="js"&gt;data = [0, 15, 16, 39, 40, 67, 68, 100];  //Q1=15.75, Q2=43.12, Q3=67.25
+scale = d3.scaleQuantile()
+.domain(data)
+.range(['blue', 'orange', 'green', 'purple']);&lt;/code&gt;&lt;/pre&gt;`,
+    [0, 15, 16, 39, 40, 67, 68, 100]);
+
+  ////
+  data = ["Spain", "France", "Italy"];
+  scale = d3.scaleOrdinal()
+    .domain(data)
+    .range(['purple', 'green', 'blue']);
+
+  drawScale(scale, 
+    `&lt;h3&gt;scaleOrdinal&lt;/h3&gt;
+    &lt;div&gt;Discrete domain and range
+    &lt;pre&gt;&lt;code class="js"&gt;data = ["Spain", "France", "Italy"];
+scale = d3.scaleOrdinal()
+.domain(data)
+.range(['purple', 'green', 'blue']);&lt;/code&gt;&lt;/pre&gt;`,
+
+    ["Italy", "France", "Spain"]);
+&lt;/script&gt;</code></pre>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="scales" style="background-color: white; font-size: 0.85em"></div>
+
+  <script>
+    var drawScale = (scale, description, data) => {
+    var card = d3.select('#scales')
+        .append('div')
+        .html(description)
+        .style('color', 'black')
+        .attr('class', 'card p-2 mb-2');
+
+      data.map(v => {
+        card
+          .append('div')
+          .text('scale(' + v + ')=' + scale(v))
+          .style('background-color', scale(v))
+          .attr('class', 'p-2 mt-2');
+      });
+    };
+
+    ////
+    var scale = d3.scaleLinear()
+      .domain([0, 1])
+      .range(['rgb(255, 245, 235)', 'rgb(127, 39, 4)']);
+
+    drawScale(scale, 
+      `<h3>scaleLinear</h3>
+      Scale with a linear relationship between input and output.
+      <pre><code class="js">scale = d3.scaleLinear()
+  .domain([0, 1])
+  .range(['rgb(255, 245, 235)', 'rgb(127, 39, 4)']);</code></pre>`, 
+      [0, 0.25, 0.5, 0.75, 1]);
+
+    ////
+    scale = d3.scaleSequential(d3.interpolateOranges);
+    drawScale(scale, 
+      `<h3>scaleSequential</h3>
+      <div>Sequential scale with domain and interpolator function.
+      The <a target="_blank" href="https://github.com/d3/d3-scale-chromatic#interpolateOranges">d3.interpolateOranges</a> 
+      interpolator is from <a target="_blank" href="https://github.com/d3/d3-scale-chromatic">d3-scale-chromatic</a>.</div>
+      <pre><code class="js">scale = d3.scaleSequential(d3.interpolateOranges);</code></pre>`, 
+      [0, 0.25, 0.5, 0.75, 1]);
+
+    ////
+    scale = d3.scaleDiverging(d3.interpolateRdBu);
+    drawScale(scale, 
+      `<h3>scaleDiverging</h3>
+      <div>Same as sequential for diverging scales.
+      The <a target="_blank" href="https://github.com/d3/d3-scale-chromatic#interpolateRdBu">d3.interpolateRdBu</a>
+      interpolator is from <a target="_blank" href="https://github.com/d3/d3-scale-chromatic">d3-scale-chromatic</a>.</div>
+      <pre><code class="js">scale = d3.scaleDiverging(d3.interpolateRdBu);</code></pre>`, 
+      [0, 0.25, 0.5, 0.75, 1]);
+
+    ////
+    scale = d3.scaleQuantize()
+      .domain([0, 1])
+      .range(['blue', 'red']);
+    drawScale(scale, 
+      `<h3>scaleQuantize</h3>
+      Same as linear with a discrete range
+      <pre><code class="js">scale = d3.scaleQuantize()
+  .domain([0, 1])
+  .range(['blue', 'red']);</code></pre>`,
+      [0, 0.49, 0.51, 1]);
+
+    ////
+    var data = [0.02, 0.04, 0.06, 0.08, 0.10];
+    scale = d3.scaleThreshold()
+      .domain(data)  //breaks
+      .range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);
+
+    drawScale(scale,
+      `<h3>scaleThreshold</h3>
+      <div>Similar to quantize mapping arbitrary subsets of the domain to discrete values in the range
+        <pre><code class="js">data = [0.02, 0.04, 0.06, 0.08, 0.10];
+scale = d3.scaleThreshold()
+  .domain(data)  //breaks
+  .range(["#f2f0f7", "#dadaeb", "#bcbddc", "#9e9ac8", "#756bb1", "#54278f"]);</code></pre>`, 
+    [0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10]);
+
+    ////
+    data = [0, 15, 16, 39, 40, 67, 68, 100];
+    scale = d3.scaleQuantile()
+      .domain(data)
+      .range(['blue', 'orange', 'green', 'purple']);
+
+    drawScale(scale,
+      `<h3>scaleQuantile</h3>
+      <div>Map sampled input domain to a discrete range. 
+      Domain values sorted and treated as a population sample. 
+      <pre><code class="js">data = [0, 15, 16, 39, 40, 67, 68, 100];  //Q1=15.75, Q2=43.12, Q3=67.25
+scale = d3.scaleQuantile()
+  .domain(data)
+  .range(['blue', 'orange', 'green', 'purple']);</code></pre>`,
+      [0, 15, 16, 39, 40, 67, 68, 100]);
+
+    ////
+    data = ["Spain", "France", "Italy"];
+    scale = d3.scaleOrdinal()
+      .domain(data)
+      .range(['purple', 'green', 'blue']);
+
+    drawScale(scale, 
+      `<h3>scaleOrdinal</h3>
+      <div>Discrete domain and range
+      <pre><code class="js">data = ["Spain", "France", "Italy"];
+scale = d3.scaleOrdinal()
+  .domain(data)
+  .range(['purple', 'green', 'blue']);</code></pre>`,
+
+      ["Italy", "France", "Spain"]);
+  </script>
+
+  <h2 class="mt-2">1. Diverging color scale</h2>
+
+  <div>Implement a legend for the ColorBrewer scale you suggested in ex2.1</div>
+
+  <ol>
+    <li>Use auto-complete in the console to verify that the scheme you selected is available in d3</li>
+    <li>Update the code in the Answer to draw the keys.</li>
+  </ol>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <div id="scale1" style="background-color: white; font-size: 0.85em"></div>
+    <script>
+      var drawScale = (scale, data) => {
+    var card = d3.select('#scale1')
+        .append('div')
+        .attr('class', 'card p-2 mb-2');
+
+      data.map(v => {
+        card
+          .append('div')
+          .text('scale(' + v + ')=' + scale(v))
+          .style('background-color', scale(v))
+          .attr('class', 'p-2 mt-2');
+      });
+    };
+       scale = d3.scaleDiverging(d3.interpolateRdBu);
+    drawScale(scale, 
+      [0, 0.167, 0.333, 0.5, 0.667, 0.833, 1]);
+    </script>
+
+    <div>
+      ColorBrewer color scale: 7-class RdBu
+      <!-- Your answer below -->
+      
+      
+    </div>
+    <div>
+      D3 scale: scaleDiverging
+      <!-- Your answer below -->
+    </div>
+    <div>
+      D3 scheme: d3.interpolateRdBu
+      <!-- Your answer below -->
+    </div>
+    <div>
+      Color scale keys:
+      <!-- Your answer below -->
+      [#b2182b, 
+#ef8a62, 
+#fddbc7, 
+#f7f7f7, 
+#d1e5f0, 
+#67a9cf, 
+#2166ac]
+    </div>    
+  </div>
+
+  <h2 class="mt-2">2. Preventing Mach bands color scale</h2>
+
+  <div>Use the code of exercise 1 to implement a color scale for the colors of the <a
+      target="_blank" href="https://en.wikipedia.org/wiki/Mach_bands#/media/File:Bandes_de_mach.PNG">Mach bands example in Wikipedia</a>.
+    Modify the code to prevent the Mach band effect.</div>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <div>
+      Color scale keys rendered to prevent Mach bands:
+      <!-- Your answer below -->
+       <div id="scale2" style="background-color: white; font-size: 0.85em"></div>
+       <script>
+      var drawScale = (scale, data) => {
+    var card = d3.select('#scale2')
+        .append('div')
+        .attr('class', 'card p-2 mb-2');
+
+      data.map(v => {
+        card
+          .append('div')
+          // .text('scale(' + v + ')=' + scale(v))
+          .style('background-color', scale(v))
+          .attr('class', 'p-3 mt-3');
+      });
+    };
+       scale2 = d3.scaleSequential(d3.interpolateGreys);
+    drawScale(scale2, 
+      [0, 0.167, 0.333, 0.5, 0.667, 0.833, 1]);
+    </script>
+    </div>
+    
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

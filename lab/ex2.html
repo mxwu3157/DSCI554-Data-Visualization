@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex2</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex2: assessing color issues</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex2: assessing color issues</li>
+    </ol>
+  </nav>
+
+  <div>We will use Dev Tools to identify and remediate color related issues in graphics.</div>
+
+  <h2>Demo: tools to assess and resolve vision deficiency, color scales problems and color contrast problems</h2>
+
+  <div class="mb-2"><b>Dev Tools Rendering tools</b> allows to simulate vision deficiencies including blurred vision and color
+    vision deficiency (color blindness). To access Dev Tools Rendering open <kbd>⠇ menu > More tools >
+      Rendering</kbd> and open the <kbd>Emulate vision deficiencies</kbd> drop-down at the bottom.</div>
+  
+  <div class="mb-2"><b>ColorBrewer</b>. <a target="_blank" href="https://colorbrewer2.org/" target=”_blank”>ColorBrewer</a> offers choices of
+    sequential, diverging and qualitative color scales, including color blind safe scales.</div>
+  
+  <div class="mb-2"><b>Dev Tools color accessibility tools</b>. Watch <a target="_blank" href="https://www.youtube.com/watch?v=sEDnmNtEaqQ" target=”_blank”>Accessible Color Standards -
+      Designing in the Browser</a> to learn to adjust a text color contrast.</div>
+  </div>
+  
+  <div class="alert alert-info">💡 <b>WebAIM color accessibility levels:</b>
+    <div>
+      Level A: basic requirement for some users with disabilities to be able to access and use web content -- color
+      contrast of 3:1<br>
+      Level AA: overall accessibility and removal of significant barriers to accessing content -- color contrast of
+      4.5:1<br>
+      Level AAA: provides improvements and enhancements to web accessibility for some users with disabilities -- color
+      contrast of 7:1
+    </div>
+  </div>
+
+  <div class="alert alert-info">💡 <b>Copying color values using Dev Tools:</b>
+    <div>
+      You can use Dev Tools color picker to copy color values in various formats, e.g., hexadecimal. 
+    </div>
+  </div>  
+
+  <h2 class="mt-2">1. Spotting and resolving vision deficiency related problems</h2>
+
+  <div>Use Dev Tools Rendering to find what vision deficiencies problems are present in the following chart. Propose solutions to resolve them.</div>
+
+  <div class="m-3 text-center">
+    <a target="_blank" href="spain-elections.png"><img height="400px" src="spain-elections.png"></a>
+  </div>
+
+  <div class="card p-3">
+    <div>Answer</div>
+    <table class="table table-striped">
+      <tr>
+        <th>Type of deficiency</th>
+        <th>Description</th>
+        <th>Proposed solution</th>
+      </tr>
+      <tr>
+        <td>Blurred Vision</td>
+        <td>Objects seemed are not sharp and clear</td>
+        <td>To help, increase the text font size. Or even the size of visualization</td>
+      </tr>
+      <tr>
+        <td>Protanopia</td>
+        <td>Blindness to red is known as protanopia, a state in which the red cones are absent, leaving only the cones that absorb blue and green light</td>
+        <td>Use sequential color scale for visualization, instead of diverging scale</td>
+      </tr>
+       <tr>
+        <td>Deuteranopia</td>
+        <td>Deuteranopia is a type of red-green color blindness characterized by the inability to distinguish red and green pigments.</td>
+        <td>Use sequential color scale for visualization, instead of diverging scale</td>
+      </tr>
+       <tr>
+        <td>Tritanopia</td>
+        <td>Blue-yellow colour blindness are known: tritanopia (blindness to blue, usually with the inability to distinguish between blue and yellow), which occurs when blue cones are absent; and tritanomaly (reduced sensitivity to blue), which arises from the abnormal function of blue cones.</td>
+        <td>Tritanopia can still distinguish the diverging scale. The visualization is fine</td>
+      </tr>
+       <tr>
+        <td>Achromatopsia</td>
+        <td>Achromatopsia is a rare, bilateral inherited retinal degeneration affecting all three types of cone photoreceptor cells that results in reduced visual acuity, photophobia, hemeralopia, and severe loss of color discrimination.</td>
+        <td>Use Sequential scale to distinguish the scale</td>
+      </tr>
+    </table>
+  </div>
+
+  <h2 class="mt-2">2. Color accessibility</h2>
+
+  <h3 class="mt-3">Question 1: Complete the table in the answer adjusting the text color to achieve color
+    accessibility levels of A, AA and AAA.</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <table class="table">
+      <tr>
+        <th>Sample</th>
+        <th>Text color</th>
+        <th>Background color</th>
+        <th>Contrast ratio</th>
+        <th>Level</th>
+      </tr>
+
+      <tr>
+        <td width="50%" style="color: #414160; background-color: #000000;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magnav aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </td>
+        <td><svg width="15px" height="15px" style="background-color: #414160;"></svg> #414160</td>
+        <td><svg width="15px" height="15px" style="background-color: #000000;"></svg> #000000</td>
+        <td>2.14:1</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td width="50%" style="color: #5F5F96; background-color: #000000;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magnav aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </td>
+        <td><svg width="15px" height="15px" style="background-color: #5F5F96"></svg>#5F5F96</td>
+        <td><svg width="15px" height="15px" style="background-color: #000000;"></svg> #000000</td>
+        <td>3.56:1</td>
+        <td>A</td>
+      </tr>
+
+      <tr>
+        <td width="50%" style="color: #7474df; background-color: #000000;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magnav aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </td>
+        <td><svg width="15px" height="15px" style="background-color:#7474df"></svg>#7474df</td>
+        <td><svg width="15px" height="15px" style="background-color: #000000;"></svg> #000000</td>
+        <td>5.3:1</td>
+        <td>AA</td>
+      </tr>
+
+      <tr>
+        <td width="50%" style="color: #a1a1e4; background-color: #000000;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magnav aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </td>
+        <td><svg width="15px" height="15px" style="background-color:#a1a1e4"></svg>#a1a1e4</td>
+        <td><svg width="15px" height="15px" style="background-color: #000000;"></svg> #000000</td>
+        <td>8.73:1</td>
+        <td>AAA</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3 class="mt-3">Question 2: Complete the table in the answer adjusting the text color to achieve color
+    accessibility levels of A, AA and AAA.</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <table class="table">
+      <tr>
+        <th>Sample</th>
+        <th>Text</th>
+        <th>Background</th>
+        <th>Contrast ratio</th>
+        <th>Level</th>
+      </tr>
+
+      <tr>
+        <td width="50%" style="color: #fff200; background-color: #FFFFFF;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magnav aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </td>
+        <td><svg width="15px" height="15px" style="background-color:#fff200"></svg>#fff200</td>
+        <td><svg width="15px" height="15px" style="border: 1px solid black; background-color: #fff;"></svg> #fff</td>
+        <td>1.16:1</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td width="50%" style="color: #91907a; background-color: #FFFFFF;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magnav aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </td>
+        <td><svg width="15px" height="15px" style="background-color:#91907a"></svg>#91907a</td>
+        <td><svg width="15px" height="15px" style="border: 1px solid black; background-color: #fff;"></svg> #fff</td>
+        <td>3.24:1</td>
+        <td>A</td>
+      </tr>
+
+      <tr>
+        <td width="50%" style="color: #6c6b4d; background-color: #FFFFFF;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magnav aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </td>
+        <td><svg width="15px" height="15px" style="background-color:#6c6b4d"></svg>#6c6b4d</td>
+        <td><svg width="15px" height="15px" style="border: 1px solid black; background-color: #fff;"></svg> #fff</td>
+        <td>5.45</td>
+        <td>AA</td>
+      </tr>
+
+      <tr>
+        <td width="50%" style="color: #292808; background-color: #FFFFFF;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magnav aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </td>
+        <td><svg width="15px" height="15px" style="background-color:#292808"></svg>#292808</td>
+        <td><svg width="15px" height="15px" style="border: 1px solid black; background-color: #fff;"></svg> #fff</td>
+        <td>14.98</td>
+        <td>AAA</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3 class="mt-3">Question 3: Complete the table in the answer adjusting the text or background colors to achieve color
+    accessibility levels of A, AA and AAA.</h3>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <table class="table">
+      <tr>
+        <th>Sample</th>
+        <th>Text</th>
+        <th>Background</th>
+        <th>Contrast ratio</th>
+        <th>Level</th>
+      </tr>
+
+      <tr>
+        <td width="50%" style="color: #316831; background-color: #825c5c;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magnav aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </td>
+        <td><svg width="15px" height="15px" style="background-color: #316831"></svg>#316831</td>
+        <td><svg width="15px" height="15px" style="background-color: #825c5c"></svg>#825c5c</td>
+        <td>1.15</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td width="50%" style="color: #95e795; background-color: #825c5c;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magnav aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </td>
+        <td><svg width="15px" height="15px" style="background-color:#95e795"></svg>#95e795</td>
+        <td><svg width="15px" height="15px" style="background-color:#825c5c"></svg>#825c5c</td>
+        <td>3.89</td>
+        <td>A</td>
+      </tr>
+
+      
+
+      <tr>
+        <td width="50%" style="color: #316831; background-color: #0202020f;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magnav aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </td>
+        <td><svg width="15px" height="15px" style="background-color:#316831"></svg>#316831</td>
+        <td><svg width="15px" height="15px" style="background-color:#0202020f"></svg>#0202020f</td>
+        <td>5.84</td>
+        <td>AA</td>
+      </tr>
+      <tr>
+        <td width="50%" style="color: #08ff00; background-color: #7e1616;">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          magnav aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+          commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur.
+          Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </td>
+        <td><svg width="15px" height="15px" style="background-color:#08ff00"></svg>#08ff00</td>
+        <td><svg width="15px" height="15px" style="background-color:#7e1616"></svg>#7e1616</td>
+        <td>7.6</td>
+        <td>AAA</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex6</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>	
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex6: pie chart</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex6: pie chart</li>
+    </ol>
+  </nav>
+
+  <h2>Demo: arc generator</h2>
+
+  <div>See <a target="_blank" href="https://github.com/d3/d3-shape/blob/v2.0.0/README.md#arcs">D3 Arcs API</a>.</div>
+
+  <div class="mt-2 accordion mb-2" id="accordionOne">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="false" aria-controls="collapseOne">
+          Code for d3.arc demo
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+        data-bs-parent="#accordionOne">
+        <div class="accordion-body">
+          <pre><code class="HTML" data-trim data-noescape>&lt;svg id="arc-demo" width="200" height="200"&gt;&lt;/svg&gt;
+
+&lt;script&gt;
+  var slice = {  //a slice of pie
+    innerRadius: 0,
+    outerRadius: 100,
+    startAngle: 0,
+    endAngle: Math.PI / 2
+  };
+
+  var arc = d3.arc();  //constructs a new arc generator with the default settings
+  //console.log(arc(slice));   //arc is a path: M6.123233995736766e-15,-100A100,100,0,0,1,100,0L0,0Z;
+
+  var svg = d3.select('#arc-test'),
+    width = +svg.attr('width'),
+    height = +svg.attr('height'),
+    radius = Math.min(width, height) / 2,
+    g = svg.append('g')
+      .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+
+  g.append('path')  //add the path to the svg
+    .attr('d', arc(slice))  //set d path attribute
+    .attr('fill', "red")
+    .attr('stroke', "black");
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <svg id="arc-demo" width="200" height="200"></svg>
+
+  <script>
+    var slice = {  //a slice of pie
+      innerRadius: 0,
+      outerRadius: 100,
+      startAngle: 0,
+      endAngle: Math.PI / 2
+    };
+
+    var arc = d3.arc();  //constructs a new arc generator with the default settings
+    
+    console.log(arc(slice));   //arc is a path: M6.123233995736766e-15,-100A100,100,0,0,1,100,0L0,0Z;
+
+    var svg = d3.select('#arc-demo'),
+      width = +svg.attr('width'),
+      height = +svg.attr('height'),
+      radius = Math.min(width, height) / 2,
+      g = svg.append('g')
+        .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+
+    g.append('path')  //add the path to the svg
+      .attr('d', arc(slice))  //set d path attribute
+      .attr('fill', "red")
+      .attr('stroke', "black");
+  </script>
+
+  <div>See <a target="_blank" href="https://github.com/d3/d3/blob/master/API.md#pies">D3 Pies API</a>.</div>
+
+  <h2 class="mt-2">1. Pie chart example</h2>
+
+  <div>Implement this <a target="_blank" href="https://bl.ocks.org/mbostock/3887235">Mike Bostock’s
+      Block 3887235</a>.</div>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <!-- Your answer below -->
+    <style>
+
+.arc text {
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+.arc path {
+  stroke: #fff;
+}
+
+</style>
+<svg width="960" height="500" id="vis1"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+var svg = d3.select("#vis1"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    radius = Math.min(width, height) / 2,
+    g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var color = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+var pie = d3.pie()
+    .sort(null)
+    .value(function(d) { return d.population; });
+
+var path = d3.arc()
+    .outerRadius(radius - 10)
+    .innerRadius(0);
+
+var label = d3.arc()
+    .outerRadius(radius - 40)
+    .innerRadius(radius - 40);
+
+d3.csv("data.csv", function(d) {
+  d.population = +d.population;
+  return d;
+}, function(error, data) {
+  if (error) throw error;
+
+  var arc = g.selectAll(".arc")
+    .data(pie(data))
+    .enter().append("g")
+      .attr("class", "arc");
+
+  arc.append("path")
+      .attr("d", path)
+      .attr("fill", function(d) { return color(d.data.age); });
+
+  arc.append("text")
+      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+      .attr("dy", "0.35em")
+      .text(function(d) { return d.data.age; });
+});
+
+</script>
+
+    
+
+    
+  </div>
+
+  <h2>2. Sorted donut chart</h2>
+
+  <div>
+    Using the code of exercise 1 create a donut chart sorted alphabetically based on the <code>age</code> label. See <a
+      target="_blank" href="https://github.com/d3/d3-shape/blob/v3.1.0/README.md#pie_sort">pie.sort</a>.
+  </div>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <!-- Your answer below -->
+    <svg width="960" height="500" id="vis2"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+
+d3.csv("data.csv", function(d) {
+  d.population = +d.population;
+  d.age = d.age;
+  return d;
+}, function(error, data) {
+  if (error) throw error;
+  var svg2 = d3.select("#vis2"),
+    width = +svg2.attr("width"),
+    height = +svg2.attr("height"),
+    radius = Math.min(width, height) / 2,
+    g = svg2.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+var color = d3.scaleOrdinal(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+var pie = d3.pie()
+    .sort((a, b) => a.age.localeCompare(b.age))
+    .value(function(d) { return d.population; });
+
+var path = d3.arc()
+    .outerRadius(radius - 10)
+    .innerRadius(150);
+
+var label = d3.arc()
+    .outerRadius(radius - 40)
+    .innerRadius(radius - 40);
+
+
+  var arc = g.selectAll(".arc")
+    .data(pie(data))
+    .enter().append("g")
+      .attr("class", "arc");
+
+  arc.append("path")
+      .attr("d", path)
+      .attr("fill", function(d) { return color(d.data.age); });
+
+  arc.append("text")
+      .attr("transform", function(d) { return "translate(" + label.centroid(d) + ")"; })
+      .attr("dy", "0.35em")
+      .text(function(d) { return d.data.age; });
+});
+
+</script>
+
+    
+  </div>
+
+  <h2 class="mt-2">2. D3 pie chart from Observable</h2>
+
+  <div>Implement <a href="https://observablehq.com/@d3/pie-chart" target="_blank">this Observable pie chart</a></div>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <!-- Your answer below -->
+    <svg width="960" height="500" id="vis3"></svg>
+     <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+      // Copyright 2021 Observable, Inc.
+// Released under the ISC license.
+// https://observablehq.com/@d3/pie-chart
+function PieChart(data, {
+  name = ([x]) => x,  // given d in data, returns the (ordinal) label
+  value = ([, y]) => y, // given d in data, returns the (quantitative) value
+  title, // given d in data, returns the title text
+  width = 640, // outer width, in pixels
+  height = 400, // outer height, in pixels
+  innerRadius = 0, // inner radius of pie, in pixels (non-zero for donut)
+  outerRadius = Math.min(width, height) / 2, // outer radius of pie, in pixels
+  labelRadius = (innerRadius * 0.2 + outerRadius * 0.8), // center radius of labels
+  format = ",", // a format specifier for values (in the label)
+  names, // array of names (the domain of the color scale)
+  colors, // array of colors for names
+  stroke = innerRadius > 0 ? "none" : "white", // stroke separating widths
+  strokeWidth = 1, // width of stroke separating wedges
+  strokeLinejoin = "round", // line join of stroke separating wedges
+  padAngle = stroke === "none" ? 1 / outerRadius : 0, // angular separation between wedges
+} = {}) {
+  // Compute values.
+  const N = d3.map(data, name);
+  const V = d3.map(data, value);
+  const I = d3.range(N.length).filter(i => !isNaN(V[i]));
+
+  // Unique the names.
+  if (names === undefined) names = N;
+  names = new d3.InternSet(names);
+
+  // Chose a default color scheme based on cardinality.
+  if (colors === undefined) colors = d3.schemeSpectral[names.size];
+  if (colors === undefined) colors = d3.quantize(t => d3.interpolateSpectral(t * 0.8 + 0.1), names.size);
+
+  // Construct scales.
+  const color = d3.scaleOrdinal(names, colors);
+
+  // Compute titles.
+  if (title === undefined) {
+    const formatValue = d3.format(format);
+    title = i => `${N[i]}\n${formatValue(V[i])}`;
+  } else {
+    const O = d3.map(data, d => d);
+    const T = title;
+    title = i => T(O[i], i, data);
+  }
+
+  // Construct arcs.
+  const arcs = d3.pie().padAngle(padAngle).sort(null).value(i => V[i])(I);
+  const arc = d3.arc().innerRadius(innerRadius).outerRadius(outerRadius);
+  const arcLabel = d3.arc().innerRadius(labelRadius).outerRadius(labelRadius);
+  
+  const svg = d3.create("svg")
+      .attr("width", width)
+      .attr("height", height)
+      .attr("viewBox", [-width / 2, -height / 2, width, height])
+      .attr("style", "max-width: 100%; height: auto; height: intrinsic;");
+
+  svg.append("g")
+      .attr("stroke", stroke)
+      .attr("stroke-width", strokeWidth)
+      .attr("stroke-linejoin", strokeLinejoin)
+    .selectAll("path")
+    .data(arcs)
+    .join("path")
+      .attr("fill", d => color(N[d.data]))
+      .attr("d", arc)
+    .append("title")
+      .text(d => title(d.data));
+
+  svg.append("g")
+      .attr("font-family", "sans-serif")
+      .attr("font-size", 10)
+      .attr("text-anchor", "middle")
+    .selectAll("text")
+    .data(arcs)
+    .join("text")
+      .attr("transform", d => `translate(${arcLabel.centroid(d)})`)
+    .selectAll("tspan")
+    .data(d => {
+      const lines = `${title(d.data)}`.split(/\n/);
+      return (d.endAngle - d.startAngle) > 0.25 ? lines : lines.slice(0, 1);
+    })
+    .join("tspan")
+      .attr("x", 0)
+      .attr("y", (_, i) => `${i * 1.1}em`)
+      .attr("font-weight", (_, i) => i ? null : "bold")
+      .text(d => d);
+
+  return Object.assign(svg.node(), {scales: {color}});
+
+
+}
+
+d3.csv("population-by-age.csv").then(population =>{
+  var chart = PieChart(population, {
+  name: d => d.name,
+  value: d => d.value,
+  width,
+  height: 500
+})
+d3.select('#vis3').node().appendChild(chart);
+});
+
+
+   
+    </script>
+  </div>
+  
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+</html>
