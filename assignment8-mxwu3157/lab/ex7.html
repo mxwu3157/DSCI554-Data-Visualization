@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>DSCI 554 Lab ex7</title>
+
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+
+    <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet">
+
+    <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+    <script src="./highlight.min.js"></script>
+
+    <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+    <link rel="stylesheet"
+      href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+    <script>
+      hljs.highlightAll();
+      hljs.addPlugin(new CopyButtonPlugin());
+    </script>
+    <script src="./node_modules/d3/dist/d3.min.js"></script>
+  </head>
+
+  <body>
+    <h1>🏋🏽‍♂️ ex7: chord diagram</h1>
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+        <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex7:
+          chord diagram</li>
+      </ol>
+    </nav>
+
+    <h2>Demo: ribbon generator</h2>
+
+    <div>See <a target="_blank"
+        href="https://github.com/d3/d3-chord/blob/v2.0.0/README.md#ribbon">d3.ribbon</a>.</div>
+    <div class="mt-2 accordion mb-2" id="accordionOne">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="false" aria-controls="collapseOne">
+            Code for d3.ribbon demo
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse"
+          aria-labelledby="headingOne"
+          data-bs-parent="#accordionOne">
+          <div class="accordion-body">
+            <pre><code class="HTML" data-trim data-noescape>&lt;svg id="ribbon-demo" width="350" height="350"&gt;&lt;/svg&gt;
+
+&lt;script&gt;
+  var chord = {  //a chord in a chord diagram
+    source: {startAngle: 0.7524114, endAngle: 1.1212972, radius: 140},
+    target: {startAngle: 1.8617078, endAngle: 1.9842927, radius: 140}
+  };
+
+  var ribbon = d3.ribbon();  //creates a new ribbon generator with the default settings
+  //var ribbon = d3.ribbonArrow();  //configure arrow shaped ribbon for directed chord diagrams
+
+  console.log(ribbon(chord));  //generated ribbon path
+
+  var svg = d3.select('#ribbon-demo'),
+    width = +svg.attr('width'),
+    height = +svg.attr('height'),
+    radius = Math.min(width, height) / 2,
+    g = svg.append('g')
+      .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+
+  g.append('path')  //add the path to the svg
+    .attr('d', ribbon(chord))  //set path d attribute
+    .attr('fill', "red")
+    .attr('stroke', "black");
+&lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <svg id="ribbon-demo" width="350" height="350"></svg>
+
+    <script>
+    var chord = {  //a chord in a chord diagram
+      source: {startAngle: 0.7524114, endAngle: 1.1212972, radius: 140},
+      target: {startAngle: 1.8617078, endAngle: 1.9842927, radius: 140}
+    };
+
+    var ribbon = d3.ribbon();  //creates a new ribbon generator with the default settings
+    //ribbon = d3.ribbonArrow();  //configure arrow shaped ribbon for directed chord diagrams
+
+    console.log(ribbon(chord));  //generated ribbon path: M95.67616394548672,-102.2060255203985A140,140,0,0,1,126.09307927655338,-60.832025764040004Q0,0,134.11759755955913,40.155572774549455A140,140,0,0,1,128.2010146142398,56.25388743793155Q0,0,95.67616394548672,-102.2060255203985Z
+
+    var svg = d3.select('#ribbon-demo'),
+      width = +svg.attr('width'),
+      height = +svg.attr('height'),
+      radius = Math.min(width, height) / 2,
+      g = svg.append('g')
+        .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
+
+    g.append('path')  //add the path to the svg
+      .attr('d', ribbon(chord))  //set path d attribute
+      .attr('fill', "red")
+      .attr('stroke', "black");
+  </script>
+  </div>
+
+  <div>See <a target="_blank" href="https://github.com/d3/d3-chord">d3-chord API</a>.</div>
+  <h2 class="mt-2">2. D3 chord diagram</h2>
+
+  <div>Implement <a target="_blank" href="https://bl.ocks.org/mbostock/4062006">Mike
+      Bostock’s Block 4062006</a></div>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <!-- Your answer below -->
+    <style>
+
+body {
+  font: 10px sans-serif;
+}
+
+.group-tick line {
+  stroke: #000;
+}
+
+.ribbons {
+  fill-opacity: 0.67;
+}
+
+</style>
+    <svg width="960" height="960" id="vis1"></svg>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script>
+
+var matrix = [
+  [11975,  5871, 8916, 2868],
+  [ 1951, 10048, 2060, 6171],
+  [ 8010, 16145, 8090, 8045],
+  [ 1013,   990,  940, 6907]
+];
+
+var svg = d3.select("#vis1"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height"),
+    outerRadius = Math.min(width, height) * 0.5 - 40,
+    innerRadius = outerRadius - 30;
+
+var formatValue = d3.formatPrefix(",.0", 1e3);
+
+var chord = d3.chord()
+    .padAngle(0.05)
+    .sortSubgroups(d3.descending);
+
+var arc = d3.arc()
+    .innerRadius(innerRadius)
+    .outerRadius(outerRadius);
+
+var ribbon = d3.ribbon()
+    .radius(innerRadius);
+
+var color = d3.scaleOrdinal()
+    .domain(d3.range(4))
+    .range(["#000000", "#FFDD89", "#957244", "#F26223"]);
+
+var g = svg.append("g")
+    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")")
+    .datum(chord(matrix));
+
+var group = g.append("g")
+    .attr("class", "groups")
+  .selectAll("g")
+  .data(function(chords) { return chords.groups; })
+  .enter().append("g");
+
+group.append("path")
+    .style("fill", function(d) { return color(d.index); })
+    .style("stroke", function(d) { return d3.rgb(color(d.index)).darker(); })
+    .attr("d", arc);
+
+var groupTick = group.selectAll(".group-tick")
+  .data(function(d) { return groupTicks(d, 1e3); })
+  .enter().append("g")
+    .attr("class", "group-tick")
+    .attr("transform", function(d) { return "rotate(" + (d.angle * 180 / Math.PI - 90) + ") translate(" + outerRadius + ",0)"; });
+
+groupTick.append("line")
+    .attr("x2", 6);
+
+groupTick
+  .filter(function(d) { return d.value % 5e3 === 0; })
+  .append("text")
+    .attr("x", 8)
+    .attr("dy", ".35em")
+    .attr("transform", function(d) { return d.angle > Math.PI ? "rotate(180) translate(-16)" : null; })
+    .style("text-anchor", function(d) { return d.angle > Math.PI ? "end" : null; })
+    .text(function(d) { return formatValue(d.value); });
+
+g.append("g")
+    .attr("class", "ribbons")
+  .selectAll("path")
+  .data(function(chords) { return chords; })
+  .enter().append("path")
+    .attr("d", ribbon)
+    .style("fill", function(d) { return color(d.target.index); })
+    .style("stroke", function(d) { return d3.rgb(color(d.target.index)).darker(); });
+
+// Returns an array of tick angles and values for a given group and step.
+function groupTicks(d, step) {
+  var k = (d.endAngle - d.startAngle) / d.value;
+  return d3.range(0, d.value, step).map(function(value) {
+    return {value: value, angle: value * k + d.startAngle};
+  });
+}
+
+
+</script>
+
+
+  </div>
+
+  <h2 class="mt-2">2. D3 chord diagram from Observable</h2>
+
+  <div>Implement <a href="https://observablehq.com/@d3/chord-diagram"
+      target="_blank">this Observable chord diagram</a></div>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <!-- Your answer below -->
+    <svg width="960" height="500" id="vis2"></svg>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+    <script src="./ex7_chord_obs.js"></script>
+   
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi
+        bi-arrow-up"></i> top</a></div>
+
+</body>

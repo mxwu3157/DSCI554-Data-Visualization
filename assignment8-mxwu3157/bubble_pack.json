@@ -1,0 +1,63 @@
+{
+    "name": "flare",
+    "children": [
+        {
+            "name": "Asian",
+            "children": [
+                {
+                    "name": "China",
+                    "size": 224460
+                },
+                {
+                    "name": "India",
+                    "size": 50563
+                },
+                {
+                    "name": "Japan",
+                    "size": 68952
+                },
+                {
+                    "name": "Malaysia",
+                    "size": 943
+                },
+                {
+                    "name": "Singapore",
+                    "size": 410
+                },
+                {
+                    "name": "United_Arab_Emirates",
+                    "size": 3779
+                }
+            ]
+        },
+        {
+            "name": "North_America",
+            "children": [
+                {
+                    "name": "Canada",
+                    "size": 4079
+                },
+                {
+                    "name": "USA",
+                    "size": 97478
+                }
+                
+            ]
+        },
+        {
+            "name": "Europe",
+            "children": [
+                {
+                    "name": "Germany",
+                    "size": 46392
+                },
+                {
+                    "name": "UK",
+                    "size": 12918
+                }
+            ]
+        }
+        
+        
+    ]
+}
