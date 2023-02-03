@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DSCI 554 Lab 3 ex0</title>
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+	<a id="top"></a>
+	<h1>🏋🏽‍♂️ ex0: drawing library using function chaining</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab 3</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex0: drawing library using function chaining</li>
+    </ol>
+  </nav>
+
+	<div>Implement in the answer the bubbles labeled IRQ and RUS as shown in the image below using the code provided in <code>myDoodle.js</code>. You may need to debug the code in the page and in <code>myDoodle.js</code>.</div>
+
+  <div class="alert alert-info">
+    💡 <b>Inkscape coordinates</b><br>
+    <ul>
+      <li>Plain SVG is the SVG compliant format, Inkscape SVG includes extra tags used by Inkscape</li>
+      <li>When exporting Plain SVG from Inkscape, the resulting <code>svg</code> element might include a <code>viewbox</code> that effectively scales all the elements contained in the <code>svg</code></li>
+      <li>X, Y, W, H in the toolbar refers to selected shape bounding box upper left corner coordinates and width, height respectively. To obtain the bubble center you need to subtract the bubble radius from X and Y.</li>
+      <li>You can select and drag the values in the X, Y, W, H inputs</li>
+    </ul>
+  </div>
+
+  <img src="./bubble-chart.svg"/>
+
+	<div class="answer">
+		<div>Answer</div>
+	
+		<script src="myDoodle.js"></script>
+		<svg id="chart" style="background-color: #eee" width="900px" height="500px"></svg>
+	
+		<script>
+      //Implement drawing code here
+      myDoodle.select('chart')
+    
+      myDoodle.bubble( 133.683, 91.673,10, '#ffa74bff','IRQ','white',10)
+      myDoodle.bubble( 132.754, 270.655,21.5, '#d83419ff','RUS','white',10)
+      //myDoodle.bubble( 133.683, 91.673,10, label = 'IRQ')
+		</script>
+	</div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

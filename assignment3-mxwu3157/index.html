@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DSCI 554 Assignment 3</title>
+
+
+	<style>
+		body {
+			margin: 20px 25px 25px 25px;
+		}
+	</style>
+	<link href="./lab/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="./lab/style.css">
+  
+	<link rel="stylesheet" href="./lab/github-dark-dimmed.min.css">
+	<script src="./lab/highlight.min.js"></script>
+	<script>hljs.highlightAll();</script>
+  
+	<link href="./lab/node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+	<script src="https://cdn.jsdelivr.net/npm/vega"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed"></script>
+
+	<link rel="stylesheet" href="q2_style.css">
+	<script src="myDoodle_q1.js"></script>
+	<!-- install and load d3 library -->
+	<script src="./lab/node_modules/d3/dist/d3.min.js"></script>
+
+ 
+</head>
+
+<body>
+	<div>Meixian Wu <a href="mailto:meixianw@usc.edu">meixianw@usc.edu</a></div>
+
+	<!-- Sample Bootstrap layout you can use -->
+
+	<h1>1. Critiquing infographics</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+
+				<h2>About Infographic 1</h2>
+				
+
+				<div>Infographic 1</div>
+				<div style="height:20px;"></div>
+				<img src="./infographics/infog1.png" style="width:600px;"></img>
+				<div style="height:20px;"></div>
+
+				<h2>Visualization wheel</h2>
+
+				<div class="mb-2 text-center"><img width="350px" src="./img/vis-wheel1.svg"></div>
+
+				<h2>Critique</h2>
+				<p>The top infographic1 did a good job in deliever the key statement: The Median age of the first marriage only decreasedin three states from perood 2006-2010 to period 2015-2019.
+					The left visualization has high information density. We can see both the change in median age and the poulation density of each state. 
+					It has distinguished the states that has medianage decreased with contrasting colors blue and red, which make audience noticed the3 states immediaiely. 
+					However, the two visualizations on the right has low relative low information density. Espetially the lower plot on;y gives the infotmation that DC population 
+					is nearly the half of the whole population. Also the top the 4 statistical data on the top can be difficult to comprehend with visualizatoin.
+				</p>
+
+				<h2>Improvements</h2>
+				<p>
+					Firstly, 
+					we can increase the functionality by combining the lower right visualization with the top right visualization , and make it a stacked bar chart by the 4 geographical segment of USA (West, East, North, South).
+					Then we can removed the 4 statistical data and make it a error bar chart of the two periods to represent the absolute values instead of the changes like the left vis, which can increase the dimensionality and reduced the abstractness and reduncdency.
+
+				</p>
+
+			</div>
+			<div class="col">
+				<h2>About Infographic 2</h2>
+
+				<div>Infographic 2</div>
+				<img src="./infographics/infog2.jpeg" style="width:550px;"></img>
+				<div style="height:20px;"></div>
+
+				<h2>Visualization wheel</h2>
+
+				<div class="mb-2 text-center"><img width="350px" src="./img/vis-wheel2.svg"></div>
+
+				<h2>Critique</h2>
+				<p>
+					The top infographic2 did a great job giving high information density visualization with figurations. We can see that states above and below the median is clearly distinguished with contrasting color blue and orange. The line chart on the right is innovative and figurative to represent the change in median age state-wise.
+					Also, the change trend, the change extent, and the states is visually and functionally represented, whcih allow us to clearly spoted the informaiton time-wise and geographical-wise. 
+					However, to fit in the space the lower right visualization is shrinked and is hard to read of the detailinformation of the USA states maps.
+				</p>
+
+				<h2>Improvements</h2>
+				<p>
+					The lower right visualization can be improved by focusing on the main USA states land, and zoom in on the Alaska , so that both regions can be viewed clearly, and the space can be used more effitiently. 
+					Also, it is also good to give average median line in the scatter plot to so that audience can spoted the distance between the average median values age and the median age of the state. If the three edge dot can be labeled with states, the textual explaination can be saved, so that increase the figuration and reduce the audience distraction from text.
+				</p>
+
+			</div>
+		</div>
+	</div>
+
+	<h1>2.1 Bubble chart</h1>
+	<div class="answer">
+		<div>Answer</div>
+		
+		<svg id="chart1" ></svg>
+		<script src="./c1.js"></script>
+	</div>
+
+	<h1>2.2. Horizontal bar chart with div elements</h1>
+	<div class="answer">
+		<div>Answer</div>
+		<h3>Population (natural logarithmic scale) of some world countries in 2012</h3>
+		<p>Data labeled in common logarithmic </p>
+		
+		<style>
+			div.bar {
+				background-color: skyblue;
+				margin-bottom: 6px;
+				text-align: right;	
+				}
+
+			p.bar-label{
+				float:left;
+				margin:0px;
+			}
+		</style>
+		<!-- Add your code here! -->
+		<div style = 'text-align: right;'>
+			<div class = 'bar' style = 'width:321px;'>
+				<p class="bar-label">China</p>
+				1390000
+			</div>
+
+			<div class = 'bar' style = 'width:319px;'>
+				<p class="bar-label">India</p>
+				1240000
+			</div>
+
+			<div class = 'bar' style = 'width:288px;'>
+				<p class="bar-label">USA</p>
+				318000
+			</div>
+
+			<div class = 'bar' style = 'width:267px;'>
+				<p class="bar-label">Japan</p>
+				127000
+			</div>
+
+			<div class = 'bar' style = 'width:257px;'>
+				<p class="bar-label">Germany</p>
+				82800
+			</div>
+
+			<div class = 'bar' style = 'width:251px;'>
+				<p class="bar-label">UK</p>
+				62783
+			</div>
+
+			<div class = 'bar' style = 'width:237px;'>
+				<p class="bar-label">Canada</p>
+				34838
+			</div>
+
+			<div class = 'bar' style = 'width:233px;'>
+				<p style="float:left; margin:0px;">Malaysia</p>
+				29240
+			</div>
+
+			<div class = 'bar' style = 'width:207px;'>
+				<p class="bar-label">United Arab Emirates</p>
+				9206
+			</div>
+
+			<div class = 'bar' style = 'width:195px;'>
+				<p class="bar-label">Singapore</p>
+				5303
+			</div>
+		</div>
+	</div>
+
+	<h1>2.3. Horizontal bar chart with SVG elements</h1>
+	<div class="answer">
+		<div>Answer</div>
+		<h3>Population (natural logarithmic scale) of some world countries in 2012</h3>
+		<p>Data labeled in common logarithmic </p>	
+		
+		<svg width="450px" height="420px" style="background-color:aliceblue">
+			<g>
+			  <rect class = 'bar' x="10" y="10" width="321"></rect>
+			  <text class = 'bar' x="20" y="30" >China</text>
+			  <text x="341" y="30" >1390000</text>
+
+			  <rect class = 'bar' x="10" y="50" width="319" ></rect>
+			  <text class = 'bar' x="20" y="70" >India</text>
+			  <text x="339" y="70" >1240000</text>
+
+			  <rect class = 'bar' x="10" y="90" width="288" ></rect>
+			  <text class = 'bar' x="20" y="110" >USA</text>
+			  <text x="308" y="110" >318000</text>
+
+			  <rect class = 'bar' x="10" y="130" width="267" ></rect>
+			  <text class = 'bar' x="20" y="150" >Japan</text>
+			  <text x="287" y="150" >127000</text>
+
+			  <rect class = 'bar' x="10" y="170" width="257" ></rect>
+			  <text class = 'bar' x="20" y="190" >Germany</text>
+			  <text x="277" y="190" >82800</text>
+
+			  <rect class = 'bar' x="10" y="210" width="251" ></rect>
+			  <text class = 'bar' x="20" y="230" >United Kingdom</text>
+			  <text x="271" y="230" >62783</text>
+
+			  <rect class = 'bar' x="10" y="250" width="237" ></rect>
+			  <text class = 'bar' x="20" y="270" >Canada</text>
+			  <text x="257" y="270" >34838</text>
+
+			  <rect class = 'bar' x="10" y="290" width="233" ></rect>
+			  <text class = 'bar' x="20" y="310" >Malaysia</text>
+			  <text x="253" y="310" >29240</text>
+
+			  <rect class = 'bar' x="10" y="330" width="207" ></rect>
+			  <text class = 'bar' x="20" y="350" >United Arab Emirates</text>
+			  <text x="227" y="350" >9206</text>
+
+			  <rect class = 'bar' x="10" y="370" width="195" ></rect>
+			  <text class = 'bar' x="20" y="390" >Singapore</text>
+			  <text x="215" y="390" >5303</text>
+			</g>
+		  </svg>
+	</div>
+
+	
+	<h1>2.4. Horizontal bar chart with D3 select and append and div elements</h1>
+	<div class="answer">
+		<div>Answer</div>
+		<h3>Population (natural logarithmic scale) of some world countries in 2012</h3>
+		<p>Data labeled in common logarithmic </p>	
+		
+		<div id="chart4"></div>
+		<script src="./c4.js"></script>
+			
+	</div>
+	<h1>2.5. Horizontal bar chart with D3 data join and div elements</h1>
+	<div class="answer">
+		<div>Answer</div>
+		<h3>Population (natural logarithmic scale) of some world countries in 2012</h3>
+		<p>Data labeled in common logarithmic </p>
+	
+		<div id="chart5"></div>	
+		<script src="./c5.js"></script>
+		
+	</div>
+	
+	<h1>2.6. Horizontal bar chart with Vega-Lite</h1>
+	<div class="answer">
+		<div>Answer</div>
+		<h3>Population (natural logarithmic scale) of some world countries in 2012</h3>
+		<p>Data labeled in common logarithmic </p>
+
+		<div id="chart6"></div>	
+		<script src="./c6.js"></script>
+	</div>
+	
+	
+
+</body>
+
+</html>

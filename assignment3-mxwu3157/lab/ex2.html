@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DSCI 554 Lab 3 ex2</title>
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+	<a id="top"></a>
+	<h1>🏋🏽‍♂️ ex2: bar charts with SVG</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab 3</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex2: bar charts with SVG</li>
+    </ol>
+  </nav>
+
+	<div class="alert alert-info">
+		💡 <b><code>svg</code> properties used to create bar charts</b>
+		<ul>
+			<li>The <code>svg</code> element is an HTML element, the elements inside the <code>svg</code> element are SVG elements</li>
+			<li>Default units for SVG coordinates are in pixels so it is customary omit the units</li>
+			<li>SVG coordinate frames are relative to the <code>svg</code> element upper left corner</li>
+			<li>To ensure shapes are visible, set all needed attributes</li>
+			<li>When using style for setting attributes be sure that it is supported by the browser</li>
+			<li>Use the <code>rect</code> SVG element for creating bar charts</li>
+			<li>Use the <code>rect</code> <code>x, y, width, height</code> to place and size the bars</li>
+		</ul>
+	</div>
+
+	<h2>1. Bars with SVG rect and inline style attribute</h2>
+
+	<div>Use the example code below and create a bar chart in the answer for the following values: <code>[200, 150, 100, 50]</code></div>	
+
+	<pre><code class="HTML">&lt;!-- bar of 300px with text --&gt;
+&lt;svg width="300px" height="300px"&gt;
+  &lt;rect x="10" y="10" width="100" height="30" fill="orangered"&gt;&lt;/rect&gt;
+  &lt;text x="20" y="30" style="font-size: 12px; fill: black;"&gt;100px bar&lt;/text&gt;
+&lt;/svg&gt;</code></pre>
+
+	<div class="answer">
+		<div>Answer</div>
+		<!-- Add your code here! -->
+		<svg width="300px" height="300px"style = 'background-color:aliceblue;'>
+			<rect x="10" y="10" width="200" height="30" fill="orangered"></rect>
+			<text x="20" y="30" style="font-size: 12px; fill: black;">200px bar</text>
+
+			<rect x="10" y="50" width="150" height="30" fill="orangered"></rect>
+			<text x="20" y="70" style="font-size: 12px; fill: black;">150px bar</text>
+
+			<rect x="10" y="90" width="100" height="30" fill="orangered"></rect>
+			<text x="20" y="110" style="font-size: 12px; fill: black;">100px bar</text>
+
+			<rect x="10" y="130" width="50" height="30" fill="orangered"></rect>
+			<text x="20" y="150" style="font-size: 12px; fill: black;">50px bar</text>
+		  </svg>
+	</div>
+
+	<h2>2. Bars with SVG rect and inline style attribute with CSS inheritance</h2>
+
+	<div>Rewrite the code of ex2.1 adding an outer group with the <code>g</code> SVG element and use CSS inheritance to minimize CSS redundancy on the <code>rect</code> elements used to plot the bars.</div>
+
+		<pre><code class="HTML">&lt;svg width="300px" height="300px"&gt;
+  &lt;g style="fill: orangered;"&gt;
+    &lt;rect x="10" y="10" width="100" height="30"&gt;&lt;/rect&gt;
+    &lt;text x="20" y="30" style="font-size: 12px; fill: black;"&gt;100px bar&lt;/text&gt;
+  &lt;/g&gt;
+&lt;/svg&gt;</code></pre>
+
+	<div class="answer">
+		<div>Answer</div>
+		<!-- Add your code here! -->
+		<svg width="300px" height="300px" style="background-color:aliceblue">
+			<g style="fill: orangered;">
+			  <rect x="10" y="10" width="200" height="30"></rect>
+			  <text x="20" y="30" style="font-size: 12px; fill: black;">200px bar</text>
+
+			  <rect x="10" y="50" width="150" height="30"></rect>
+			  <text x="20" y="70" style="font-size: 12px; fill: black;">150px bar</text>
+
+			  <rect x="10" y="90" width="100" height="30"></rect>
+			  <text x="20" y="110" style="font-size: 12px; fill: black;">100px bar</text>
+
+			  <rect x="10" y="130" width="50" height="30"></rect>
+			  <text x="20" y="150" style="font-size: 12px; fill: black;">50px bar</text>
+			</g>
+		  </svg>
+	</div>
+
+	<h2>3. Bars with SVG rect and class attribute</h2>
+
+	<div>Rewrite the code of ex2.1 to use the CSS shown below.</div>
+
+		<pre><code class="HTML">&lt;style&gt;
+  rect.bar { /*style for rect with class bar*/
+	fill: orangered;
+	height: 30px;	
+  }
+  text.bar { /*style for text with class bar*/
+    fill: black;
+    font-size: 12px;
+  }
+&lt;/style&gt;</code></pre>
+	</div>
+
+	<div class="answer">
+		<div>Answer</div>
+		<!-- Add your code here! -->
+		<style>
+			rect.bar { /*style for rect with class bar*/
+			  fill: orangered;
+			  height: 30px;	
+			  
+			}
+
+			text.bar { /*style for text with class bar*/
+			  fill: black;
+			  font-size: 12px;
+			}
+		  </style>
+		
+		<svg width="300px" height="300px" style="background-color:aliceblue">
+			<g>
+			  <rect class = 'bar' x="10" y="10" width="200" ></rect>
+			  <text class = 'bar' x="20" y="30" >200px bar</text>
+
+			  <rect class = 'bar' x="10" y="50" width="150" ></rect>
+			  <text class = 'bar' x="20" y="70" >150px bar</text>
+
+			  <rect class = 'bar'  x="10" y="90" width="100" ></rect>
+			  <text class = 'bar'  x="20" y="110" >100px bar</text>
+
+			  <rect class = 'bar'  x="10" y="130" width="50"></rect>
+			  <text class = 'bar'  x="20" y="150" ">50px bar</text>
+			</g>
+		  </svg>
+
+	</div>
+
+	<div class="mt-3 text-end"><a href="#top"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>
