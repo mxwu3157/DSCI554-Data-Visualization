@@ -1,0 +1,10 @@
+node_modules
+lab/data/*.zip
+lab/*.zip
+lab/data/City_Boundaries/
+lab/data/City_Boundaries/City_Boundaries.cpg
+lab/data/City_Boundaries/City_Boundaries.dbf
+lab/data/City_Boundaries/City_Boundaries.prj
+lab/data/City_Boundaries/City_Boundaries.shp
+lab/data/City_Boundaries/City_Boundaries.shx
+lab/data/City_Boundaries.zip

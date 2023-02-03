@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex11</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+<body>
+  <h1>ex11: D3 proportional symbol map</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">ex11: D3 proportional symbol map</li>
+    </ol>
+  </nav>
+
+  <div>Implement the D3 proportional symbol map code. You can find the original code at <a target="_blank" href="https://observablehq.com/@d3/bubble-map">Observable Bubble Map</a>.</div>
+
+  <div class="mt-2 accordion mb-2" id="accordionOne">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="false" aria-controls="collapseOne">
+          D3 proportional symbol map code
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+        data-bs-parent="#accordionOne">
+        <div class="accordion-body">
+          <pre><code class="HTML" data-trim data-noescape>&lt;svg id="chart" width="975" height="610"&gt;&lt;/svg&gt;
+&lt;script src="node_modules/d3/dist/d3.min.js">&lt;/script&gt;
+&lt;script src="node_modules/topojson-client/dist/topojson-client.js">&lt;/script&gt;
+  
+&lt;script&gt;
+var promises = [];
+var files = ['data/counties-albers-10m.json', 'data/population.json'];
+files.forEach(url => promises.push(d3.json(url)));
+
+Promise.all(promises).then(function (values) {  //use Promise.all to load map and data
+  var us = values[0];
+  var data = values[1];
+
+  format = d3.format(',.0f')
+
+  //create a map to use to map values to marks
+  data = new Map(data.slice(1).map(([population, state, county]) => [state + county, +population]))
+
+  //scaleSqrt is used to size the circles by area, as opposed to radius. Note quantile scale. 
+  radius = d3.scaleSqrt([0, d3.quantile([...data.values()].sort(d3.ascending), 0.985)], [0, 15]);
+
+  svg = d3.select('#chart')
+    .attr('viewBox', [0, 0, 975, 610]);
+
+  path = d3.geoPath()
+
+  //add the geopath for all the states
+  svg.append('path')
+    .datum(topojson.feature(us, us.objects.nation))
+    .attr('fill', '#ccc')
+    .attr('d', path);
+
+  //add the geopath for the borders of the states
+  svg.append('path')
+    .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
+    .attr('fill', 'none')
+    .attr('stroke', 'white')
+    .attr('stroke-linejoin', 'round')
+    .attr('d', path);
+
+  //add the legend
+  const legend = svg.append('g')
+    .attr('fill', '#777')
+    .attr('transform', 'translate(925,608)')
+    .attr('text-anchor', 'middle')
+    .style('font', '10px sans-serif')
+    .selectAll('g')
+    .data([1e6, 5e6, 1e7])
+    .join('g');
+
+  legend.append('circle')
+    .attr('fill', 'none')
+    .attr('stroke', '#ccc')
+    .attr('cy', d => -radius(d))
+    .attr('r', radius);
+
+  legend.append('text')
+    .attr('y', d => -2 * radius(d))
+    .attr('dy', '1.3em')
+    .text(d3.format('.1s'));
+
+  // create and append the red/brown circles for the proportional symbol map. 
+  svg.append('g')
+    .attr('fill', 'brown')
+    .attr('fill-opacity', 0.5)
+    .attr('stroke', '#fff')
+    .attr('stroke-width', 0.5)
+    .selectAll('circle')
+    .data(topojson.feature(us, us.objects.counties).features
+      .map(d => (d.value = data.get(d.id), d))  //map the "ids" to the "value" 
+      .sort((a, b) => b.value - a.value))
+    .join('circle')
+    .attr('transform', d => `translate(${path.centroid(d)})`)  //position circles at their respective feature centroid
+    .attr('r', d => radius(d.value))
+    .append('title')
+    .text(d => `${d.properties.name} ${format(d.value)}`);
+});
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-3 mb-3">
+    <div>Answer</div>
+    <!-- Your answer below -->
+    <svg id="chart" width="975" height="610"></svg>
+<script src="node_modules/d3/dist/d3.min.js"></script>
+<script src="node_modules/topojson-client/dist/topojson-client.js"></script>
+  
+<script>
+var promises = [];
+var files = ['data/counties-albers-10m.json', 'data/population.json'];
+files.forEach(url => promises.push(d3.json(url)));
+
+Promise.all(promises).then(function (values) {  //use Promise.all to load map and data
+  var us = values[0];
+  var data = values[1];
+
+  format = d3.format(',.0f')
+
+  //create a map to use to map values to marks
+  data = new Map(data.slice(1).map(([population, state, county]) => [state + county, +population]))
+
+  //scaleSqrt is used to size the circles by area, as opposed to radius. Note quantile scale. 
+  radius = d3.scaleSqrt([0, d3.quantile([...data.values()].sort(d3.ascending), 0.985)], [0, 15]);
+
+  svg = d3.select('#chart')
+    .attr('viewBox', [0, 0, 975, 610]);
+
+  path = d3.geoPath()
+
+  //add the geopath for all the states
+  svg.append('path')
+    .datum(topojson.feature(us, us.objects.nation))
+    .attr('fill', '#ccc')
+    .attr('d', path);
+
+  //add the geopath for the borders of the states
+  svg.append('path')
+    .datum(topojson.mesh(us, us.objects.states, (a, b) => a !== b))
+    .attr('fill', 'none')
+    .attr('stroke', 'white')
+    .attr('stroke-linejoin', 'round')
+    .attr('d', path);
+
+  //add the legend
+  const legend = svg.append('g')
+    .attr('fill', '#777')
+    .attr('transform', 'translate(925,608)')
+    .attr('text-anchor', 'middle')
+    .style('font', '10px sans-serif')
+    .selectAll('g')
+    .data([1e6, 5e6, 1e7])
+    .join('g');
+
+  legend.append('circle')
+    .attr('fill', 'none')
+    .attr('stroke', '#ccc')
+    .attr('cy', d => -radius(d))
+    .attr('r', radius);
+
+  legend.append('text')
+    .attr('y', d => -2 * radius(d))
+    .attr('dy', '1.3em')
+    .text(d3.format('.1s'));
+
+  // create and append the red/brown circles for the proportional symbol map. 
+  svg.append('g')
+    .attr('fill', 'brown')
+    .attr('fill-opacity', 0.5)
+    .attr('stroke', '#fff')
+    .attr('stroke-width', 0.5)
+    .selectAll('circle')
+    .data(topojson.feature(us, us.objects.counties).features
+      .map(d => (d.value = data.get(d.id), d))  //map the "ids" to the "value" 
+      .sort((a, b) => b.value - a.value))
+    .join('circle')
+    .attr('transform', d => `translate(${path.centroid(d)})`)  //position circles at their respective feature centroid
+    .attr('r', d => radius(d.value))
+    .append('title')
+    .text(d => `${d.properties.name} ${format(d.value)}`);
+});
+</script>
+   
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

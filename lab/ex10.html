@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex10</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+  <script src="node_modules/d3/dist/d3.min.js"></script>
+
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex10: Generate projected GeoJSON and TopoJSON for D3</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex10: Generate projected GeoJSON and TopoJSON for
+        D3</li>
+    </ol>
+  </nav>
+
+  <h2>1. GeoJSON map</h2>
+
+  <div>Use the code provided to display <code>data/QGIS.geojson</code> you have generated in ex8.</div>
+
+  <div class="mt-2 accordion mb-2" id="accordionOne">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="false" aria-controls="collapseOne">
+          D3 code to display GeoJSON
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+        data-bs-parent="#accordionOne">
+        <div class="accordion-body">
+          <pre><code class="HTML" data-trim data-noescape>&lt;style&gt;
+  .selected {
+    fill: red;
+  }
+
+  .cities {
+    fill: whitesmoke;
+    stroke: #666;
+    stroke-width: 0.5px;
+  }
+&lt;/style&gt;
+
+&lt;svg id="svg1" width="300" height="300" style="background-color: #eee"&gt;&lt;/svg&gt;
+
+&lt;script type="text/javascript"&gt;
+  d3.json('data/QGIS.geojson').then(json =&gt; {
+
+    var svg = d3.select('#svg1'),
+      width = +svg.attr('width'),
+      height = +svg.attr('height');
+
+    var projection = d3.geoMercator()
+      .fitSize([width, height], json);
+
+    path = d3.geoPath()
+      .projection(projection);
+
+    svg.append('g')
+      .attr('class', 'cities')
+      .selectAll('path')
+      .data(json.features)
+      .enter()
+      .append('path')
+      .attr('d', path);
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-3 mb-3">
+    <div>Answer</div>
+    <!-- Your answer below -->
+    <style>
+  .selected {
+    fill: red;
+  }
+
+  .cities {
+    fill: whitesmoke;
+    stroke: #666;
+    stroke-width: 0.5px;
+  }
+</style>
+
+<svg id="svg1" width="300" height="300" style="background-color: #eee"></svg>
+
+<script type="text/javascript">
+  d3.json('data/QGIS.geojson').then(json => {
+
+    var svg = d3.select('#svg1'),
+      width = +svg.attr('width'),
+      height = +svg.attr('height');
+
+    var projection = d3.geoMercator()
+      .fitSize([width, height], json);
+
+    path = d3.geoPath()
+      .projection(projection);
+
+    svg.append('g')
+      .attr('class', 'cities')
+      .selectAll('path')
+      .data(json.features)
+      .enter()
+      .append('path')
+      .attr('d', path);
+  });
+</script>
+
+  </div>
+
+  <h2>2. Projected GeoJSON map</h2>
+
+  <div><code>geoproject</code> is a node command line tool (included in d3-geo-projection) that is already installed in
+    the lab. You can use it to process
+    project GeoJSON coordinates as follows:</div>
+
+  <ul>
+    <li>Open a VS code terminal in <code>lab/data</code></li>
+    <li>Execute the command:
+      <pre><code class="sh">../node_modules/d3-geo-projection/bin/geoproject.js 'd3.geoMercator().fitSize([300, 300], d)' &lt; QGIS.geojson &gt; QGIS_projected.geojson</code></pre>
+    </li>
+  </ul>
+
+  Use the code provided in the Answer to display <code>data/QGIS_projected.geojson</code>.
+
+  <div class="mt-2 accordion mb-2" id="accordionTwo">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+          aria-expanded="false" aria-controls="collapseTwo">
+          D3 code for projected GeoJSON
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
+        data-bs-parent="#accordionTwo">
+        <div class="accordion-body">
+          <pre><code class="HTML" data-trim data-noescape>&lt;script&gt;
+d3.json('data/QGIS_projected.geojson').then(json => {
+  var svg = d3.select('#svg2'),
+    width = +svg.attr('width'),
+    height = +svg.attr('height');
+
+  path = d3.geoPath();
+
+  svg.append('g')
+    .attr('class', 'cities')
+    .selectAll("path")
+    .data(json.features)
+    .enter()
+    .append('path')
+    .attr('d', path);
+  });
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-3 mb-3">
+    <div>Answer</div>
+    <!-- Your answer below -->
+    <svg id="svg2" width="300" height="300" style="background-color: #eee"></svg>
+
+    <script>
+d3.json('data/QGIS_projected.geojson').then(json => {
+  var svg = d3.select('#svg2'),
+    width = +svg.attr('width'),
+    height = +svg.attr('height');
+
+  path = d3.geoPath();
+
+  svg.append('g')
+    .attr('class', 'cities')
+    .selectAll("path")
+    .data(json.features)
+    .enter()
+    .append('path')
+    .attr('d', path);
+  });
+</script>
+
+  </div>
+
+  <h2>3. TopoJSON map</h2>
+
+  <div><code>geo2topo</code> is a node command line tool that is already installed in the lab. You can use it to
+    transform GeoJSON in TopoJSON as follows:</div>
+
+  <ul>
+    <li>Open a VS code terminal in <code>lab/data</code></li>
+    <li>Execute the command:
+      <pre><code class="sh">../node_modules/topojson-server/bin/geo2topo QGIS.geojson -o QGIS.topojson</code></pre>
+    </li>
+  </ul>
+
+  Use the code provided in the Answer to display <code>data/QGIS.topojson</code>. You will need to load
+  <code>topojson-client.min.js</code> in the page.
+
+  <div class="mt-2 accordion mb-2" id="accordionThree">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+          data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          D3 code for TopoJSON
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
+        data-bs-parent="#accordionThree">
+        <div class="accordion-body">
+          <pre><code class="HTML" data-trim data-noescape>&lt;script&gt;
+d3.json('data/QGIS.topojson').then(json => {
+  //see https://github.com/topojson/topojson-client/blob/master/README.md#feature
+  //console.log(json)
+  json = topojson.feature(json, json.objects.QGIS);
+
+  var svg = d3.select('#svg3'),
+    width = +svg.attr('width'),
+    height = +svg.attr('height');
+
+  var projection = d3.geoMercator()
+    .fitSize([width, height], json);
+
+  path = d3.geoPath()
+    .projection(projection);
+
+  svg.append('g')
+    .attr('class', 'cities')
+    .selectAll("path")
+    .data(json.features)
+    .enter()
+    .append('path')
+    .attr('d', path);
+});
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-3 mb-3">
+    <div>Answer</div>
+    <!-- Your answer below -->
+    <script src="node_modules/topojson-client/dist/topojson-client.min.js"></script>
+
+        <svg id="svg3" width="300" height="300" style="background-color: #eee"></svg>
+
+    <script>
+d3.json('data/QGIS.topojson').then(json => {
+  //see https://github.com/topojson/topojson-client/blob/master/README.md#feature
+  json = topojson.feature(json, json.objects.QGIS);
+
+  var svg = d3.select('#svg3'),
+    width = +svg.attr('width'),
+    height = +svg.attr('height');
+
+  var projection = d3.geoMercator()
+    .fitSize([width, height], json);
+
+  path = d3.geoPath()
+    .projection(projection);
+
+  svg.append('g')
+    .attr('class', 'cities')
+    .selectAll("path")
+    .data(json.features)
+    .enter()
+    .append('path')
+    .attr('d', path);
+});
+</script>
+
+  </div>
+
+  <h2>4. Projected TopoJSON map</h2>
+
+  <div>
+    <ul>
+      <li>Use <code>geo2topo</code> to transform <code>data/QGIS_projected.geojson</code> into projected TopoJSON. Save
+        the projected TopoJSON in <code>data/QGIS.topojson</code></li>
+      <li>Use the code of ex10.3 to display <code>data/QGIS.topojson</code> in the Answer</li>
+    </ul>
+  </div>
+
+  <ul>
+
+    <div class="card p-3 mb-3">
+      <div>Answer</div>
+      <!-- Your answer below -->
+          <script src="node_modules/topojson-client/dist/topojson-client.min.js"></script>
+
+      <svg id="svg4" width="300" height="300" style="background-color: #eee"></svg>
+
+      <script>
+d3.json('data/QGIS.topojson').then(json => {
+  //see https://github.com/topojson/topojson-client/blob/master/README.md#feature
+  //console.log(json)
+  json = topojson.feature(json, json.objects.QGIS);
+
+  var svg = d3.select('#svg4'),
+    width = +svg.attr('width'),
+    height = +svg.attr('height');
+
+  var projection = d3.geoMercator()
+    .fitSize([width, height], json);
+
+  path = d3.geoPath()
+    .projection(projection);
+
+  svg.append('g')
+    .attr('class', 'cities')
+    .selectAll("path")
+    .data(json.features)
+    .enter()
+    .append('path')
+    .attr('d', path);
+});
+</script>
+
+    </div>
+
+    <h2>5. GeoJSON and TopoJSON file size comparison</h2>
+
+    <div>Once you finish the above exercise complete the table to compare GeoJSON and TopoJSON file sizes. If you are
+      not
+      familiar with <i>Emmet</i> refer to <a href="https://code.visualstudio.com/docs/editor/emmet">Emmet in Visual
+        Studio
+        Code</a>
+    </div>
+
+    <div class="card p-3 mb-3">
+      <div>Answer</div>
+      <!-- Your answer below -->
+              
+
+      <table class="table table-striped text-end">
+        <tr>
+          <th>File</th>
+          <th>Size (M)</th>
+          <th>% Relative size (resp. to QGIS.geojson)</th>
+        </tr>
+        <tr>
+          <td>QGIS.geojson</td>
+          <td>15.1
+          </td>
+          <td>100
+          </td>
+        </tr>
+        <tr>
+          <td>QGIS_projected.geojson</td>
+          <td>13
+          </td>
+          <td>86
+          </td>
+        </tr>
+        <tr>
+          <td>QGIS.topojson</td>
+          <td>10.5
+          </td>
+          <td>69.5
+          </td>
+        </tr>
+        <tr>
+          <td>QGIS_projected.topojson</td>
+          <td>10.3
+          </td>
+          <td>68.2
+          </td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

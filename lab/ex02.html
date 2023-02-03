@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>DSCI 554 Lab ex02</title>
+
+    <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
+
+    <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet">
+
+    <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+    <script src="./highlight.min.js"></script>
+
+    <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+    <link rel="stylesheet"
+      href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+    <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+    <script src="./node_modules/d3/dist/d3.min.js"></script>
+  </head>
+
+  <body>
+    <h1>🏋🏽‍♂️ ex02: SVG Maps</h1>
+
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+        <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex02: SVG
+          Maps</li>
+      </ol>
+    </nav>
+
+    <h2>1. SVG Map loaded as an SVG image</h2>
+
+    <div>Implement a map using <code>data/H1N1_USA_confirmed_deaths.svg</code>
+      using <code>img</code> then set the
+      checkboxes that define the map.</div>
+
+    <div class="card p-3 mb-3">
+      <div>Answer</div>
+
+      <!-- Implement the map here -->
+
+      <img src="data/H1N1_USA_Map_by_confirmed_deaths.svg"></img>
+
+    <!--
+      Check all that applies. To set a checkbox to checked add checked property:
+        <input type="checkbox" checked/>
+    -->
+    <div><b>Map type: </b> 
+        <input type="checkbox" /> slippy map 
+        <input type="checkbox" checked/> static map 
+        <input type="checkbox" /> thematic map
+      </div>
+      <div><b>Map format: </b> 
+        <input type="checkbox" /> Vector 
+        <input type="checkbox" checked/> Raster 
+      </div>
+      <div><b>Projection: </b> 
+        <input type="checkbox" /> Mercator 
+        <input type="checkbox" checked/> Albers conic 
+        <input type="checkbox" /> Lambert conformal conic 
+        <input type="checkbox" /> UTM 
+      </div>
+      <div><b>Projection type: </b> 
+        <input type="checkbox" /> Cylindrical 
+        <input type="checkbox" checked /> Conic 
+        <input type="checkbox" /> Azimuthal 
+        <input type="checkbox" /> 
+      </div>
+      <div><b>Projection properties preserved: </b> 
+        <input type="checkbox" /> Conformal 
+        <input type="checkbox" checked/> Equal-area 
+        <input type="checkbox" /> Equidistant 
+        <input type="checkbox" /> Azimuthal
+      </div>
+  </div>
+
+  <h2>2. SVG map added as an SVG element</h2>
+
+  <div>Implement the map with the code provided in the Answer then set the
+    checkboxes that define the map.</div>
+
+  <div class="mt-2 accordion mb-2" id="accordionOne">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button"
+          data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="false" aria-controls="collapseOne">
+          SVG map added as an SVG element code
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse"
+        aria-labelledby="headingOne"
+        data-bs-parent="#accordionOne">
+        <div class="accordion-body">
+
+          <pre><code class="HTML" data-trim data-noescape>&lt;svg id="map1" width="959" height="593"&gt;
+&lt;script&gt;
+d3.select("#map1")
+  .append("image")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("width", 959)
+  .attr("height", 593)
+  .attr("href", "data/H1N1_USA_confirmed_deaths.svg");
+&lt;/script&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-3 mb-3">
+    <div>Answer</div>
+    <!-- Implement the map here -->
+    <svg id="map1" width="959" height="593">
+      <script>
+d3.select("#map1")
+  .append("image")
+  .attr("x", 0)
+  .attr("y", 0)
+  .attr("width", 959)
+  .attr("height", 593)
+  .attr("href", "data/H1N1_USA_confirmed_deaths.svg");
+</script>
+
+      <!--
+      Check all that applies. To set a checkbox to checked add checked property:
+        <input type="checkbox" checked/>
+    -->
+      <div><b>Map type: </b> 
+        <input type="checkbox" /> slippy map 
+        <input type="checkbox" checked/> static map 
+        <input type="checkbox" /> thematic map
+      </div>
+      <div><b>Map format: </b> 
+        <input type="checkbox" /> Vector 
+        <input type="checkbox" checked/> Raster 
+      </div>
+      <div><b>Projection: </b> 
+        <input type="checkbox" /> Mercator 
+        <input type="checkbox" checked/> Albers conic 
+        <input type="checkbox" /> Lambert conformal conic 
+        <input type="checkbox" /> UTM 
+      </div>
+      <div><b>Projection type: </b> 
+        <input type="checkbox" /> Cylindrical 
+        <input type="checkbox" checked /> Conic 
+        <input type="checkbox" /> Azimuthal 
+        <input type="checkbox" /> 
+      </div>
+      <div><b>Projection properties preserved: </b> 
+        <input type="checkbox" /> Conformal 
+        <input type="checkbox" checked/> Equal-area 
+        <input type="checkbox" /> Equidistant 
+        <input type="checkbox" /> Azimuthal
+      </div>
+    </div>
+
+    <h2>3. SVG image added using d3</h2>
+
+    See <a target="_blank"
+      href="https://github.com/d3/d3-fetch/blob/v2.0.0/README.md#xml">d3.xml</a>
+    and
+    <a target="_blank"
+      href="https://developer.mozilla.org/en-US/docs/Web/API/DOMString">DOMString</a>.
+    <div>Implement the map with the code provided in the Answer then set the
+      checkboxes that define the map.</div>
+
+    <div class="mt-2 accordion mb-2" id="accordionTwo">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button"
+            data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+            aria-expanded="false" aria-controls="collapseTwo">
+            SVG Image added using d3 code
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse"
+          aria-labelledby="headingTwo"
+          data-bs-parent="#accordionTwo">
+          <div class="accordion-body">
+
+            <pre><code class="HTML" data-trim data-noescape>&lt;div id="map2"&gt;&lt;/div&gt;
+&lt;script&gt;
+d3.xml("data/H1N1_USA_confirmed_deaths.svg")  // load the svg as an xml file
+  .then(data => {
+    console.log(data);  //debug in DevTools --> returns a document object the svg is loaded into the #document element
+    console.log(data.documentElement);  //see https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement --> returns the Element that is the root element of the document
+
+    ///////////////////////////////////////////  appends the svg element loaded in the above line to the body of the page. So the svg of the map is appended to the end of this page after all the divs.
+    //load SVG using document.body.append
+    //javascript ParentNode.append() inserts a set of Node objects or DOMString objects
+    //document.body.append(data.documentElement);
+
+    ///////////////////////////////////////////  appends the svg element to the element (first non null element) identified by the id "map2"
+    //load SVG using d3.append
+    var div = d3.select("#map2")
+      .node()  //returns the first (non-null) element in this selection.
+      .append(data.documentElement);
+
+    ///////////////////////////////////////////  gets the element with id "map2" and appends a child node. The child node is retrieved from the data using the first node in getElementsByTagName for svg on "data" variable, which will be the map svg.
+    //load SVG using appendChild with scaling.
+    // var svg = document.getElementById("map2");
+    // svg.appendChild(data.getElementsByTagName("svg")[0]);
+
+    ///////////////////////////////////////////  selects the element with id "#California", which is the path with the state id, and fill it with color red.
+    // d3.select("#California")
+    //     .style("fill", "red");
+
+  });
+&lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card p-3 mb-3">
+      <div>Answer</div>
+      <!-- Implement the map here -->
+      <div id="map2"></div>
+      <script>
+d3.xml("data/H1N1_USA_confirmed_deaths.svg")  // load the svg as an xml file
+  .then(data => {
+    console.log(data);  //debug in DevTools --> returns a document object the svg is loaded into the #document element
+    console.log(data.documentElement);  //see https://developer.mozilla.org/en-US/docs/Web/API/Document/documentElement --> returns the Element that is the root element of the document
+
+    ///////////////////////////////////////////  appends the svg element loaded in the above line to the body of the page. So the svg of the map is appended to the end of this page after all the divs.
+    //load SVG using document.body.append
+    //javascript ParentNode.append() inserts a set of Node objects or DOMString objects
+    //document.body.append(data.documentElement);
+
+    ///////////////////////////////////////////  appends the svg element to the element (first non null element) identified by the id "map2"
+    //load SVG using d3.append
+    var div = d3.select("#map2")
+      .node()  //returns the first (non-null) element in this selection.
+      .append(data.documentElement);
+
+    ///////////////////////////////////////////  gets the element with id "map2" and appends a child node. The child node is retrieved from the data using the first node in getElementsByTagName for svg on "data" variable, which will be the map svg.
+    //load SVG using appendChild with scaling.
+    // var svg = document.getElementById("map2");
+    // svg.appendChild(data.getElementsByTagName("svg")[0]);
+
+    ///////////////////////////////////////////  selects the element with id "#California", which is the path with the state id, and fill it with color red.
+     d3.select("#California")
+         .style("fill", "red");
+
+  });
+</script>
+
+      <!--
+      Check all that applies. To set a checkbox to checked add checked property:
+        <input type="checkbox" checked/>
+    -->
+      <div><b>Map type: </b> 
+        <input type="checkbox" /> slippy map 
+        <input type="checkbox" checked/> static map 
+        <input type="checkbox" /> thematic map
+      </div>
+      <div><b>Map format: </b> 
+        <input type="checkbox" /> Vector 
+        <input type="checkbox" checked/> Raster 
+      </div>
+      <div><b>Projection: </b> 
+        <input type="checkbox" /> Mercator 
+        <input type="checkbox" checked/> Albers conic 
+        <input type="checkbox" /> Lambert conformal conic 
+        <input type="checkbox" /> UTM 
+      </div>
+      <div><b>Projection type: </b> 
+        <input type="checkbox" /> Cylindrical 
+        <input type="checkbox" checked /> Conic 
+        <input type="checkbox" /> Azimuthal 
+        <input type="checkbox" /> 
+      </div>
+      <div><b>Projection properties preserved: </b> 
+        <input type="checkbox" /> Conformal 
+        <input type="checkbox" checked/> Equal-area 
+        <input type="checkbox" /> Equidistant 
+        <input type="checkbox" /> Azimuthal
+      </div>
+    </div>
+
+    <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi
+          bi-arrow-up"></i> top</a></div>
+
+  </body>
+
+</html>

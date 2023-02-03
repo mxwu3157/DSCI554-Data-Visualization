@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<title>DSCI 554 Lab ex03</title>
+
+		<link href="./node_modules/bootstrap/dist/css/bootstrap.min.css"
+			rel="stylesheet" />
+		<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+		<link rel="stylesheet" href="./style.css">
+
+		<link href="node_modules/bootstrap-icons/font/bootstrap-icons.css"
+			rel="stylesheet">
+
+		<link rel="stylesheet" href="./github-dark-dimmed.min.css">
+		<script src="./highlight.min.js"></script>
+
+		<script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+		<link rel="stylesheet"
+			href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+		<link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css"
+			rel="stylesheet">
+		<script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+		<script>
+		hljs.highlightAll();
+		hljs.addPlugin(new CopyButtonPlugin());
+	</script>
+	</head>
+	<!-- <style>
+body { margin: 0; padding: 0; }
+#map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style> -->
+	<body>
+		<h1>🏋🏽‍♂️ ex03: Mapbox</h1>
+
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+				<li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex03: Mapbox</li>
+			</ol>
+		</nav>
+
+		<h2>Demo: Mapbox example</h2>
+
+		<div>I am going to implement the example from <a target="_blank"
+				href="https://docs.mapbox.com/mapbox-gl-js/example/simple-map/">Mapbox
+				Display a map page</a></div>
+
+		<div class="card p-3 mb-3">
+			<div>Answer</div>
+			<script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+			<div id="map1"></div>
+			<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoibWVpeGlhbnciLCJhIjoiY2xhOHRkbTVmMDAwZTNzczRmeGJxZmV6NyJ9.dDkKu_xEIOqlr05h2dh2EQ';
+const map1 = new mapboxgl.Map({
+container: 'map1', // container ID
+// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+style: 'mapbox://styles/meixianw/cla8tjz47002815oypoax4als', // style URL
+center: [-74.5, 40], // starting position [lng, lat]
+zoom: 9, // starting zoom
+projection: 'globe' // display the map as a 3D globe
+});
+ 
+map1.on('style.load', () => {
+map1.setFog({}); // Set the default atmosphere style
+});
+</script>
+		</div>
+
+		<h2>1. Mapbox map of USC</h2>
+
+		<div>Implement a Mapbox map centered on the USC UPC campus:
+			<ul>
+				<li>Set a dark style (see <a target="_blank"
+						href="https://docs.mapbox.com/help/glossary/style-url/">style URL</a> and
+					<a target="_blank" href="https://www.mapbox.com/maps/dark">Mapbox Dark</a>)</li>
+				<li>Add a pin for USC (see <a target="_blank"
+						href="https://docs.mapbox.com/mapbox-gl-js/example/add-a-marker/">Add a
+						default marker</a>)</li>
+			</ul>
+		</div>
+		<style>
+	#map {
+		position:absolute;
+		top:0;
+		bottom: 0;
+		width: 100%;
+		}
+	#wrapper {
+		width: 650px !important;
+		height: 450px !important;
+		position: relative;
+		display: inline-block;
+
+	}
+</style>
+		<div class="card p-3">
+			<div>Answer</div>
+			<link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css"
+				rel="stylesheet">
+			<script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+			<!-- Your answer below -->
+
+			<div id='wrapper'>
+
+				<div id="map" class="dark" style="height: 500px; width:100%"></div>
+					</div>
+				<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoibWVpeGlhbnciLCJhIjoiY2xhOHRkbTVmMDAwZTNzczRmeGJxZmV6NyJ9.dDkKu_xEIOqlr05h2dh2EQ';
+const map = new mapboxgl.Map({
+container: 'map', // container ID
+// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+style: 'mapbox://styles/meixianw/cla8tjz47002815oypoax4als', // style URL
+center: [-118.28485047274489, 34.0237637252747], // starting position [lng, lat]34.0237637252747, -118.28485047274489
+zoom: 13, // starting zoom
+projection: 'globe' // display the map as a 3D globe
+});
+const marker1 = new mapboxgl.Marker()
+.setLngLat([-118.28485047274489, 34.0237637252747])
+.addTo(map);
+
+map.setStyle('mapbox://styles/mapbox/' + 'dark-v10');
+ 
+map.on('style.load', () => {
+map.setFog({}); // Set the default atmosphere style
+});
+
+</script>
+
+
+		
+
+			<div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi
+						bi-arrow-up"></i> top</a></div>
+
+		</body>
+
+	</html>

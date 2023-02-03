@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab ex05</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+<link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css"
+				rel="stylesheet">
+			<script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex05: GeoJSON</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex05: GeoJSON</li>
+    </ol>
+  </nav>
+
+  <h2>Demo: downloading footprints</h2>
+
+  I will demonstrate how download footprints, first using a manual download and then using an API.
+  <ol>
+    <li>Go to <a target="_blank"
+        href="https://geohub.lacity.org/datasets/building-footprints/data?geometry=-118.299%2C34.018%2C-118.269%2C34.024&orderBy=BLD_ID&orderByAsc=false&where=BLD_ID">Los
+        Angeles GeoHub Building Footprints</a>
+    </li>
+    <li>Click Close Table</li>
+    <li>Zoom in in the map and select a footprint, write down the BLD_ID.
+      <div><img width="650" src="picts/footprints1.png" /></div>
+    </li>
+    <li>Click the <i class="bi bi-funnel"></i> icon and filter for your BLD_ID as shown in the figure.
+      <div><img width="650" src="picts/filter.png" /></div>
+    </li>
+    <li>Click the <i class="bi bi-cloud-download"></i> icon, toggle <b>Toggle Filters</b>, and click Download GeoJSON.
+      <div>
+        <img width="650" src="picts/download-filtered.png" />
+      </div>
+    </li>
+  </ol>
+
+  You can also use the API to download footprints as follows:
+  <ol>
+    <li>Click <i class="bi bi-info-circle"></i></li>
+    <li>Click <kbd>I want to use this</kbd> button at the bottom</li>
+    <li>Click <kbd>View API Resources</kbd></li>
+    <li>Click <kbd>Open API Explorer</kbd></li>
+    <li>Add a filters for BLD_IDs as needed
+      <div>
+        <img width="650" src="picts/footprint_api.png" />
+      </div>
+    </li>
+    <li>To download the GeoJSON, copy and paste the Query URL and paste in the Browser.</li>
+  </ol>
+
+
+  <div>You can use <a target="_blank" href="https://geojson.io/">https://geojson.io/</a> to manually create GeoJSON
+    features.</div>
+
+  <h2 class="mt-3">1. Display footprints with Mapbox</h2>
+
+  <ol>
+    <li>Download 3 footprints for UPC buildings of your choice</li>
+    <li>Implement a Mapbox map of USC</li>
+    <li>Use the code below to display the footprints:
+      <pre><code class="js">map.on('load', function () {
+  map.addSource('footprints_source', {
+    type: 'geojson',
+    data: 'Building_Footprints.geojson'
+  });
+
+  map.addLayer({
+    'id': 'footprints',
+    'type': 'fill',
+    'source': 'footprints_source',
+    'layout': {},
+    'paint': {
+      'fill-color': '#eeeeee',
+      'fill-opacity': 0.8
+    }
+  });
+});</code></pre>			
+    </li>
+  </ol>
+
+  <div class="card p-3">
+    <div>Answer</div>
+
+    <!-- Your answer below -->
+    <style>
+      #map { position: relative; top: 0; bottom: 0; width: 100%; height: 540px;}
+
+    </style>
+    <div id="map"></div>
+    <script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoibWVpeGlhbnciLCJhIjoiY2xhOHRkbTVmMDAwZTNzczRmeGJxZmV6NyJ9.dDkKu_xEIOqlr05h2dh2EQ';
+const map = new mapboxgl.Map({
+container: 'map', // container ID
+// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+style: 'mapbox://styles/meixianw/cla8tjz47002815oypoax4als', // style URL
+center: [-118.28485047274489, 34.0237637252747], // starting position [lng, lat]34.0237637252747, -118.28485047274489
+zoom: 14, // starting zoom
+projection: 'globe' // display the map as a 3D globe
+});
+const marker1 = new mapboxgl.Marker()
+.setLngLat([-118.28485047274489, 34.0237637252747])
+.addTo(map);
+
+map.setStyle('mapbox://styles/mapbox/' + 'dark-v10');
+
+map.on('load', function () {
+  map.addSource('footprints_source', {
+    type: 'geojson',
+    data: 'Building_Footprints.geojson'
+  });
+
+  map.addLayer({
+    'id': 'footprints',
+    'type': 'fill',
+    'source': 'footprints_source',
+    'layout': {},
+    'paint': {
+      'fill-color': '#eeeeee',
+      'fill-opacity': 0.8
+    }
+  });
+});
+ 
+
+
+</script>
+
+
+
+  </div>
+
+  <div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+</body>
+
+</html>
