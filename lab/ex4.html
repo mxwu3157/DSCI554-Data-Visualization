@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DSCI 554 Lab 3 ex4</title>
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+	<a id="top"></a>
+	<h1>🏋🏽‍♂️ ex4: bar charts with d3 select &amp; append and div</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab 3</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex4: bar charts with d3 select &amp; append and div</li>
+    </ol>
+  </nav>
+
+	<div class="alert alert-info">
+		💡 <b>Creating bar charts with divs using <code>d3</code> select and append mechanism</b>
+		<ul>
+			<li>With <code>div</code> elements you want to point d3 to a parent <code>div</code> to hold the chart</li>
+			<li><code>d3.select()</code> allows to select elements in the page by id with a CSS selector</li>
+			<li>You can use the chaining syntax to configure and style attributes</li>
+			<li><code>selection.text()</code> sets the innerHTML text for the selected HTML element</li>
+			<li><code>selection.attr()</code> sets one class attribute of the selected HTML element</li>
+			<li><code>selection.style()</code> sets one style attribute of the selected HTML element</li>
+		</ul>
+	</div>
+
+	<div>Use the example code below and create a bar chart in the answer for the following values:
+		<code>[200, 150, 100, 50]</code>. You will need to install d3 with <code>npm install d3</code>.</div>
+
+		<pre><code class="html">&lt;style&gt;
+div.bar {
+  background-color: orangered;
+  margin-bottom: 6px;
+  text-align: right;
+}
+&lt;/style&gt;
+
+&lt;!-- install and load d3 library --&gt;
+&lt;script src="./node_modules/d3/dist/d3.min.js"&gt;&lt;/script&gt;
+
+&lt;div id="chart"&gt;&lt;/div&gt;
+
+&lt;script&gt;
+var el = d3.select('#chart');
+
+el.append('div')
+  .text('100 pixels div')
+  .attr('class', 'bar')  //class is an attribute, so we use .attr()
+  .style('width', '100px');
+&lt;/script&gt;</code></pre>
+	</div>
+
+	<div class="answer">
+		<div>Answer</div>
+    	<!-- Add your code here! -->
+		<style>
+			div.bar {
+			  background-color: orangered;
+			  margin-bottom: 6px;
+			  text-align: right;
+			  height: 30px;
+			}
+			</style>
+			
+			<!-- install and load d3 library -->
+			<script src="./node_modules/d3/dist/d3.min.js"></script>
+			
+			<div id="chart"></div>
+			
+			<script>
+			var el = d3.select('#chart');
+			
+			el.append('div')
+			  .text('200 pixels div')
+			  .attr('class', 'bar')  //class is an attribute, so we use .attr()
+			  .style('width', '200px');
+
+			el.append('div')
+			  .text('150 pixels div')
+			  .attr('class', 'bar')  //class is an attribute, so we use .attr()
+			  .style('width', '150px');
+
+			el.append('div')
+			  .text('100 pixels div')
+			  .attr('class', 'bar')  //class is an attribute, so we use .attr()
+			  .style('width', '100px');
+			
+			el.append('div')
+			  .text('50 pixels div')
+			  .attr('class', 'bar')  //class is an attribute, so we use .attr()
+			  .style('width', '50px');
+			  
+
+
+			</script>	
+
+  </div>
+
+	<div class="mt-3 text-end"><a target="_blank" href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+</html>

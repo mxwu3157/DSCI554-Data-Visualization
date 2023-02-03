@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DSCI 554 Lab 3 ex1</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+	<a id="top"></a>
+
+	<h1>🏋🏽‍♂️ ex1: bar charts with div</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab 3</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex1: bar charts with div</li>
+    </ol>
+  </nav>
+
+	<div class="alert alert-info">
+		💡 <b><code>div</code> properties used to create bar charts</b>
+		<ul>
+			<li>When graphing in the browser you specify the units in pixels with <code>px</code>, however units can be specified in other units, e.g., <code>in</code> or <code>mm</code>.</li>
+			<li>HTML elements can be specified as absolute or relative. The default is relative to the parent.</li>
+			<li>When using <code>div</code> elements to make horizontal bar charts we can use the <code>margin-bottom</code> to separate the bars.</li>
+			<l>You can use the inspect an element in DevTools to see how margin, border and padding are set.</l>
+			<li>By default a div will fill the space available horizontally</li>
+			<li>Setting the <code>background-color</code> on a div will color the whole space the div occupies</li>
+			<li>div does not inherit the border properties.</li>
+		</ul>
+	</div>
+
+	<h2>1. Bars with div and inline style attribute</h2>
+
+	<div>Use the example code below and create a bar chart in the answer for the following values: <code>[200, 150, 100, 50]</code></div>	
+
+	<pre><code class="HTML">&lt;!-- orange div of 100px with 6px bottom margin and text set to '100px' -->
+&lt;div style="margin-bottom: 6px; text-align: right; background-color: orangered; width: 100px;"&gt;100px&lt;/div&gt;</code></pre>
+
+	<div class="answer">
+		<div>Answer</div>
+		<!-- Add your code here! -->
+		<div style="margin-bottom: 6px; text-align: right; background-color: orangered; width: 200px;">200px</div>
+		<div style="margin-bottom: 6px; text-align: right; background-color: orangered; width: 150px;">150px</div>
+		<div style="margin-bottom: 6px; text-align: right; background-color: orangered; width: 100px;">100px</div>
+		<div style="margin-bottom: 6px; text-align: right; background-color: orangered; width: 50px;">50px</div>
+	</div>
+
+	<h2>2. Bars with div and inline style attribute with CSS inheritance</h2>
+
+	<div>Rewrite the code of ex1.1 adding an outer div and use CSS inheritance to minimize CSS redundancy on the divs used to plot the bars.</div>
+
+	<div class="answer">
+		<div>Answer</div>
+		<!-- Add your code here! -->
+		<div style = 'text-align: right;'>
+			<div style=" margin-bottom: 6px; background-color: orangered; width: 200px;">200px</div>
+			<div style=" margin-bottom: 6px; background-color: orangered; width: 150px;">150px</div>
+			<div style=" margin-bottom: 6px; background-color: orangered; width: 100px;">100px</div>
+			<div style=" margin-bottom: 6px; background-color: orangered; width: 50px;">50px</div>
+		</div>
+	</div>
+
+	<h2>3. Bars with div and class attribute</h2>
+	<hr>
+
+	<div>Rewrite the code of ex1.1 to use the CSS shown below.</div>
+
+	<div class="sample">
+		<pre><code class="HTML">&lt;style&gt;
+div.bar {
+  background-color: orangered;
+  margin-bottom: 6px;
+  text-align: right;	
+}
+&lt;/style&gt;</code></pre>
+	</div>
+	
+	<div class="answer">
+		<div>Answer</div>
+		<style>
+			div.bar {
+				background-color: orangered;
+				margin-bottom: 6px;
+				text-align: right;	
+				}
+			
+		</style>
+		<!-- Add your code here! -->
+		<div style = 'text-align: right;'>
+			<div class = 'bar' style = 'width:200px;'>200px</div>
+			<div class = 'bar' style = 'width:150px;'>150px</div>
+			<div class = 'bar' style = 'width:100px;'>100px</div>
+			<div class = 'bar' style = 'width:50px;'>50px</div>
+		</div>
+	</div>
+
+	<div class="mt-3 text-end"><a href="#top"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DSCI 554 Lab 3 ex3</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+  <script>hljs.highlightAll();</script>
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+
+<body>
+	<a id="top"></a>
+	<h1>🏋🏽‍♂️ ex3: scatterplots with SVG</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Lab 3</a></li>
+      <li class="breadcrumb-item active" aria-current="page">🏋🏽‍♂️ ex3: scatterplots with SVG</li>
+    </ol>
+  </nav>
+
+	<div class="alert alert-info">
+		💡 <b><code>svg</code> properties used to create bar charts</b>
+		<ul>
+			<li>The <code>svg</code> element is an HTML element, the elements inside the <code>svg</code> element are SVG elements</li>
+			<li>Default units for SVG coordinates are in pixels so it is customary omit the units</li>
+			<li>SVG coordinate frames are relative to the <code>svg</code> element upper left corner</li>
+			<li>To ensure shapes are visible, set all needed attributes</li>
+			<li>When using style for setting attributes be sure that it is supported by the browser</li>
+			<li>Use the <code>circle</code> SVG element for creating scatterplots</li>
+			<li>Use the <code>circle</code> <code>cx, cy, r</code> to place and size the dots</li>
+		</ul>
+	</div>
+	
+	<h2>1. Scatterplot with SVG circle</h2>
+
+	<div>Use the example code below and create a scatterplot in the answer for the following values: <code>[[200, 200], [150, 150], [100, 100], [50, 50]</code></div>	
+
+	<pre><code class="HTML">&lt;svg width="300px" height="300px"&gt;
+  &lt;circle cx="10" cy="10" r="5" fill="orangered"&gt;&lt;/circle&gt;
+&lt;/svg&gt;</code></pre>
+	</div>
+
+	<div class="answer">
+		<div>Answer</div>
+		<!-- Add your code here! 
+			[[200, 200], [150, 150], [100, 100], [50, 50]
+		-->
+		<svg width="300px" height="300px">
+			<circle cx="200" cy="200" r="5" fill="orangered"></circle>
+			<circle cx="150" cy="150" r="5" fill="orangered"></circle>
+			<circle cx="100" cy="100" r="5" fill="orangered"></circle>
+			<circle cx="50" cy="50" r="5" fill="orangered"></circle>
+		  </svg>
+	</div>
+
+	<h2>2. Scatterplot with SVG circle and class attribute</h2>
+	<hr>
+
+	<div>Rewrite the code of ex3.1 to use the CSS shown below.</div>
+
+		<pre><code class="HTML">&lt;style&gt;
+circle.dot {
+    fill: orangered;
+    r: 5;
+}
+&lt;/style&gt;
+
+&lt;svg width="300px" height="300px"&gt;
+  &lt;circle class="dot" cx="10" cy="10"&gt;&lt;/circle&gt;
+&lt;/svg&gt;</code></pre>
+
+	<div class="answer">
+		<div>Answer</div>
+		<!-- Add your code here! -->
+		<style>
+			circle.dot {
+				fill: orangered;
+				r: 5;
+			}
+			</style>
+			
+		<svg width="300px" height="300px">
+			<circle class="dot" cx="200" cy="200"></circle>
+			<circle class="dot" cx="150" cy="150"></circle>
+			<circle class="dot" cx="100" cy="100"></circle>
+			<circle class="dot" cx="50" cy="50"></circle>
+		</svg>
+		
+
+  </div>
+
+	<div class="mt-3 text-end"><a href="#top"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+</html>
