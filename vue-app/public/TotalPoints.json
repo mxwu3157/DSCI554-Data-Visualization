@@ -1,0 +1,42 @@
+[
+    {
+        "team" : "Chiefs",
+        "point":326
+    },
+    {
+        "team" : "Bills",
+        "point":309
+    },
+    {
+        "team" : "Bengals",
+        "point":285
+    },
+    {
+        "team" : "Packers",
+        "point":235
+    },
+    {
+        "team" : "Chargers",
+        "point":252
+    },
+    {
+        "team" : "Rams",
+        "point": 178
+    },
+    {
+        "team" : "Eagles",
+        "point": 303
+    },
+    {
+        "team" : "Jets",
+        "point":230
+    },
+    {
+        "team" : "Cowboys",
+        "point": 279
+    },
+    {
+        "team" : "Bears",
+        "point":251
+    }
+]
