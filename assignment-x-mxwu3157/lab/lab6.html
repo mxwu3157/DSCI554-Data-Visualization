@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>DSCI 554 Lab 6</title>
+
+	<link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+</head>
+
+<body>
+	<h1 class="neon">🧪 Lab 6: Bootstrap dashboard</h1>
+
+	<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Index</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Lab 6: Bootstrap responsive grid layout</li>
+    </ol>
+  </nav>
+
+	<h2>1. Implement a dashboard with Bootstrap</h2>
+
+  Follow these steps to implement this <a href="https://getbootstrap.com/docs/5.2/examples/dashboard/">Dashboard</a>:
+	<div>
+    <ol>
+      <li>Download the Bootstrap Examples <a href="https://getbootstrap.com/docs/5.2/examples/">here</a></li>
+      <li>Unzip the archive, open the index file under <code>dashboard</code></li>
+      <li>Check that the dashboard works by opening <code>dashboard/index.html</code></li>
+      <li>Copy the <code>dashboard</code> folder to <a href="./dashboard" target="_blank">dashboard</a></li>
+      <li>Initialize npm and installs bootstrap in the <code>dashboard</code> folder:
+        <pre><code class="sh" data-trim data-noescape>cd dashboard
+npm init
+npm install --save bootstrap</code></pre>
+      </li>
+      <li>Adjust the paths for <code>bootstrap.min.css</code> and <code>bootstrap.bundle.min.js</code> in <a href="./dashboard/index.html" target="_blank">dashboard/index.html</a> to use the files from <code>node_modules</code>:
+        <pre><code class="sh" data-trim data-noescape>./node_modules/bootstrap/dist/css/bootstrap.min.css
+./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js</code></pre>
+      </li>
+      <li>Check that the dashboard works by opening <a href="./dashboard" target="_blank">dashboard</a> with LiveServer</li>
+    </ol>
+
+</body>
+
+</html>
