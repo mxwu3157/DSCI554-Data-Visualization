@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>DSCI 554 Lab 1</title>
+
+  <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+
+  <link href="node_modules/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="./github-dark-dimmed.min.css">
+  <script src="./highlight.min.js"></script>
+
+  <script src="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.js"></script>
+  <link rel="stylesheet" href="./node_modules/highlightjs-copy/dist/highlightjs-copy.min.css" />
+
+  <script>
+    hljs.highlightAll();
+    hljs.addPlugin(new CopyButtonPlugin());
+  </script>
+
+  <script src="./node_modules/d3/dist/d3.min.js"></script>
+</head>
+
+<body>
+  <h1>🧪 Lab 1: responsive HTML bar chart</h1>
+
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Index</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Lab 1: responsive HTML bar chart</li>
+    </ol>
+  </nav>
+
+  <div>To create a responsive HTML chart you have to resize text and marks based on the page width.</div>
+
+  <h2>Responsive text</h2>
+  <ul>
+    <li>Font size can be expressed in absolute units such as <code>px</code>, <code>pt</code>, and <code>in</code></li>
+    <li>Relative units can be used to size the text as a percent of the parent font size.
+      <div style="font-size: 32px;"><span style="font-size: 30%;">font size is 30% of 32px</span></div>
+      <pre><code class="HTML" data-trim data-noescape>&lt;div style="font-size: 32px;"&gt;
+  &lt;span style="font-size: 30%;"&gt;font size is 30% of 32px&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+    </li>
+    <li>To make text responsive we need to size it based on the size of the viewport so it resizes when the viewport
+      resizes. The viewport is basically the part of the document that is currently visible. You can use <code>vw</code>
+      units to size the font to a percentage of the viewport width.
+      <div class="m-2" style="font-size: 3vw;">font size is 3% of viewport width</div>
+      <pre><code class="HTML" data-trim data-noescape>&lt;div style="font-size: 3vw;"&gt;font size is 3% of viewport width&lt;/div&gt;</code></pre>
+    </li>
+  </ul>
+
+  <h2>Responsive div</h2>
+  <ul>
+    <li>To make bars created with <code>div</code> responsive you can simply use relative percentage <code>%</code>
+      units to
+      set the bar size as a percentage of the data-bs-parent.
+
+      <div class="m-2">
+        <div style="display: inline-block;
+          background-color:#7abcff;
+          height: 40px;
+          width: 80%;">
+        </div>
+      </div>
+
+      <pre><code class="HTML" data-trim data-noescape>&lt;div style="display: inline-block; background-color:#7abcff; height: 40px; width: 80%;"&gt;&lt;/div&gt;</code></pre>
+    </li>
+  </ul>
+
+  <h3>References</h3>
+  <ul>
+    <li><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Viewport_concepts">MDN Web docs:
+        Viewport concepts</a></li>
+  </ul>
+
+  <h2 class="mt-">1. Create a responsive HTML bar chart with the code provided</h2>
+
+  <div class="mt-2 accordion mb-2" id="accordionOne">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+          aria-expanded="false" aria-controls="collapseOne">
+          HTML bar chart
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+        data-bs-parent="#accordionOne">
+        <div class="accordion-body">
+
+          <pre style="font-size: 0.85em;"><code class="html">&lt;!--
+City            value         %                                       % width
+Los Angeles     240749        78                                      78.0%
+Miami-Dade      156559        ((78 / 240749) * 156559).toFixed(1)
+Maricopa        133641
+Cook            126003
+Harris          105757
+Broward         70950
+Dallas          70810
+Queens          69370
+Kings           63974
+Clark           59153
+--&gt;
+
+&lt;style&gt;
+.title {
+  margin-bottom: 10px;
+  font-size: 12px;  /* 🚧 make text responsive */
+}
+.item {  /* wrapper for label + bar */
+  text-align: left;
+  margin-bottom: 5px;
+}
+.bar {
+  display: inline-block;  /* turn bar div inline so it shows on the same line with the label */
+  text-align: right;
+  vertical-align: middle;
+  background-color:#7abcff;
+  height: 30px;
+}
+.label {
+  display: inline-block;  /* turn label div inline so it shows on the same line with the bar */
+  text-align: right;
+  vertical-align: middle;
+  line-height: 20px;  /* make the text and bar the same height to they align */
+  width: 20%;  /* size of label relative to page */
+  font-size: 12px;  /* 🚧 make text responsive */
+}
+.value {  /* the value label in the bar */
+  color:#444;
+  font-family: 'Courier New', Courier, monospace;  /* use fixed font */
+  font-weight: bolder;
+  vertical-align: middle; /* align text to the middle of the bar */
+  line-height: 20px;  /* trick to make sure the label height is the same as the bar height so it will align to the middle */
+  margin-right: 5px;  /* move label 5px from the end of the bar */
+  font-size: 12px;  /* 🚧 make text responsive */
+}
+&lt;/style&gt;
+
+&lt;div class="title"&gt;Top 10 COVID-19 confirmed in the US, Aug 31 2020 (source Johns Hopkins University)&lt;/div&gt;
+&lt;div class="item"&gt;
+  &lt;div class="label"&gt;Los Angeles&lt;/div&gt;
+  &lt;div class="bar" style="width: 78%;"&gt;  &lt;!-- 🚧 make bar responsive: longest bar width is 78% of page width --&gt;
+    &lt;span class="value"&gt;240,749&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="item"&gt;
+  &lt;div class="label"&gt;Miami-Dade&lt;/div&gt;
+  &lt;div class="bar" style="width: 156px;"&gt; &lt;!-- 🚧 make bar responsive --&gt;
+    &lt;span class="value"&gt;156,559&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="item"&gt;
+  &lt;div class="label"&gt;Maricopa&lt;/div&gt;
+  &lt;div class="bar" style="width: 134px;"&gt; &lt;!-- 🚧 make bar responsive --&gt;
+    &lt;span class="value"&gt;133,641&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="item"&gt;
+  &lt;div class="label"&gt;Cook&lt;/div&gt;
+  &lt;div class="bar" style="width: 126px;"&gt; &lt;!-- 🚧 make bar responsive --&gt;
+    &lt;span class="value"&gt;126,003&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="item"&gt;
+  &lt;div class="label"&gt;Harris&lt;/div&gt;
+  &lt;div class="bar" style="width: 106px;"&gt; &lt;!-- 🚧 make bar responsive --&gt;
+    &lt;span class="value"&gt;105,757&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="item"&gt;
+  &lt;div class="label"&gt;Broward&lt;/div&gt;
+  &lt;div class="bar" style="width: 71px;"&gt; &lt;!-- 🚧 make bar responsive --&gt;
+    &lt;span class="value"&gt;70,950&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="item"&gt;
+  &lt;div class="label"&gt;Dallas&lt;/div&gt;
+  &lt;div class="bar" style="width: 71px;"&gt; &lt;!-- 🚧 make bar responsive --&gt;
+    &lt;span class="value"&gt;70,810&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="item"&gt;
+  &lt;div class="label"&gt;Queens&lt;/div&gt;
+  &lt;div class="bar" style="width: 69px;"&gt; &lt;!-- 🚧 make bar responsive --&gt;
+    &lt;span class="value"&gt;69,370&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="item"&gt;
+  &lt;div class="label"&gt;Kings&lt;/div&gt;
+  &lt;div class="bar" style="width: 64px;"&gt; &lt;!-- 🚧 make bar responsive --&gt;
+    &lt;span class="value"&gt;63,974&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="item"&gt;
+  &lt;div class="label"&gt;Clark&lt;/div&gt;
+  &lt;div class="bar" style="width: 59px;"&gt; &lt;!-- 🚧 make bar responsive --&gt;
+    &lt;span class="value"&gt;59,153&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card p-3 mb-3">
+    <div>Answer</div>
+    <!-- Add your code here! -->
+  </div>
+
+  <div class="mt-3 text-end"><a href="#"><i class="bi bi-arrow-up"></i> top</a></div>
+
+</body>
+
+</html>
