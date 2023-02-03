@@ -1,0 +1,22 @@
+[
+    { "label": "Mazda RX4", "value": 21.0
+    },
+    { "label": "Mazda RX4 Wag", "value": 21.0
+    },
+    { "label": "Datsun 710", "value": 22.8
+    },
+    { "label": "Hornet 4 Drive", "value": 21.4
+    },
+    { "label": "Hornet Sportabout", "value": 18.7
+    },
+    { "label": "Valiant", "value": 18.1
+    },
+    { "label": "Duster 360", "value": 14.3
+    },
+    { "label": "Merc 240D", "value": 24.4
+    },
+    { "label": "Merc 230", "value": 22.8
+    },
+    { "label": "Merc 280", "value": 19.2
+    }
+]

@@ -1,0 +1,703 @@
+Team,W,L,PF,PA,Year
+Los Angeles Chargers,1,15,269,440,2000
+Arizona Cardinals,3,13,210,443,2000
+Cleveland Browns,3,13,161,419,2000
+Atlanta Falcons,4,12,252,413,2000
+Cincinnati Bengals,4,12,185,359,2000
+Chicago Bears,5,11,216,355,2000
+Dallas Cowboys,5,11,294,361,2000
+New England Patriots,5,11,276,338,2000
+San Francisco 49ers,6,10,388,422,2000
+Seattle Seahawks,6,10,320,405,2000
+Carolina Panthers,7,9,310,310,2000
+Jacksonville Jaguars,7,9,367,327,2000
+Kansas City Chiefs,7,9,355,354,2000
+Buffalo Bills,8,8,315,350,2000
+Washington Commanders,8,8,281,269,2000
+Detroit Lions,9,7,307,307,2000
+Green Bay Packers,9,7,353,323,2000
+New York Jets,9,7,321,321,2000
+Pittsburgh Steelers,9,7,321,255,2000
+Indianapolis Colts,10,6,429,326,2000
+Los Angeles Rams,10,6,540,471,2000
+New Orleans Saints,10,6,354,305,2000
+Tampa Bay Buccaneers,10,6,388,269,2000
+Denver Broncos,11,5,485,369,2000
+Miami Dolphins,11,5,323,226,2000
+Minnesota Vikings,11,5,397,371,2000
+Philadelphia Eagles,11,5,351,245,2000
+Baltimore Ravens,12,4,333,165,2000
+Las Vegas Raiders,12,4,479,299,2000
+New York Giants,12,4,328,246,2000
+Tennessee Titans,13,3,346,191,2000
+Carolina Panthers,1,15,253,410,2001
+Detroit Lions,2,14,270,424,2001
+Buffalo Bills,3,13,265,420,2001
+Dallas Cowboys,5,11,246,338,2001
+Los Angeles Chargers,5,11,332,321,2001
+Minnesota Vikings,5,11,290,390,2001
+Cincinnati Bengals,6,10,226,309,2001
+Indianapolis Colts,6,10,413,486,2001
+Jacksonville Jaguars,6,10,294,286,2001
+Kansas City Chiefs,6,10,320,344,2001
+Arizona Cardinals,7,9,295,343,2001
+Atlanta Falcons,7,9,291,377,2001
+Cleveland Browns,7,9,285,319,2001
+New Orleans Saints,7,9,333,409,2001
+New York Giants,7,9,294,321,2001
+Tennessee Titans,7,9,336,388,2001
+Denver Broncos,8,8,340,339,2001
+Washington Commanders,8,8,256,303,2001
+Seattle Seahawks,9,7,301,324,2001
+Tampa Bay Buccaneers,9,7,324,280,2001
+Baltimore Ravens,10,6,303,265,2001
+Las Vegas Raiders,10,6,399,327,2001
+New York Jets,10,6,308,295,2001
+Miami Dolphins,11,5,344,290,2001
+New England Patriots,11,5,371,272,2001
+Philadelphia Eagles,11,5,343,208,2001
+Green Bay Packers,12,4,390,266,2001
+San Francisco 49ers,12,4,409,282,2001
+Chicago Bears,13,3,338,203,2001
+Pittsburgh Steelers,13,3,352,212,2001
+Los Angeles Rams,14,2,503,273,2001
+Cincinnati Bengals,2,14,279,456,2002
+Detroit Lions,3,13,306,451,2002
+Chicago Bears,4,12,281,379,2002
+Houston Texans,4,12,213,356,2002
+Arizona Cardinals,5,11,262,417,2002
+Dallas Cowboys,5,11,217,329,2002
+Jacksonville Jaguars,6,10,328,315,2002
+Minnesota Vikings,6,10,390,442,2002
+Baltimore Ravens,7,9,316,354,2002
+Carolina Panthers,7,9,258,302,2002
+Los Angeles Rams,7,9,316,369,2002
+Seattle Seahawks,7,9,355,369,2002
+Washington Commanders,7,9,307,365,2002
+Buffalo Bills,8,8,379,397,2002
+Kansas City Chiefs,8,8,467,399,2002
+Los Angeles Chargers,8,8,333,367,2002
+Atlanta Falcons,9,6,402,314,2002
+Cleveland Browns,9,7,344,320,2002
+Denver Broncos,9,7,392,344,2002
+Miami Dolphins,9,7,378,301,2002
+New England Patriots,9,7,381,346,2002
+New Orleans Saints,9,7,432,388,2002
+New York Jets,9,7,359,336,2002
+Indianapolis Colts,10,6,349,313,2002
+New York Giants,10,6,320,279,2002
+Pittsburgh Steelers,10,5,390,345,2002
+San Francisco 49ers,10,6,367,351,2002
+Las Vegas Raiders,11,5,450,304,2002
+Tennessee Titans,11,5,367,324,2002
+Green Bay Packers,12,4,398,328,2002
+Philadelphia Eagles,12,4,415,241,2002
+Tampa Bay Buccaneers,12,4,346,196,2002
+Arizona Cardinals,4,12,225,452,2003
+Las Vegas Raiders,4,12,270,379,2003
+Los Angeles Chargers,4,12,313,441,2003
+New York Giants,4,12,243,387,2003
+Atlanta Falcons,5,11,299,422,2003
+Cleveland Browns,5,11,254,322,2003
+Detroit Lions,5,11,270,379,2003
+Houston Texans,5,11,255,380,2003
+Jacksonville Jaguars,5,11,276,331,2003
+Washington Commanders,5,11,287,372,2003
+Buffalo Bills,6,10,243,279,2003
+New York Jets,6,10,283,299,2003
+Pittsburgh Steelers,6,10,300,327,2003
+Chicago Bears,7,9,283,346,2003
+San Francisco 49ers,7,9,384,337,2003
+Tampa Bay Buccaneers,7,9,301,264,2003
+Cincinnati Bengals,8,8,346,384,2003
+New Orleans Saints,8,8,340,326,2003
+Minnesota Vikings,9,7,416,353,2003
+Baltimore Ravens,10,6,391,281,2003
+Dallas Cowboys,10,6,289,260,2003
+Denver Broncos,10,6,381,301,2003
+Green Bay Packers,10,6,442,307,2003
+Miami Dolphins,10,6,311,261,2003
+Seattle Seahawks,10,6,404,327,2003
+Carolina Panthers,11,5,325,304,2003
+Indianapolis Colts,12,4,447,336,2003
+Los Angeles Rams,12,4,447,328,2003
+Philadelphia Eagles,12,4,374,287,2003
+Tennessee Titans,12,4,435,324,2003
+Kansas City Chiefs,13,3,484,332,2003
+New England Patriots,14,2,348,238,2003
+San Francisco 49ers,2,14,259,452,2004
+Cleveland Browns,4,12,276,390,2004
+Miami Dolphins,4,12,275,354,2004
+Chicago Bears,5,11,231,331,2004
+Las Vegas Raiders,5,11,320,442,2004
+Tampa Bay Buccaneers,5,11,301,304,2004
+Tennessee Titans,5,11,344,439,2004
+Arizona Cardinals,6,10,284,322,2004
+Dallas Cowboys,6,10,293,405,2004
+Detroit Lions,6,10,296,350,2004
+New York Giants,6,10,303,347,2004
+Washington Commanders,6,10,240,265,2004
+Carolina Panthers,7,9,355,339,2004
+Houston Texans,7,9,309,339,2004
+Kansas City Chiefs,7,9,483,435,2004
+Cincinnati Bengals,8,8,374,372,2004
+Los Angeles Rams,8,8,319,392,2004
+Minnesota Vikings,8,8,405,395,2004
+New Orleans Saints,8,8,348,405,2004
+Baltimore Ravens,9,7,317,268,2004
+Buffalo Bills,9,7,395,284,2004
+Jacksonville Jaguars,9,7,261,280,2004
+Seattle Seahawks,9,7,371,373,2004
+Denver Broncos,10,6,381,304,2004
+Green Bay Packers,10,6,424,380,2004
+New York Jets,10,6,333,261,2004
+Atlanta Falcons,11,5,340,337,2004
+Indianapolis Colts,12,4,522,351,2004
+Los Angeles Chargers,12,4,446,313,2004
+Philadelphia Eagles,13,3,386,260,2004
+New England Patriots,14,2,437,260,2004
+Pittsburgh Steelers,15,1,372,251,2004
+Houston Texans,2,14,260,431,2005
+New Orleans Saints,3,13,235,398,2005
+Green Bay Packers,4,12,298,344,2005
+Las Vegas Raiders,4,12,290,383,2005
+New York Jets,4,12,240,355,2005
+San Francisco 49ers,4,12,239,428,2005
+Tennessee Titans,4,12,299,421,2005
+Arizona Cardinals,5,11,311,387,2005
+Buffalo Bills,5,11,271,367,2005
+Detroit Lions,5,11,254,345,2005
+Baltimore Ravens,6,10,265,299,2005
+Cleveland Browns,6,10,232,301,2005
+Los Angeles Rams,6,10,363,429,2005
+Philadelphia Eagles,6,10,310,388,2005
+Atlanta Falcons,8,8,351,341,2005
+Dallas Cowboys,9,7,325,308,2005
+Los Angeles Chargers,9,7,418,312,2005
+Miami Dolphins,9,7,318,317,2005
+Minnesota Vikings,9,7,306,344,2005
+Kansas City Chiefs,10,6,403,325,2005
+New England Patriots,10,6,379,338,2005
+Washington Commanders,10,6,359,293,2005
+Carolina Panthers,11,5,391,259,2005
+Chicago Bears,11,5,260,202,2005
+Cincinnati Bengals,11,5,421,350,2005
+New York Giants,11,5,422,314,2005
+Pittsburgh Steelers,11,5,389,258,2005
+Tampa Bay Buccaneers,11,5,300,274,2005
+Jacksonville Jaguars,12,4,361,269,2005
+Denver Broncos,13,3,395,258,2005
+Seattle Seahawks,13,3,452,271,2005
+Indianapolis Colts,14,2,439,247,2005
+Las Vegas Raiders,2,14,168,332,2006
+Detroit Lions,3,13,305,398,2006
+Cleveland Browns,4,12,238,356,2006
+Tampa Bay Buccaneers,4,12,211,353,2006
+Arizona Cardinals,5,11,314,389,2006
+Washington Commanders,5,11,307,376,2006
+Houston Texans,6,10,267,366,2006
+Miami Dolphins,6,10,260,283,2006
+Minnesota Vikings,6,10,282,327,2006
+Atlanta Falcons,7,9,292,328,2006
+Buffalo Bills,7,9,300,311,2006
+San Francisco 49ers,7,9,298,412,2006
+Carolina Panthers,8,8,270,305,2006
+Cincinnati Bengals,8,8,373,331,2006
+Green Bay Packers,8,8,301,366,2006
+Jacksonville Jaguars,8,8,371,274,2006
+Los Angeles Rams,8,8,367,381,2006
+New York Giants,8,8,355,362,2006
+Pittsburgh Steelers,8,8,353,315,2006
+Tennessee Titans,8,8,324,400,2006
+Dallas Cowboys,9,7,425,350,2006
+Denver Broncos,9,7,319,305,2006
+Kansas City Chiefs,9,7,331,315,2006
+Seattle Seahawks,9,7,335,341,2006
+New Orleans Saints,10,6,413,322,2006
+New York Jets,10,6,316,295,2006
+Philadelphia Eagles,10,6,398,328,2006
+Indianapolis Colts,12,4,427,360,2006
+New England Patriots,12,4,385,237,2006
+Baltimore Ravens,13,3,353,201,2006
+Chicago Bears,13,3,427,255,2006
+Los Angeles Chargers,14,2,492,303,2006
+Miami Dolphins,1,15,267,437,2007
+Los Angeles Rams,3,13,263,438,2007
+Atlanta Falcons,4,12,259,414,2007
+Kansas City Chiefs,4,12,226,335,2007
+Las Vegas Raiders,4,12,283,398,2007
+New York Jets,4,12,268,355,2007
+Baltimore Ravens,5,11,275,384,2007
+San Francisco 49ers,5,11,219,364,2007
+Buffalo Bills,7,9,252,354,2007
+Carolina Panthers,7,9,267,347,2007
+Chicago Bears,7,9,334,348,2007
+Cincinnati Bengals,7,9,380,385,2007
+Denver Broncos,7,9,320,409,2007
+Detroit Lions,7,9,346,444,2007
+New Orleans Saints,7,9,379,388,2007
+Arizona Cardinals,8,8,404,399,2007
+Houston Texans,8,8,379,384,2007
+Minnesota Vikings,8,8,365,311,2007
+Philadelphia Eagles,8,8,336,300,2007
+Tampa Bay Buccaneers,9,7,334,270,2007
+Washington Commanders,9,7,334,310,2007
+Cleveland Browns,10,6,402,382,2007
+New York Giants,10,6,373,351,2007
+Pittsburgh Steelers,10,6,393,269,2007
+Seattle Seahawks,10,6,393,291,2007
+Tennessee Titans,10,6,301,297,2007
+Jacksonville Jaguars,11,5,411,304,2007
+Los Angeles Chargers,11,5,412,284,2007
+Dallas Cowboys,13,3,455,325,2007
+Green Bay Packers,13,3,435,291,2007
+Indianapolis Colts,13,3,450,262,2007
+New England Patriots,16,0,589,274,2007
+Detroit Lions,0,16,268,517,2008
+Kansas City Chiefs,2,14,291,440,2008
+Los Angeles Rams,2,14,232,465,2008
+Cincinnati Bengals,4,11,204,364,2008
+Cleveland Browns,4,12,232,350,2008
+Seattle Seahawks,4,12,294,392,2008
+Jacksonville Jaguars,5,11,302,367,2008
+Las Vegas Raiders,5,11,263,388,2008
+Green Bay Packers,6,10,419,380,2008
+Buffalo Bills,7,9,336,342,2008
+San Francisco 49ers,7,9,339,381,2008
+Denver Broncos,8,8,370,448,2008
+Houston Texans,8,8,366,394,2008
+Los Angeles Chargers,8,8,439,347,2008
+New Orleans Saints,8,8,463,393,2008
+Washington Commanders,8,8,265,296,2008
+Arizona Cardinals,9,7,427,426,2008
+Chicago Bears,9,7,375,350,2008
+Dallas Cowboys,9,7,362,365,2008
+New York Jets,9,7,405,356,2008
+Philadelphia Eagles,9,6,416,289,2008
+Tampa Bay Buccaneers,9,7,361,323,2008
+Minnesota Vikings,10,6,379,333,2008
+Atlanta Falcons,11,5,391,325,2008
+Baltimore Ravens,11,5,385,244,2008
+Miami Dolphins,11,5,345,317,2008
+New England Patriots,11,5,410,309,2008
+Carolina Panthers,12,4,414,329,2008
+Indianapolis Colts,12,4,377,298,2008
+New York Giants,12,4,427,294,2008
+Pittsburgh Steelers,12,4,347,223,2008
+Tennessee Titans,13,3,375,234,2008
+Los Angeles Rams,1,15,175,436,2009
+Detroit Lions,2,14,262,494,2009
+Tampa Bay Buccaneers,3,13,244,400,2009
+Kansas City Chiefs,4,12,294,424,2009
+Washington Commanders,4,12,266,336,2009
+Cleveland Browns,5,11,245,375,2009
+Las Vegas Raiders,5,11,197,379,2009
+Seattle Seahawks,5,11,280,390,2009
+Buffalo Bills,6,10,258,326,2009
+Chicago Bears,7,9,327,375,2009
+Jacksonville Jaguars,7,9,290,380,2009
+Miami Dolphins,7,9,360,390,2009
+Carolina Panthers,8,8,315,308,2009
+Denver Broncos,8,8,326,324,2009
+New York Giants,8,8,402,427,2009
+San Francisco 49ers,8,8,330,281,2009
+Tennessee Titans,8,8,354,402,2009
+Atlanta Falcons,9,7,363,325,2009
+Baltimore Ravens,9,7,391,261,2009
+Houston Texans,9,7,388,333,2009
+New York Jets,9,7,348,236,2009
+Pittsburgh Steelers,9,7,368,324,2009
+Arizona Cardinals,10,6,375,325,2009
+Cincinnati Bengals,10,6,305,291,2009
+New England Patriots,10,6,427,285,2009
+Dallas Cowboys,11,5,361,250,2009
+Green Bay Packers,11,5,461,297,2009
+Philadelphia Eagles,11,5,429,337,2009
+Minnesota Vikings,12,4,470,312,2009
+Los Angeles Chargers,13,3,454,320,2009
+New Orleans Saints,13,3,510,341,2009
+Indianapolis Colts,14,2,416,307,2009
+Carolina Panthers,2,14,196,408,2010
+Buffalo Bills,4,12,283,425,2010
+Cincinnati Bengals,4,12,322,395,2010
+Denver Broncos,4,12,344,471,2010
+Arizona Cardinals,5,11,289,434,2010
+Cleveland Browns,5,11,271,332,2010
+Dallas Cowboys,6,10,394,436,2010
+Detroit Lions,6,10,362,369,2010
+Houston Texans,6,10,390,427,2010
+Minnesota Vikings,6,10,281,348,2010
+San Francisco 49ers,6,10,305,346,2010
+Tennessee Titans,6,10,356,339,2010
+Washington Commanders,6,10,302,377,2010
+Los Angeles Rams,7,9,289,328,2010
+Miami Dolphins,7,9,273,333,2010
+Seattle Seahawks,7,9,310,407,2010
+Jacksonville Jaguars,8,8,353,419,2010
+Las Vegas Raiders,8,8,410,371,2010
+Los Angeles Chargers,9,7,441,322,2010
+Green Bay Packers,10,6,388,240,2010
+Indianapolis Colts,10,6,435,388,2010
+Kansas City Chiefs,10,6,366,326,2010
+New York Giants,10,6,394,347,2010
+Philadelphia Eagles,10,6,439,377,2010
+Tampa Bay Buccaneers,10,6,341,318,2010
+Chicago Bears,11,5,334,286,2010
+New Orleans Saints,11,5,384,307,2010
+New York Jets,11,5,367,304,2010
+Baltimore Ravens,12,4,357,270,2010
+Pittsburgh Steelers,12,4,375,232,2010
+Atlanta Falcons,13,3,414,288,2010
+New England Patriots,14,2,518,313,2010
+Indianapolis Colts,2,14,243,430,2011
+Los Angeles Rams,2,14,193,407,2011
+Minnesota Vikings,3,13,340,449,2011
+Cleveland Browns,4,12,218,307,2011
+Tampa Bay Buccaneers,4,12,287,494,2011
+Jacksonville Jaguars,5,11,243,329,2011
+Washington Commanders,5,11,288,367,2011
+Buffalo Bills,6,10,372,434,2011
+Carolina Panthers,6,10,406,429,2011
+Miami Dolphins,6,10,329,313,2011
+Kansas City Chiefs,7,9,212,338,2011
+Seattle Seahawks,7,9,321,315,2011
+Arizona Cardinals,8,8,312,348,2011
+Chicago Bears,8,8,353,341,2011
+Dallas Cowboys,8,8,369,347,2011
+Denver Broncos,8,8,309,390,2011
+Las Vegas Raiders,8,8,359,433,2011
+Los Angeles Chargers,8,8,406,377,2011
+New York Jets,8,8,377,363,2011
+Philadelphia Eagles,8,8,396,328,2011
+Cincinnati Bengals,9,7,344,323,2011
+New York Giants,9,7,394,400,2011
+Tennessee Titans,9,7,325,317,2011
+Atlanta Falcons,10,6,402,350,2011
+Detroit Lions,10,6,474,387,2011
+Houston Texans,10,6,381,278,2011
+Baltimore Ravens,12,4,378,266,2011
+Pittsburgh Steelers,12,4,325,227,2011
+New England Patriots,13,3,513,342,2011
+New Orleans Saints,13,3,547,339,2011
+San Francisco 49ers,13,3,380,229,2011
+Green Bay Packers,15,1,560,359,2011
+Jacksonville Jaguars,2,14,255,444,2012
+Kansas City Chiefs,2,14,211,425,2012
+Detroit Lions,4,12,372,437,2012
+Las Vegas Raiders,4,12,290,443,2012
+Philadelphia Eagles,4,12,280,444,2012
+Arizona Cardinals,5,11,250,357,2012
+Cleveland Browns,5,11,302,368,2012
+Buffalo Bills,6,10,344,435,2012
+New York Jets,6,10,281,375,2012
+Tennessee Titans,6,10,330,471,2012
+Carolina Panthers,7,9,357,363,2012
+Los Angeles Chargers,7,9,350,350,2012
+Los Angeles Rams,7,8,299,348,2012
+Miami Dolphins,7,9,288,317,2012
+New Orleans Saints,7,9,461,454,2012
+Tampa Bay Buccaneers,7,9,389,394,2012
+Dallas Cowboys,8,8,376,400,2012
+Pittsburgh Steelers,8,8,336,314,2012
+New York Giants,9,7,429,344,2012
+Baltimore Ravens,10,6,398,344,2012
+Chicago Bears,10,6,375,277,2012
+Cincinnati Bengals,10,6,391,320,2012
+Minnesota Vikings,10,6,379,348,2012
+Washington Commanders,10,6,436,388,2012
+Green Bay Packers,11,5,433,336,2012
+Indianapolis Colts,11,5,357,387,2012
+San Francisco 49ers,11,4,397,273,2012
+Seattle Seahawks,11,5,412,245,2012
+Houston Texans,12,4,416,331,2012
+New England Patriots,12,4,557,331,2012
+Atlanta Falcons,13,3,419,299,2012
+Denver Broncos,13,3,481,289,2012
+Houston Texans,2,14,276,428,2013
+Washington Commanders,3,13,334,478,2013
+Atlanta Falcons,4,12,353,443,2013
+Cleveland Browns,4,12,308,406,2013
+Jacksonville Jaguars,4,12,247,449,2013
+Las Vegas Raiders,4,12,322,453,2013
+Tampa Bay Buccaneers,4,12,288,389,2013
+Minnesota Vikings,5,10,391,480,2013
+Buffalo Bills,6,10,339,388,2013
+Detroit Lions,7,9,395,376,2013
+Los Angeles Rams,7,9,348,364,2013
+New York Giants,7,9,294,383,2013
+Tennessee Titans,7,9,362,381,2013
+Baltimore Ravens,8,8,320,352,2013
+Chicago Bears,8,8,445,478,2013
+Dallas Cowboys,8,8,439,432,2013
+Green Bay Packers,8,7,417,428,2013
+Miami Dolphins,8,8,317,335,2013
+New York Jets,8,8,290,387,2013
+Pittsburgh Steelers,8,8,379,370,2013
+Los Angeles Chargers,9,7,396,348,2013
+Arizona Cardinals,10,6,379,324,2013
+Philadelphia Eagles,10,6,442,382,2013
+Cincinnati Bengals,11,5,430,305,2013
+Indianapolis Colts,11,5,391,336,2013
+Kansas City Chiefs,11,5,430,305,2013
+New Orleans Saints,11,5,414,304,2013
+Carolina Panthers,12,4,366,241,2013
+New England Patriots,12,4,444,338,2013
+San Francisco 49ers,12,4,406,272,2013
+Denver Broncos,13,3,606,399,2013
+Seattle Seahawks,13,3,417,231,2013
+Tampa Bay Buccaneers,2,14,277,410,2014
+Tennessee Titans,2,14,254,438,2014
+Jacksonville Jaguars,3,13,249,412,2014
+Las Vegas Raiders,3,13,253,452,2014
+New York Jets,4,12,283,401,2014
+Washington Commanders,4,12,301,438,2014
+Chicago Bears,5,11,319,442,2014
+Atlanta Falcons,6,10,381,417,2014
+Los Angeles Rams,6,10,324,354,2014
+New York Giants,6,10,380,400,2014
+Carolina Panthers,7,8,339,374,2014
+Cleveland Browns,7,9,299,337,2014
+Minnesota Vikings,7,9,325,343,2014
+New Orleans Saints,7,9,401,424,2014
+Miami Dolphins,8,8,388,373,2014
+San Francisco 49ers,8,8,306,340,2014
+Buffalo Bills,9,7,343,289,2014
+Houston Texans,9,7,372,307,2014
+Kansas City Chiefs,9,7,353,281,2014
+Los Angeles Chargers,9,7,348,348,2014
+Baltimore Ravens,10,6,409,302,2014
+Cincinnati Bengals,10,5,365,344,2014
+Philadelphia Eagles,10,6,474,400,2014
+Arizona Cardinals,11,5,310,299,2014
+Detroit Lions,11,5,321,282,2014
+Indianapolis Colts,11,5,458,369,2014
+Pittsburgh Steelers,11,5,436,368,2014
+Dallas Cowboys,12,4,467,352,2014
+Denver Broncos,12,4,482,354,2014
+Green Bay Packers,12,4,486,348,2014
+New England Patriots,12,4,468,313,2014
+Seattle Seahawks,12,4,394,254,2014
+Cleveland Browns,3,13,278,432,2015
+Tennessee Titans,3,13,299,423,2015
+Dallas Cowboys,4,12,275,374,2015
+Los Angeles Chargers,4,12,320,398,2015
+Baltimore Ravens,5,11,328,401,2015
+Jacksonville Jaguars,5,11,376,448,2015
+San Francisco 49ers,5,11,238,387,2015
+Chicago Bears,6,10,335,397,2015
+Miami Dolphins,6,10,310,389,2015
+New York Giants,6,10,420,442,2015
+Tampa Bay Buccaneers,6,10,342,417,2015
+Detroit Lions,7,9,358,400,2015
+Las Vegas Raiders,7,9,359,399,2015
+Los Angeles Rams,7,9,280,330,2015
+New Orleans Saints,7,9,408,476,2015
+Philadelphia Eagles,7,9,377,430,2015
+Atlanta Falcons,8,8,339,345,2015
+Buffalo Bills,8,8,379,359,2015
+Indianapolis Colts,8,8,333,408,2015
+Houston Texans,9,7,339,313,2015
+Washington Commanders,9,7,388,379,2015
+Green Bay Packers,10,6,368,323,2015
+New York Jets,10,6,387,314,2015
+Pittsburgh Steelers,10,6,423,319,2015
+Seattle Seahawks,10,6,423,277,2015
+Kansas City Chiefs,11,5,405,287,2015
+Minnesota Vikings,11,5,365,302,2015
+Cincinnati Bengals,12,4,419,279,2015
+Denver Broncos,12,4,355,296,2015
+New England Patriots,12,4,465,315,2015
+Arizona Cardinals,13,3,489,313,2015
+Carolina Panthers,15,1,500,308,2015
+Cleveland Browns,1,15,264,452,2016
+San Francisco 49ers,2,14,309,480,2016
+Chicago Bears,3,13,279,399,2016
+Jacksonville Jaguars,3,13,318,400,2016
+Los Angeles Rams,4,12,224,394,2016
+Los Angeles Chargers,5,11,410,423,2016
+New York Jets,5,11,275,409,2016
+Carolina Panthers,6,10,369,402,2016
+Cincinnati Bengals,6,9,325,315,2016
+Arizona Cardinals,7,8,418,362,2016
+Buffalo Bills,7,9,399,378,2016
+New Orleans Saints,7,9,469,454,2016
+Philadelphia Eagles,7,9,367,331,2016
+Baltimore Ravens,8,8,343,321,2016
+Indianapolis Colts,8,8,411,392,2016
+Minnesota Vikings,8,8,327,307,2016
+Washington Commanders,8,7,396,383,2016
+Denver Broncos,9,7,333,297,2016
+Detroit Lions,9,7,346,358,2016
+Houston Texans,9,7,279,328,2016
+Tampa Bay Buccaneers,9,7,354,369,2016
+Tennessee Titans,9,7,381,378,2016
+Green Bay Packers,10,6,432,388,2016
+Miami Dolphins,10,6,363,380,2016
+Seattle Seahawks,10,5,354,292,2016
+Atlanta Falcons,11,5,540,406,2016
+New York Giants,11,5,310,284,2016
+Pittsburgh Steelers,11,5,399,327,2016
+Kansas City Chiefs,12,4,389,311,2016
+Las Vegas Raiders,12,4,416,385,2016
+Dallas Cowboys,13,3,421,306,2016
+New England Patriots,14,2,441,250,2016
+Cleveland Browns,0,16,234,410,2017
+New York Giants,3,13,246,388,2017
+Houston Texans,4,12,338,436,2017
+Indianapolis Colts,4,12,263,404,2017
+Chicago Bears,5,11,264,320,2017
+Denver Broncos,5,11,289,382,2017
+New York Jets,5,11,298,382,2017
+Tampa Bay Buccaneers,5,11,335,382,2017
+Las Vegas Raiders,6,10,301,373,2017
+Miami Dolphins,6,10,281,393,2017
+San Francisco 49ers,6,10,331,383,2017
+Cincinnati Bengals,7,9,290,349,2017
+Green Bay Packers,7,9,320,384,2017
+Washington Commanders,7,9,342,388,2017
+Arizona Cardinals,8,8,295,361,2017
+Baltimore Ravens,9,7,395,303,2017
+Buffalo Bills,9,7,302,359,2017
+Dallas Cowboys,9,7,354,332,2017
+Detroit Lions,9,7,410,376,2017
+Los Angeles Chargers,9,7,355,272,2017
+Seattle Seahawks,9,7,366,332,2017
+Tennessee Titans,9,7,334,356,2017
+Atlanta Falcons,10,6,353,315,2017
+Jacksonville Jaguars,10,6,417,268,2017
+Kansas City Chiefs,10,6,415,339,2017
+Carolina Panthers,11,5,363,327,2017
+Los Angeles Rams,11,5,478,329,2017
+New Orleans Saints,11,5,448,326,2017
+Minnesota Vikings,13,3,382,252,2017
+New England Patriots,13,3,458,296,2017
+Philadelphia Eagles,13,3,457,295,2017
+Pittsburgh Steelers,13,3,406,308,2017
+Arizona Cardinals,3,13,225,425,2018
+Las Vegas Raiders,4,12,290,467,2018
+New York Jets,4,12,333,441,2018
+San Francisco 49ers,4,12,342,435,2018
+Jacksonville Jaguars,5,11,245,316,2018
+New York Giants,5,11,369,412,2018
+Tampa Bay Buccaneers,5,11,396,464,2018
+Buffalo Bills,6,10,269,374,2018
+Cincinnati Bengals,6,10,368,455,2018
+Denver Broncos,6,10,329,349,2018
+Detroit Lions,6,10,324,360,2018
+Green Bay Packers,6,9,376,400,2018
+Atlanta Falcons,7,9,414,423,2018
+Carolina Panthers,7,9,376,382,2018
+Cleveland Browns,7,8,359,392,2018
+Miami Dolphins,7,9,319,433,2018
+Washington Commanders,7,9,281,359,2018
+Minnesota Vikings,8,7,360,341,2018
+Philadelphia Eagles,9,7,367,348,2018
+Pittsburgh Steelers,9,6,428,360,2018
+Tennessee Titans,9,7,310,303,2018
+Baltimore Ravens,10,6,389,287,2018
+Dallas Cowboys,10,6,339,324,2018
+Indianapolis Colts,10,6,433,344,2018
+Seattle Seahawks,10,6,428,347,2018
+Houston Texans,11,5,402,316,2018
+New England Patriots,11,5,436,325,2018
+Chicago Bears,12,4,421,283,2018
+Kansas City Chiefs,12,4,565,421,2018
+Los Angeles Chargers,12,4,428,329,2018
+Los Angeles Rams,13,3,527,384,2018
+New Orleans Saints,13,3,504,353,2018
+Cincinnati Bengals,2,14,279,420,2019
+Detroit Lions,3,12,341,423,2019
+Washington Commanders,3,13,266,435,2019
+New York Giants,4,12,341,451,2019
+Arizona Cardinals,5,10,361,442,2019
+Carolina Panthers,5,11,340,470,2019
+Los Angeles Chargers,5,11,337,345,2019
+Miami Dolphins,5,11,306,494,2019
+Cleveland Browns,6,10,335,393,2019
+Jacksonville Jaguars,6,10,300,397,2019
+Atlanta Falcons,7,9,381,399,2019
+Denver Broncos,7,9,282,316,2019
+Indianapolis Colts,7,9,361,373,2019
+Las Vegas Raiders,7,9,313,419,2019
+New York Jets,7,9,276,359,2019
+Tampa Bay Buccaneers,7,9,458,449,2019
+Chicago Bears,8,8,280,298,2019
+Dallas Cowboys,8,8,434,321,2019
+Pittsburgh Steelers,8,8,289,303,2019
+Los Angeles Rams,9,7,394,364,2019
+Philadelphia Eagles,9,7,385,354,2019
+Tennessee Titans,9,7,402,331,2019
+Buffalo Bills,10,6,314,259,2019
+Houston Texans,10,6,378,385,2019
+Minnesota Vikings,10,6,407,303,2019
+Seattle Seahawks,11,5,405,398,2019
+Kansas City Chiefs,12,4,451,308,2019
+New England Patriots,12,4,420,225,2019
+Green Bay Packers,13,3,376,313,2019
+New Orleans Saints,13,3,458,341,2019
+San Francisco 49ers,13,3,479,310,2019
+Baltimore Ravens,14,2,531,282,2019
+Jacksonville Jaguars,1,15,306,492,2020
+New York Jets,2,14,243,457,2020
+Atlanta Falcons,4,12,396,414,2020
+Cincinnati Bengals,4,11,311,424,2020
+Houston Texans,4,12,384,464,2020
+Philadelphia Eagles,4,11,334,418,2020
+Carolina Panthers,5,11,350,402,2020
+Denver Broncos,5,11,323,446,2020
+Detroit Lions,5,11,377,519,2020
+Dallas Cowboys,6,10,395,473,2020
+New York Giants,6,10,280,357,2020
+San Francisco 49ers,6,10,376,390,2020
+Los Angeles Chargers,7,9,384,426,2020
+Minnesota Vikings,7,9,430,475,2020
+New England Patriots,7,9,326,353,2020
+Washington Commanders,7,9,335,329,2020
+Arizona Cardinals,8,8,410,367,2020
+Chicago Bears,8,8,372,370,2020
+Las Vegas Raiders,8,8,434,478,2020
+Los Angeles Rams,10,6,372,296,2020
+Miami Dolphins,10,6,404,338,2020
+Baltimore Ravens,11,5,468,303,2020
+Cleveland Browns,11,5,408,419,2020
+Indianapolis Colts,11,5,451,362,2020
+Tampa Bay Buccaneers,11,5,492,355,2020
+Tennessee Titans,11,5,491,439,2020
+New Orleans Saints,12,4,482,337,2020
+Pittsburgh Steelers,12,4,416,312,2020
+Seattle Seahawks,12,4,459,371,2020
+Buffalo Bills,13,3,501,375,2020
+Green Bay Packers,13,3,509,369,2020
+Kansas City Chiefs,14,2,473,362,2020
+Detroit Lions,3,13,325,467,2021
+Jacksonville Jaguars,3,14,253,457,2021
+Houston Texans,4,13,280,452,2021
+New York Giants,4,13,258,416,2021
+New York Jets,4,13,310,504,2021
+Carolina Panthers,5,12,304,404,2021
+Chicago Bears,6,11,311,407,2021
+Atlanta Falcons,7,10,313,459,2021
+Denver Broncos,7,10,335,322,2021
+Seattle Seahawks,7,10,395,366,2021
+Washington Commanders,7,10,335,434,2021
+Baltimore Ravens,8,9,387,392,2021
+Cleveland Browns,8,9,349,371,2021
+Minnesota Vikings,8,9,425,426,2021
+Indianapolis Colts,9,8,451,365,2021
+Los Angeles Chargers,9,8,474,459,2021
+Miami Dolphins,9,8,341,373,2021
+New Orleans Saints,9,8,364,335,2021
+Philadelphia Eagles,9,8,444,385,2021
+Pittsburgh Steelers,9,7,343,398,2021
+Cincinnati Bengals,10,7,460,376,2021
+Las Vegas Raiders,10,7,374,439,2021
+New England Patriots,10,7,462,303,2021
+San Francisco 49ers,10,7,427,365,2021
+Arizona Cardinals,11,6,449,366,2021
+Buffalo Bills,11,6,483,289,2021
+Dallas Cowboys,12,5,530,358,2021
+Kansas City Chiefs,12,5,480,364,2021
+Los Angeles Rams,12,5,460,372,2021
+Tennessee Titans,12,5,419,354,2021
+Green Bay Packers,13,4,450,371,2021
+Tampa Bay Buccaneers,13,4,511,353,2021
