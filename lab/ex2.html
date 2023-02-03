@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>DSCI 554 Lab 1 ex2</title>
+<link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+
+<link rel="stylesheet" href="./github-dark-dimmed.min.css">
+<script src="./highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script src="https://www.google.com/jsapi"></script>
+<script src="https://www.google.com/jsapi"></script>
+<script src="https://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="jquery.csv-0.71.js"></script>
+<script src="./d3_bar_chart/index.html"></script>
+<script src='./node_modules/d3/dist/d3.min.js'></script>
+<script src='./node_modules/d3-format/dist/d3-format.min.js'></script>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+
+<style>
+  path {
+    stroke: black;
+  }
+
+  .tick line {
+    stroke: black;
+  }
+
+  .tick {
+    stroke: black;
+  }
+
+  .tick text {
+    stroke: none;
+    fill: black;
+  }
+
+  text.title {
+    font-size: 0.98em;
+    font-weight: bold;
+  }
+</style>
+
+<script type="text/javascript">
+  // Load the Visualization API and the corechart package.
+  google.charts.load('current', {'packages':['corechart']});
+
+// Set a callback to run when the Google Visualization API is loaded.
+google.charts.setOnLoadCallback(drawChart);
+
+// Callback that creates and populates a data table,
+// instantiates the pie chart, passes in the data and
+// draws it.
+function drawChart() {
+  
+
+  // Create the data table.
+  var data1 = new google.visualization.DataTable();
+  data1.addColumn('string', 'Topping');
+  data1.addColumn('number', 'Slices');
+  data1.addRows([
+    ['Mushrooms', 3],
+    ['Onions', 1],
+    ['Olives', 1],
+    ['Zucchini', 1],
+    ['Pepperoni', 2]
+  ]);
+  var data2 = new google.visualization.DataTable();
+  data2.addColumn('string', 'Countries');
+  data2.addColumn('number', 'Cases');
+  data2.addRows([
+    ['Australia',1263512798],
+    ['Canada',1335445194],
+    ['China',386025116],
+    ['Germany',6222608080],
+    ['Korea, South',2800713362],
+    ['Malaysia',1337093421],
+    ['Russia',6174634875],
+    ['Singapore',285892229],
+    ['US',33042964056],
+    ['United Kingdom',7039399394],
+
+  ]); 
+
+  // Set chart options
+  var options1 = {'title':'How Much Pizza I Ate Last Night',
+                 'width':400,
+                 'height':300};
+  var options2 = {'title':'COVID-19 Cases',
+                 'width':400,
+                 'height':300};
+
+  // Instantiate and draw our chart, passing in some options.
+  var chart1 = new google.visualization.PieChart(document.getElementById('chart_div'));
+  chart1.draw(data1, options1);
+  var chart2 = new google.visualization.PieChart(document.getElementById('chart_div_2'));
+  chart2.draw(data2, options2);
+};
+
+</script>
+
+<script>
+      var data = [
+        ['Los Angeles', 267860],
+        ['Maricopa', 569899],
+        ['Cook', 559767],
+        ['Miami-Dade', 522734],
+        ['Harris', 408097]
+      ];
+  
+      var margin = { top: 40, right: 20, bottom: 20, left: 40 };
+      var width = 620 - margin.left - margin.right,
+        height = 300 - margin.top - margin.bottom;
+  
+      var x = d3.scaleBand()
+        .domain(data.map(d => d[0]))
+        .range([0, width])
+        .paddingInner(.25);
+  
+      var max = d3.max(data, d => d[1]);
+      var y = d3.scaleLinear()
+        .domain([0, max])
+        .range([height, 0]);
+  
+      var xAxis = d3.axisBottom()
+        .scale(x);
+  
+      var yAxis = d3.axisLeft()
+        .scale(y)
+        .tickFormat(d3.format('.2s'))
+        .ticks(2);
+  
+      var svg = d3.select('#chart')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+  
+      svg.selectAll('rect')
+        .data(data)
+        .enter()
+        .append('rect')
+        .attr('x', d => x(d[0]))
+        .attr('y', d => y(d[1]))
+        .attr('width', x.bandwidth)
+        .attr('height', d => { return height - y(d[1]); })
+        .style('fill', 'skyblue');
+  
+      svg.append('g')
+        .attr('transform', 'translate(0,' + height + ')')
+        .call(xAxis);
+  
+      svg.append('g')
+        .call(yAxis);
+  
+      svg.append('text')
+        .attr('x', 20)
+        .attr('y', -20)
+        .attr('class', 'title')
+        .text('Top 5 COVID-19 confirmed cases by County as of Jul 21, 2021')
+    </script>
+</head>
+
+<body>
+  <h1>🏋🏽‍♂️ ex2.1: Implement a Google Charts pie chart</h1>
+
+  <ol>
+    <li>Read <a target="_blank" href="https://developers.google.com/chart/interactive/docs/quick_start">Google
+        Charts Quick Start page</a></li>
+    <li>Understand the data layout</li>
+    <li>Implement the pie chart from the Quick Start page in the answer below to make sure it works!</li>
+    <li>Adapt the code to create a pie chart for the data of ex1.1 and add it to the answer below</li>
+  </ol>
+
+  <div class="answer">
+    <cap>Answer</cap>
+
+    <p>Google Charts Quick Start page pie chart:</p>
+    <!-- Add your code here! -->
+    <div id="chart_div"></div>
+   
+    <p>Pie chart for the 10 countries of ex1.1:</p>
+    <!-- Add your code here! -->
+    <div id="chart_div_2"></div>
+  </div>
+
+  <h1>🏋🏽‍♂️ ex2.2: D3 bar chart</h1>
+
+  <div>Make sure the D3 code in <a target="_blank" href="./d3_bar_chart">d3_bar_chart</a> works, add the same bar chart to the Answer below, and adapt the code to create a bar chart using the data of ex1.1.</div>
+
+  <div class="answer">
+    <cap>Answer</cap>
+    <!-- <div>
+    <p>d3_bar_chart example</p>
+
+    <svg id="chart" style="display: inline-block;"></svg>
+    <script>
+      var data = [
+        ['Los Angeles', 267860],
+        ['Maricopa', 569899],
+        ['Cook', 559767],
+        ['Miami-Dade', 522734],
+        ['Harris', 408097]
+      ];
+  
+      var margin = { top: 40, right: 20, bottom: 20, left: 40 };
+      var width = 620 - margin.left - margin.right,
+        height = 300 - margin.top - margin.bottom;
+  
+      var x = d3.scaleBand()
+        .domain(data.map(d => d[0]))
+        .range([0, width])
+        .paddingInner(.25);
+  
+      var max = d3.max(data, d => d[1]);
+      var y = d3.scaleLinear()
+        .domain([0, max])
+        .range([height, 0]);
+  
+      var xAxis = d3.axisBottom()
+        .scale(x);
+  
+      var yAxis = d3.axisLeft()
+        .scale(y)
+        .tickFormat(d3.format('.2s'))
+        .ticks(2);
+  
+      var svg = d3.select('#chart')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+  
+      svg.selectAll('rect')
+        .data(data)
+        .enter()
+        .append('rect')
+        .attr('x', d => x(d[0]))
+        .attr('y', d => y(d[1]))
+        .attr('width', x.bandwidth)
+        .attr('height', d => { return height - y(d[1]); })
+        .style('fill', 'skyblue');
+  
+      svg.append('g')
+        .attr('transform', 'translate(0,' + height + ')')
+        .call(xAxis);
+  
+      svg.append('g')
+        .call(yAxis);
+  
+      svg.append('text')
+        .attr('x', 20)
+        .attr('y', -20)
+        .attr('class', 'title')
+        .text('Top 5 COVID-19 confirmed cases by County as of Jul 21, 2021')
+    </script>
+ </div> -->
+
+    <p>D3 bar chart for the 10 countries I have picked:</p>
+    <!-- Add your code here! -->
+    <div>
+    <svg id="chart" ></svg>
+    <script>
+      var data = [
+      ['Australia',1263512798],
+    ['Canada',1335445194],
+    ['China',386025116],
+    ['Germany',6222608080],
+    ['Korea, South',2800713362],
+    ['Malaysia',1337093421],
+    ['Russia',6174634875],
+    ['Singapore',285892229],
+    ['US',33042964056],
+    ['United Kingdom',7039399394],
+      ];
+  
+      var margin = { top: 40, right: 20, bottom: 20, left: 40 };
+      var width = 620 - margin.left - margin.right,
+        height = 300 - margin.top - margin.bottom;
+  
+      var x = d3.scaleBand()
+        .domain(data.map(d => d[0]))
+        .range([0, width])
+        .paddingInner(.25);
+  
+      var max = d3.max(data, d => d[1]);
+      var y = d3.scaleLinear()
+        .domain([0, max])
+        .range([height, 0]);
+  
+      var xAxis = d3.axisBottom()
+        .scale(x);
+  
+      var yAxis = d3.axisLeft()
+        .scale(y)
+        .tickFormat(d3.format('.2s'))
+        .ticks(2);
+  
+      var svg = d3.select('#chart')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+  
+      svg.selectAll('rect')
+        .data(data)
+        .enter()
+        .append('rect')
+        .attr('x', d => x(d[0]))
+        .attr('y', d => y(d[1]))
+        .attr('width', x.bandwidth)
+        .attr('height', d => { return height - y(d[1]); })
+        .style('fill', 'skyblue');
+  
+      svg.append('g')
+        .attr('transform', 'translate(0,' + height + ')')
+        .call(xAxis);
+  
+      svg.append('g')
+        .call(yAxis);
+  
+      svg.append('text')
+        .attr('x', 20)
+        .attr('y', -20)
+        .attr('class', 'title')
+        .text('COVID-19 Comfirmed Cases Count (1/22/2020-8/11/2022)')
+    </script>
+      </div>
+  </div>
+
+  <a target="_blank" href="./index.html">⬅️ Back</a>
+
+</body>
+
+</html>
