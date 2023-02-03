@@ -1,0 +1,12 @@
+[ 
+  { "name": "Mazda RX4", "value": 21.0 },
+  { "name": "Mazda RX4 Wag", "value": 21.0 },
+  { "name": "Datsun 710", "value": 22.8 },
+  { "name": "Hornet 4 Drive", "value": 21.4 },
+  { "name": "Hornet Sportabout", "value": 18.7 },
+  { "name": "Valiant", "value": 18.1 },
+  { "name": "Duster 360", "value": 14.3 },
+  { "name": "Merc 240D", "value": 24.4 },
+  { "name": "Merc 230", "value": 22.8 },
+  { "name": "Merc 280", "value": 19.2 }
+]
