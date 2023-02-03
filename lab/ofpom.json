@@ -1,0 +1,9 @@
+
+[
+  [ "Diagnosis", "Description", "Freq.", "% Rel. Freq." ],
+  [ "d1", "Internal derangement (DDWR) / Internal derangement (eDDNR)", 169, 37.47 ],
+  [ "d3", "Masticatory or Cervical Myalgia/ Myofascial Pain", 282, 62.53 ],
+  [ "d4", "Arthromyalgia Combo / Capsulitis", 198, 43.90 ],
+  [ "d5", "TMJ Osteoarthritis / Rheumatoid Arthritis", 83, 18.40 ],
+  [ "d7", "Chronic Trigeminal Neuropathy / Neuritis (not BMS)", 63, 13.97 ]
+]

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>DSCI 554 Assignment 4</title>
+    <script src="./node_modules/d3/dist/d3.min.js"></script>
+</head>
+<style>
+    
+    table {
+          border-collapse: collapse;
+          vertical-align: middle;
+        }
+
+        table,
+        th,
+        td {
+          border: 1px solid black;
+          vertical-align: middle;
+        }
+
+        /* rect.bar {
+        fill: cornflowerblue;
+      } */
+      text.bar {
+        fill: rgb(2, 2, 2);
+        font-size: 14px;
+      }
+      h3,h2,h1, p.subheader{
+    text-align: center;  
+  }
+  div{
+    width:920px;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  div.intro ,.intro p{
+    width:900px;
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    text-align: left;  
+  }
+  table,svg,img{
+    position: relative;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  img {
+object-fit: contain;}
+
+span {
+  font-weight:'bold';
+}
+</style>
+
+<body>
+    
+<div class="intro">
+  <h1>DSCI554-A5</h1>
+  <div style="text-align:center">Meixian Wu <a href="mailto:meixianw@usc.edu">meixianw@usc.edu</a></div>
+  <p >
+    Data Source: <a href="https://databank.worldbank.org/reports.aspx?source=2&series=EN.ATM.CO2E.KT&country=#">Here</a>
+    </p>
+    <p>
+    The selected datasets contains the <span STYLE="font-weight:bold">CO2 emission amount </span> (in kilo-ton), the <span STYLE="font-weight:bold">percentage of land the cover by forest</span>, and the <span STYLE="font-weight:bold">percentage of land used for agriculture</span> in 2017.
+    The below table and three charts are ploted based on those data for a selected 20 countires. Vriables can be transformed, for example taking the relative percentage, to best acconmmendate the nature of chart. 
+</p>
+<h4>Definition of variables according to WorldBank</h4>
+<li>
+  Forest area is land under natural or planted stands of trees of at least 5 meters in situ, whether
+   productive or not, and excludes tree stands in agricultural production systems 
+    and trees in urban parks and gardens.
+</li>
+<li>
+  Agricultural land refers to the share of land area that is under permanent crops, 
+  and under permanent pastures. 
+   Land under permanent crops is land cultivated with crops that occupy the land for long periods 
+   and need not be replanted after each harvest. Permanent pasture is land used for five or more years
+     for forage, including natural and cultivated crops.
+</li>
+<li>
+  Carbon dioxide emissions are those stemming from the burning of fossil fuels and the manufacture of 
+  cement. They include carbon dioxide produced during consumption of solid, liquid, and gas fuels and
+  gas flaring.
+</li>
+
+</div>
+    
+
+    <h3>1. HTML table</h3>
+    <p>
+
+    </p>
+    <!-- insert D3 table here -->
+    <script src="./node_modules/d3/dist/d3.min.js"></script>
+
+    
+    <table id="table1"></table>
+    <script src="./d3_script/table.js"></script>
+
+
+    <div style="height:100px"></div>
+    <h3>2. SVG bar chart</h3>
+    <div>
+    <p>The bar chart shown the relative percentage of the CO2 emission of the 20 countries, it was transformed from raw emission amount as the original data has a large range. We can see that Japan, Germany, Canada and Indonesia are about 50%-25% of India. The rest of the countries are relative trival compared with other major contributor countries, which is about 10%-0.1% of the maximum. </p>
+  </div>
+    <!-- insert Inkscape SVG design here -->
+    <p class="subheader">InkScape Design</p>
+    <img src="./svg/bar.svg"/>
+
+    <!-- insert D3 bar chart here -->
+    <p class="subheader">D3 Implementation</p>
+    <svg width="900px" height="550px" style="background-color: rgb(234, 234, 234); padding:20px 10px " id="barplot"></svg>
+    <script src="./d3_script/bar_chart.js"></script>
+
+
+
+
+<div style="height:100px"></div>
+    <h3>3. SVG lollipop chart</h3>
+    <div>
+    <p>
+      The Lollipop chart shows those emission amount compared with the word average level. The average level is at 170,000 kt in 2017. We can see that over half of those countries are below the average. And For countries like Canadam Germany, Japan, and India, they contributed significantly, and is way higher than average.
+    </p>
+  </div>
+    <!-- insert Inkscape SVG design here -->
+    <p class="subheader">InkScape Design</p>
+    <img src="./svg/lillipop.svg"/>
+    <!-- insert D3 lollipop chart here -->
+    <p class="subheader">D3 Implementation</p>
+    <svg width="900px" height="550px" style="background-color: rgb(234, 234, 234); padding:20px 20px " id="lollipop_plot"></svg>
+    <script src="./d3_script/lollipop_chart.js"></script>
+
+
+
+
+
+    <div style="height:100px"></div>
+    <h3>4. SVG bubble chart</h3>
+    <div>
+    <p>
+      The bubble chart display the scatter position of the 20 countries based on their Agriculture Area% and Forest Area%, with bubble radius representing the emission amout. 
+      We can abserve that there is a general inverse relation between Agriculture Area% and Forest Area%. </p>
+      
+      <li>Iraq and Afghanistanhas relative low Forest Area%, about 2%; Japan and Sweden has relative high Forest area%, which is about 70%.</li>
+      <li>India, Nigeria, Morocco has relative high agriculture area %, about 60-75%; and Singapor, Canada,Sweden,Japan has relative low agriculture area%, about 1-7%. </li>
+      <p>We can see that the size of bubble does not show string correlation with either forest area% and agriculture area%. Therefore, it is likely that the land use % of forst and agriculure is not determinent to CO2 emission  
+    </p>
+  </div>
+    <!-- insert Inkscape SVG design here -->
+    <p class="subheader">InkScape Design</p>
+    <img src="./svg/bubble.svg"/>
+    <!-- insert D3 bubble chart here -->
+    <p class="subheader">D3 Implementation</p>
+    <svg width="900px" height="550px" style="background-color: rgb(234, 234, 234); padding:20px 20px " id="bubble_chart"></svg>
+    <script src="./d3_script/bubble_chart.js"></script>
+    <div style="height:100px"></div>
+
+    <p class="subheader">The end. Thank you for reading!</p>
+</body>
+
+</html>
