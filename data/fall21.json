@@ -1,0 +1,16 @@
+{
+    "name" : "Fall Semester 2021",
+    "instructional_days" : 72,
+    "events" : [
+      { "name": "Registration Deadline", "start": "2021-8-20", "end": "" },
+      { "name": "Classes Begin", "start": "2021-08-23", "end": "" },
+      { "name": "Labor Day", "start": "2021-09-06", "end": "" },
+      { "name": "Fall recess", "start": "2021-10-14", "end": "2021-10-15" },
+
+      { "name": "Thanksgiving Holiday", "start": "2021-11-24", "end": "2021-11-28" },
+      { "name": "Classes End", "start": "2021-12-03", "end": "" },
+      { "name": "Study Days", "start": "2021-12-04", "end": "2021-12-07" },
+      { "name": "Exams", "start": "2021-12-8", "end": "2021-12-15" },
+      { "name": "Winter Recess", "start": "2021-12-16", "end": "2022-01-09" }
+    ]
+  }
