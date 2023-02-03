@@ -1,0 +1,900 @@
+Sl. No.,Location,Identification,Source,Depth,Water Use,Land Use_Specific Activity,City
+60,"Irugur
+","BPCL side Sentha- Marai Garden
+","OW
+",18,"Domestic
+","Agricultural
+",Coimbatore
+61,"Irugur
+","IOCL, HPCL opposite
+","OW
+",30,"Domestic
+","Agricultural
+",Coimbatore
+62,"Irugur
+","Near IOCL, HPCL By-pass
+Road
+","OW
+",30,"Domestic
+","Agricultural
+",Coimbatore
+131,"Karmel Nagar
+","Deepa Nivas
+","HP
+",9,"Drinking
+","Agricultural
+",Vijaywada
+53,"Krishnarayapuram
+","Near Waste Transfer
+Site
+","BW
+",24,"Domestic
+",Commercial,Coimbatore
+71,"Venkatapuram
+","241/1, Saral
+Nursery Garden","BW
+",21,"Domestic
+",Commercial,Coimbatore
+73,"Kavundampalayam
+","Corporation Toilet
+Side MTP Road
+","BW
+",30,"Domestic
+",Commercial,Coimbatore
+74,"Gandhipuram
+","Saibaba Colony Residence
+","BW
+",45,"Domestic
+",Commercial,Coimbatore
+23,"Industrial
+Estate
+","Trans Yamuna Colony
+","HP
+",10,"Drinking
+",Industrial,Arga
+35,"Sports Complex
+","Sports Complex
+","HP
+",15,"Drinking
+",Industrial,Meerut
+36,"Partapur Ind. Area
+","Opp. Sub Station
+","HP
+",30,"Drinking
+",Industrial,Meerut
+51,"Ganapathy
+","Near CRI Pump Road
+","BW
+",121,"Domestic
+",Industrial,Coimbatore
+54,"Pewelamedu
+",Ranga Nagar No.7 Residence,"BW
+",45,"Domestic
+",Industrial,Coimbatore
+56,"Sitra (Kalappatti)
+","Panchayat Office
+","BW
+",106,"Domestic
+",Industrial,Coimbatore
+58,"Singanallur
+","Near LGB
+","OW
+",30,"Domestic
+",Industrial,Coimbatore
+63,"Kallimadai
+","Trichy Road near Boat House
+","OW
+",30,"Domestic
+",Industrial,Coimbatore
+67,"Kurichi
+","Palaniappa Layout Public BW
+","BW
+",30,"Domestic
+",Industrial,Coimbatore
+72,"Velandipalayam
+","No.18/19, Simson
+Nagar Extension","BW
+",75,"Domestic
+",Industrial,Coimbatore
+75,"Sidhapudur
+","No.51, Ambika Layout","BW
+",45,"Domestic
+",Industrial,Coimbatore
+80,"Guindy Industrial Estate
+","Public Hand Pump
+","HP
+",33,"Drinking
+",Industrial,Chennai
+85,"Villivakkam
+","Public Hand Pump
+","HP
+",45,"Drinking
+",Industrial,Chennai
+108,"Virattipattu
+","Balaganapathi Temple
+","BW
+",45,"Domestic
+",Industrial,Madurai
+111,"Anuppanadi
+","Near TWAD Tank
+","BW
+",60,"Domestic
+",Industrial,Madurai
+112,"East Madurai
+","Chinthamani Road, Near
+Agrochemicals Shop
+","BW
+",60,"Domestic
+",Industrial,Madurai
+117,"Pudur
+","SIDCO, Ramavarma
+Nagar 6th St.","BW
+",45,"Domestic
+",Industrial,Madurai
+122,"Sellur
+","Tagore Nagar Tank
+Bund Side
+","BW
+",75,"Domestic
+",Industrial,Madurai
+127,"Ashok Nagar Ind.
+Estate
+","Opp. Velagapudi Cold
+Storage
+","HP
+",27,"Drinking
+",Industrial,Vijaywada
+148,"Ayodya Nagar
+Junction
+","Opp. Raghavendra Theatre
+","HP
+",7,"Drinking
+",Industrial,Vijaywada
+37,"IBP Depot
+","IBP Depot
+","HP
+",30,"Drinking
+","Petroleum Storage
+",Meerut
+94,"Stanley Nagar
+","Public Hand Pump
+","HP
+",45,"Drinking
+","Petroleum Storage
+",Chennai
+95,"Kurukumpeta
+","Opp. Indian Oil
+Corporation
+","HP
+",24,"Drinking
+","Petroleum Storage
+",Chennai
+110,"West Ponnakaram
+","Opp. Ganapathy Pillai
+House, Main Road
+","BW
+",90,"Domestic
+","Petroleum Storage
+",Madurai
+123,"Vilangudi
+","Residence No. 6/26, IOC Nagar","BW
+",21,"Domestic
+","Petroleum Storage
+",Madurai
+124,"Vilangudi
+","KPS Garden
+","OW
+",15,"Domestic
+","Petroleum Storage
+",Madurai
+125,"Vilangudi
+","Panchayat Ofiice
+","OW
+",15,"Domestic
+","Petroleum Storage
+",Madurai
+1,Sikandra,"Opp. Getwell Hospital
+","HP
+",18,"Drinking
+","Residential
+",Arga
+2,"Khandari
+","Police Chowki
+Compound
+","HP
+",24,"Cloth washing
+","Residential
+",Arga
+3,"Lohamandi
+","Saiyad Para Ground
+","HP
+",30,"Drinking
+","Residential
+",Arga
+4,"Shahganj
+","Rui ki mandi Chauraha
+","HP
+",27,"Drinking
+","Residential
+",Arga
+5,"Sultanpura
+","Jiva Ram Temple
+","HP
+",27,"Drinking
+","Residential
+",Arga
+6,"Idgah Colony
+","Opp. IOCL Depot
+","HP
+",19,"Drinking
+","Residential
+",Arga
+7,"New Agra
+Colony
+","Basic Primary School
+","HP
+",21,"Drinking
+","Residential
+",Arga
+8,"Rajamandi
+","Opp.Rama Swing Work
+","HP
+",38,"Drinking
+","Residential
+",Arga
+9,"Nai ki mandi
+","Meera Husaini Chauraha
+","HP
+",21,"Drinking
+","Residential
+",Arga
+10,"Rakabganj
+","Opp. Over Head Tank
+","HP
+",15,"Drinking
+","Residential
+",Arga
+11,"Namner
+","Durga Mandir Compound
+","HP
+",21,"Drinking
+","Residential
+",Arga
+12,"Bundu Katra
+","Opp. Over Head Tank
+","HP
+",24,"Drinking
+","Residential
+",Arga
+13,"Dayalbagh
+","DEC Gate
+","HP
+",30,"Drinking
+","Residential
+",Arga
+14,"Gandhi Nagar
+","Main Chowk
+","HP
+",18,"Drinking
+","Residential
+",Arga
+15,"Maithan
+","Near City Railway Station
+","HP
+",24,"Drinking
+","Residential
+",Arga
+16,"Mantola
+","Opp. Jama Masjid
+","HP
+",24,"Drinking
+","Residential
+",Arga
+17,"Chilgarh
+","Opp. Agra Machhua
+Sahkari Samiti
+","HP
+",24,"Drinking
+","Residential
+",Arga
+18,"Baluganj
+","Near Agra Montessori
+School
+","HP
+",24,"Drinking
+","Residential
+",Arga
+19,"Naulakha
+","Near Girja Building
+Materials
+","HP
+",24,"Drinking
+","Residential
+",Arga
+20,"Ratanpura
+","Near BSP Office
+","HP
+",12,"Drinking
+","Residential
+",Arga
+21,"Belanganj
+","Main Chowk
+","HP
+",12,"Drinking
+","Residential
+",Arga
+22,"Tajganj
+","Nanda Bazar Chowk
+","HP
+",30,"Drinking
+","Residential
+",Arga
+24,"Balkeshwar
+","Opp. S. K. Mittal Agency
+","HP
+",21,"Drinking
+","Residential
+",Arga
+25,"Itma-Ud-Daulla
+","Opp. Itma-Ud-Daulla
+Building
+","HP
+",12,"Drinking
+","Residential
+",Arga
+26,"Sadar Bazar
+","Opp. Gulathi Opticals
+","HP
+",33,"Drinking
+","Residential
+",Meerut
+27,"Kankar Khera
+","Opp. Saru Engineering
+Corp.
+","HP
+",30,"Drinking
+","Residential
+",Meerut
+28,"Central Distillery
+","Opp. Lal Quarters
+","HP
+",24,"Drinking
+","Residential
+",Meerut
+29,"Gurudwara (Cantt
+Area)
+","Opp. Central School
+","HP
+",6,"Drinking
+","Residential
+",Meerut
+30,"Prempuri (Devpuri)
+","Opp. Vardhman Academy
+","HP
+",36,"Drinking
+","Residential
+",Meerut
+31,"Kesar Ganj
+","Opp. Kesar Ganj Mandi
+","HP
+",24,"Drinking
+","Residential
+",Meerut
+32,"Thapar Nagar
+","Opp. Devta Park
+","HP
+",24,"Drinking
+","Residential
+",Meerut
+33,"Mufttiyan
+","Back Side of Kotwali
+","HP
+",39,"Drinking
+","Residential
+",Meerut
+34,"Bharampuri
+","Near Shiv Temple
+","HP
+",24,"Drinking
+","Residential
+",Meerut
+38,"Vrindavan Garden
+","Roorkee Road
+","TW
+",42,"Drinking
+","Residential
+",Meerut
+39,"Koshal Kunj (Cantt
+Area)
+",Pump House No. 17,"TW
+",60,"Drinking
+","Residential
+",Meerut
+40,"Lal Kurti
+","Bada Bazar
+","HP
+",24,"Drinking
+","Residential
+",Meerut
+41,"Vijay Nagar
+","Near R. G. College
+","HP
+",18,"Drinking
+","Residential
+",Meerut
+42,"Saket
+","Opp. Nandan Apartment
+","HP
+",15,"Drinking
+","Residential
+",Meerut
+43,"Prabhat Nagar
+",73 Prabhat Nagar,"HP
+",27,"Drinking
+","Residential
+",Meerut
+44,"Meerut University
+","University Campus
+","TW
+",87,"Drinking
+","Residential
+",Meerut
+45,"Medical College
+","Medical College Campus
+","TW
+",88,"Drinking
+","Residential
+",Meerut
+46,"Kalyan Nagar
+","Shiv Temple
+","HP
+",14,"Drinking
+","Residential
+",Meerut
+47,"Suraj Kund
+","Sports Market
+","HP
+",15,"Drinking
+","Residential
+",Meerut
+48,"Islamabad
+","Market Area
+","HP
+",24,"Drinking
+","Residential
+",Meerut
+49,"Subhash Nagar
+","Near Samart Cement
+Agency
+","HP
+",18,"Drinking
+","Residential
+",Meerut
+50,"Begum Bridge
+","Opp. Dream Hotel
+","HP
+",36,"Drinking
+","Residential
+",Meerut
+52,"Bharathi Nagar
+","Rajarajeswari Temple
+","OW
+",15,"Domestic
+","Residential
+",Coimbatore
+55,"Villankurichi
+","Kuppusamy Gounder Garden
+","OW
+",36,"Domestic
+","Residential
+",Coimbatore
+57,"Valluvar
+","Murugan Temple
+","BW
+",75,"Domestic
+","Residential
+",Coimbatore
+59,"Ondipudur
+","9/47B Gandhi Nagar
+Residence","BW
+",30,"Domestic
+","Residential
+",Coimbatore
+64,"Puliyakulam
+","Opp. Lakshmi
+Medicals Residence
+","BW
+",45,"Domestic
+","Residential
+",Coimbatore
+65,"Souripalayam
+","Opp. ESI Hospital
+","OW
+",30,"Domestic
+","Residential
+",Coimbatore
+66,"Vellalur
+","Asokar St. Karuppasamy
+Gounder
+","OW
+",13,"Domestic
+","Residential
+",Coimbatore
+68,"Perur
+","Panchayat Office
+","BW
+",90,"Domestic
+","Residential
+",Coimbatore
+69,"Selvapuram
+","Kannan Nilayam Residence
+","BW
+",69,"Domestic
+","Residential
+",Coimbatore
+70,"Chokkam Pudur
+","Near Mariamman Temple
+","BW
+",121,"Domestic
+","Residential
+",Coimbatore
+101,"Aveniyapuram
+","Tuticorin By-pass Road
+Mani Cement Works
+","OW
+",13,"Domestic
+","Residential
+",Madurai
+102,"Andalpuram
+","Below Railway Over
+Bridge
+","BW
+",45,"Domestic
+","Residential
+",Madurai
+103,"TVS Nagar
+","C-31/57, Rajam Road
+Residence","BW
+",75,"Domestic
+","Residential
+",Madurai
+104,"Muthupatti
+","RMS Colony
+","BW
+",45,"Domestic
+","Residential
+",Madurai
+105,"Pasumalai
+","Residence Near Post
+Office
+","OW
+",30,"Domestic
+","Residential
+",Madurai
+106,"Madakulam
+","Kabali Eswariamman
+Temple
+","OW
+",9,"Domestic
+","Residential
+",Madurai
+107,"Chokkalinga
+",7th St. near Police Station,"BW
+",45,"Domestic
+","Residential
+",Madurai
+109,"Pethaniapuram
+",1st Cross Street,"BW
+",45,"Domestic
+","Residential
+",Madurai
+113,"Balarangapuram
+","Opp. Nageswariamman
+Temple
+","BW
+",90,"Domestic
+","Residential
+",Madurai
+114,"Alwarpuram
+","River Side Public BW
+","BW
+",45,"Domestic
+","Residential
+",Madurai
+115,"Sathamangalam
+","Opp. Arvind Eye Hospital
+","BW
+",121,"Domestic
+","Residential
+",Madurai
+116,"K.K. Nagar
+","Opp. Kalaivani Tailors, LIC Colony
+","BW
+",60,"Domestic
+","Residential
+",Madurai
+118,"Jawaharlal Puram
+","Residence Well
+","OW
+",18,"Domestic
+","Residential
+",Madurai
+119,"Kodikulam
+","Surya Nagar Lime
+Factory
+","OW
+",12,"Domestic
+","Residential
+",Madurai
+120,"Bibikulam
+","Corporation Toilet BW
+","BW
+",90,"Domestic
+","Residential
+",Madurai
+121,"Chinna
+Chokikulam
+","OCPM School opp. Police Quarters
+","BW
+",60,"Domestic
+","Residential
+",Madurai
+76,"Besant Nagar
+","Sri. Varasiddi Vinayaka
+Temple
+","HP
+",12,"Drinking
+","Urban
+",Chennai
+77,"Tiruvanniyur
+","Marudeeswara Temple
+","HP
+",15,"Drinking
+","Urban
+",Chennai
+78,"Taramani
+","New Iyangar Bakery
+","HP
+",36,"Drinking
+","Urban
+",Chennai
+79,"Velacheri
+","Dandeswaran Temple
+","HP
+",30,"Drinking
+","Urban
+",Chennai
+81,"K K Nagar
+","Vignesh Travels
+","HP
+",36,"Drinking
+","Urban
+",Chennai
+82,"Vadapalani
+","Water Servicing Station
+","HP
+",36,"Drinking
+","Urban
+",Chennai
+83,"Koyambedu
+","Kalyana Mandapam
+","OW
+",12,"Drinking
+","Urban
+",Chennai
+84,"Anna Nagar (West)
+","849, J Block","HP
+",24,"Drinking
+","Urban
+",Chennai
+86,"Ayanavaram
+","Opp. Sri Balaji Stores
+","HP
+",42,"Drinking
+","Urban
+",Chennai
+87,"Egmore
+","Shishu Ð The Play School
+","HP
+",30,"Drinking
+","Urban
+",Chennai
+88,"Roypet
+","Central Chennai Corp.
+Dispensary
+","HP
+",48,"Drinking
+","Urban
+",Chennai
+89,"Triplicane
+","Public Hand Pump
+","HP
+",30,"Drinking
+","Urban
+",Chennai
+90,"Santhome
+","Santhome Church
+Compound
+","HP
+",10,"Drinking
+","Urban
+",Chennai
+91,"Perambur
+","Public Hand Pump
+","HP
+",15,"Drinking
+","Urban
+",Chennai
+92,"Sembiyam
+","Public Hand Pump
+","HP
+",36,"Drinking
+","Urban
+",Chennai
+93,"Erankancheri
+","Public Hand Pump
+","HP
+",42,"Drinking
+","Urban
+",Chennai
+96,"Tondiar Pet
+","Public Hand Pump
+","HP
+",36,"Drinking
+","Urban
+",Chennai
+97,"Toll Gate
+","Public Hand Pump
+","HP
+",42,"Drinking
+","Urban
+",Chennai
+98,"Washerman Pet
+","Public Hand Pump
+","HP
+",33,"Drinking
+","Urban
+",Chennai
+99,"Park Town Area
+","Public Hand Pump
+","HP
+",45,"Drinking
+","Urban
+",Chennai
+100,"IIT Madras Campus
+",Near Q.No. D1/42,"HP
+",45,"Drinking
+","Urban
+",Chennai
+126,"Benz circle
+","Opp. Nirmala Convent
+","HP
+",36,"Drinking
+","Urban
+",Vijaywada
+128,"Auto Nagar
+","Opp. India Radiators
+","HP
+",48,"Drinking
+","Urban
+",Vijaywada
+129,"Goldsport Junction
+","Sri. Lakshmi Rice Store
+","HP
+",12,"Drinking
+","Urban
+",Vijaywada
+130,"Gunadala
+","Opp. ESI Hospital
+","HP
+",10,"Drinking
+","Urban
+",Vijaywada
+132,"Khandrika
+","Khandrika Bus Stop Centre
+","HP
+",30,"Drinking
+","Urban
+",Vijaywada
+133,"Payakapuram
+","Sri. Manasa Fast Foods
+","HP
+",21,"Drinking
+","Urban
+",Vijaywada
+134,"Ajit Singh Nagar
+","Rajasri Bar and Restaurant
+","HP
+",24,"Drinking
+","Urban
+",Vijaywada
+135,"Satyanarayana Puram
+",D.No. 23-16-27,"OW
+",5,"Drinking
+","Urban
+",Vijaywada
+136,"Krishna Lanka
+",D.No. 41-1/6-2,"HP
+",15,"Drinking
+","Urban
+",Vijaywada
+137,"Governor Peta
+","Hotal Paradise
+","HP
+",9,"Drinking
+","Urban
+",Vijaywada
+138,"Krishna Lanka
+","Opp. Central Bus Stand
+","HP
+",27,"Drinking
+","Urban
+",Vijaywada
+139,"Hanuman Peta
+","Near Govt. General
+Hospital
+","HP
+",30,"Drinking
+","Urban
+",Vijaywada
+140,"Kotha Peta
+","Near St. Ani Public School
+","HP
+",18,"Drinking
+","Urban
+",Vijaywada
+141,"Bheemannavari Peta
+","Sri. Ganganamma Devi
+Temple
+","HP
+",18,"Drinking
+","Urban
+",Vijaywada
+142,"Vidhyadhara Puram
+","Near RTC Workshop
+","HP
+",38,"Drinking
+","Urban
+",Vijaywada
+143,"Jogi Nagar
+","Near Church
+","HP
+",45,"Drinking
+","Urban
+",Vijaywada
+144,"Urmila Subba Rao
+Nagar
+",D.No. 76-17-161,"HP
+",30,"Drinking
+","Urban
+",Vijaywada
+145,"Bhavanipuram
+",HIG-H1-70,"HP
+",45,"Drinking
+","Urban
+",Vijaywada
+146,"Hyderabad Highway
+","NH-9 & HB Colony
+Junction","HP
+",45,"Drinking
+","Urban
+",Vijaywada
+147,"Vidhyadhara Puram
+","Anita Apartments
+","HP
+",30,"Drinking
+","Urban
+",Vijaywada
+149,"Rajarajeswari Peta
+","Opp. Habeeb E. Medium
+School
+","HP
+",30,"Drinking
+","Urban
+",Vijaywada
+150,"Governor Peta
+","Near Surya Hotal
+","HP
+",16,"Drinking
+","Urban
+",Vijaywada
